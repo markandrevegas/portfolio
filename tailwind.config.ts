@@ -12,7 +12,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Lexend', 'sans-serif'],
+        sans: ['Jost', 'sans-serif'],
       },
       letterSpacing: {
         widest: '.25em'

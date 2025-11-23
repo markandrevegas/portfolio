@@ -10,42 +10,9 @@
   body {
     @apply dark:bg-slate-900 dark:text-yellow-50/90 text-abyssal;
   }
-
-  progress.progress-bar {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 100%;
-    height: 2px;
-    border-radius: 9999px;
-    overflow: hidden;
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans font-black;
   }
-
-  /* Background (track) */
-  progress.progress-bar::-webkit-progress-bar {
-    background-color: rgb(15 23 42 / 0.8); /* abyssal w/ opacity */
-    border-radius: 9999px;
-  }
-
-  /* Value (fill) */
-  progress.progress-bar::-webkit-progress-value {
-    background-color: rgb(241 245 249 / .8); /* red-300 */
-    border-radius: 9999px;
-  }
-
-  /* Firefox uses -moz-progress-bar only for the value */
-  progress.progress-bar::-moz-progress-bar {
-    background-color: rgb(241 245 249 / .8);
-    border-radius: 9999px;
-  }
-
-  /* Dark mode */
-  .dark progress.progress-bar::-webkit-progress-value {
-    background-color: rgb(241 245 249 / .5); /* slate-100 */
-  }
-  .dark progress.progress-bar::-moz-progress-bar {
-    background-color: rgb(241 245 249 / .5);
-  }
-
 }
 
 .slide-horizontal-enter-active,
