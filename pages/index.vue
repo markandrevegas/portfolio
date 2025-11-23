@@ -1,5 +1,11 @@
 <script setup></script>
 
 <template>
-	<ColorModeToggle />
+  <ClientOnly>
+    <div class="h-[64rem">
+      <ColorModeToggle />
+    </div>
+  </ClientOnly>
 </template>
+<style>
+</style>
