@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./*"],
+      "@/*": ["./*"]
+    },
+    "types": ["@types/node", "nuxt"]
+  },
+  "include": ["nuxt.config.ts", "types/**/*.d.ts"]
+}
