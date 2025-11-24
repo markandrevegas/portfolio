@@ -10,7 +10,7 @@
 <template>
 	<div class="relative min-h-screen bg-white dark:bg-abyssal dark:text-yellow-100 overflow-y-scroll">
     <header class="fixed top-0 left-0 w-full z-40 backdrop-blur-md border-b border-black/10 h-14 flex items-center justify-end px-4">
-      <button class="text-2xl uppercase font-light" :aria-expanded="isOpen" aria-haspopup="true" @click="toggleMenu">
+      <button class="text-xl tracking-wider uppercase font-light" :aria-expanded="isOpen" aria-haspopup="true" @click="toggleMenu">
         Menu
       </button>
     </header>
@@ -26,7 +26,10 @@
           </div>
         </div>
         <ul class="space-y-4">
-          <li class="uppercase text-4xl font-light"><NuxtLink to="/">Style</NuxtLink></li>
+          <li><NuxtLink to="/" @click="toggleMenu">Home</NuxtLink></li>
+          <li><NuxtLink to="/about" @click="toggleMenu">About</NuxtLink></li>
+          <li><NuxtLink to="/blog" @click="toggleMenu">Blog</NuxtLink></li>
+          <li><NuxtLink to="/contact" @click="toggleMenu">Contact</NuxtLink></li>
         </ul>
       </div>
     </div>

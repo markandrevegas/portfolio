@@ -4,6 +4,23 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 // Extend the NuxtConfig type
 declare module 'nuxt/schema' {
   interface NuxtConfig {
+    content?: {
+      [key: string]: unknown;
+    }
+    fonts?: {
+      provider?: string;
+      assets?: {
+        [key: string]: unknown;
+      };
+      families?: Array<{
+        name: string;
+        weights?: number[];
+        styles?: string[];
+        subsets?: string[];
+        variants?: string[];
+        [key: string]: unknown;
+      }>;
+    }
     image?: {
       quality?: number;
       domains?: string[];
@@ -47,7 +64,7 @@ export default defineNuxtConfig({
       allowedHosts: ['scratch.local']
     } */
 	},
-	modules: ["@nuxtjs/color-mode", "@nuxtjs/tailwindcss", "@nuxt/fonts", "@nuxt/image", "@nuxt/eslint", "@nuxt/icon"],
+	modules: ["@nuxtjs/color-mode", "@nuxtjs/tailwindcss", "@nuxt/fonts", "@nuxt/image", "@nuxt/eslint", "@nuxt/icon", "@nuxt/content"],
 	image: {
 		providers: {
 			placehold: {
@@ -87,5 +104,6 @@ export default defineNuxtConfig({
 		externals: {
 			inline: ["ipx", "ofetch"]
 		}
-	}
+	},
+  content: {}
 })
