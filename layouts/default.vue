@@ -19,17 +19,17 @@
     <div class="fixed top-0 right-0 h-full w-full bg-white text-sky-950 z-50 transition-transform duration-300" :class="isOpen ? 'translate-x-0' : 'translate-x-full'">
       <div class="p-2 gap-8 flex flex-col">
         <div class="w-full flex justify-between items-center">
-          <h1 class="text-4xl font-black tracking-wide uppercase">Tailor</h1>
+          <h1 class="text-5xl tracking-widest uppercase">Tailor</h1>
           <div class="flex justify-between items-center gap-2">
             <Icon name="iconoir:search" class="size-8" />
             <Icon name="iconoir:xmark" class="size-12" @click="toggleMenu" />
           </div>
         </div>
-        <ul class="space-y-4">
-          <li><NuxtLink to="/" @click="toggleMenu">Home</NuxtLink></li>
-          <li><NuxtLink to="/about" @click="toggleMenu">About</NuxtLink></li>
-          <li><NuxtLink to="/blog" @click="toggleMenu">Blog</NuxtLink></li>
-          <li><NuxtLink to="/contact" @click="toggleMenu">Contact</NuxtLink></li>
+        <ul class="space-y-4 menu">
+          <li class="menu--item"><NuxtLink to="/" @click="toggleMenu">Home</NuxtLink></li>
+          <li class="menu--item"><NuxtLink to="/about" @click="toggleMenu">About</NuxtLink></li>
+          <li class="menu--item"><NuxtLink to="/blog" @click="toggleMenu">Blog</NuxtLink></li>
+          <li class="menu--item"><NuxtLink to="/contact" @click="toggleMenu">Contact</NuxtLink></li>
         </ul>
       </div>
     </div>

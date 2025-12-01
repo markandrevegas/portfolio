@@ -96,6 +96,10 @@ export default defineNuxtConfig({
 			{
 				name: "Jost",
 				weights: [100, 200, 300, 400, 500, 600, 700]
+			},
+			{
+				name: "Inter",
+				weights: [100, 200, 300, 400, 500, 600, 700, 800, 900]
 			}
 		]
 	},

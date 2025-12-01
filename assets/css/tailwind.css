@@ -15,6 +15,14 @@
   }
 }
 
+@layer components {
+  .menu {
+    &--item {
+      @apply text-8xl uppercase font-medium text-neutral-400;
+    }
+  }
+}
+
 .slide-horizontal-enter-active,
 .slide-horizontal-leave-active {
   transition: transform 0.1s ease-in-out, opacity 0.2s ease-in-out;
