@@ -19,7 +19,7 @@
   .menu {
     @apply pt-4;
     li {
-      @apply text-[2.75rem] uppercase font-medium text-abyssal mb-4;
+      @apply text-[2.75rem] uppercase font-medium text-abyssal;
       letter-spacing: -.035em;
     }
   }

@@ -1,20 +1,23 @@
 <script setup>
-const { data } = await useAsyncData('home', () => {
-  return queryCollection('content').path('/').first()
-})
-if (!data.value) {
-  console.error("Content not found. Check if content/index.md exists.");
+import { useUnsplash } from "@/composables/useUnsplash"
+const useRandomPhoto = async () => {
+	const { getRandomPhoto } = useUnsplash()
+	const photo = await getRandomPhoto({
+		query: "nature",
+		orientation: "landscape",
+	})
+	console.log(photo)
 }
+onMounted(() => {
+	useRandomPhoto()
+})
 </script>
 
 <template>
-  <ClientOnly>
-    <div class="h-[64rem">
-      <ColorModeToggle />
-      <ContentRenderer v-if="data" :value="data" />
-      <div v-else>Loading content or content not found...</div>
-    </div>
-  </ClientOnly>
+	<ClientOnly>
+		<div class="flex-1 bg-red-100">
+			
+		</div>
+	</ClientOnly>
 </template>
-<style>
-</style>
+<style></style>

@@ -1,10 +1,10 @@
 <script setup></script>
 <template>
-	<div class="relative min-h-screen bg-white dark:bg-abyssal dark:text-yellow-100 overflow-y-scroll">
-    <MainMenuSidebar />
+	<div class="relative min-h-screen overflow-y-scroll flex flex-col">
+		<MainMenuSidebar />
 		<!-- Main scroll area -->
-    <main class="pt-[70px]">
-      <NuxtPage />
-    </main>
+		<main class="pt-[70px] flex-1 flex flex-col">
+			<NuxtPage />
+		</main>
 	</div>
 </template>

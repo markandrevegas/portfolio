@@ -1,45 +1,45 @@
-import { defineNuxtConfig } from 'nuxt/config';
-import tsconfigPaths from 'vite-tsconfig-paths';
+import { defineNuxtConfig } from "nuxt/config"
+import tsconfigPaths from "vite-tsconfig-paths"
 
 // Extend the NuxtConfig type
-declare module 'nuxt/schema' {
-  interface NuxtConfig {
-    content?: {
-      [key: string]: unknown;
-    }
-    fonts?: {
-      provider?: string;
-      assets?: {
-        [key: string]: unknown;
-      };
-      families?: Array<{
-        name: string;
-        weights?: number[];
-        styles?: string[];
-        subsets?: string[];
-        variants?: string[];
-        [key: string]: unknown;
-      }>;
-    }
-    image?: {
-      quality?: number;
-      domains?: string[];
-      providers?: {
-        [key: string]: {
-          name: string;
-          provider: string;
-          options?: {
-            baseURL?: string;
-            [key: string]: unknown;
-          };
-        };
-      };
-    };
-  }
+declare module "nuxt/schema" {
+	interface NuxtConfig {
+		content?: {
+			[key: string]: unknown
+		}
+		fonts?: {
+			provider?: string
+			assets?: {
+				[key: string]: unknown
+			}
+			families?: Array<{
+				name: string
+				weights?: number[]
+				styles?: string[]
+				subsets?: string[]
+				variants?: string[]
+				[key: string]: unknown
+			}>
+		}
+		image?: {
+			quality?: number
+			domains?: string[]
+			providers?: {
+				[key: string]: {
+					name: string
+					provider: string
+					options?: {
+						baseURL?: string
+						[key: string]: unknown
+					}
+				}
+			}
+		}
+	}
 
-  interface NuxtOptions {
-    image?: NuxtConfig['image'];
-  }
+	interface NuxtOptions {
+		image?: NuxtConfig["image"]
+	}
 }
 
 export default defineNuxtConfig({
@@ -59,8 +59,8 @@ export default defineNuxtConfig({
 	devtools: { enabled: true },
 	css: ["@/assets/css/tailwind.css"],
 	vite: {
-		plugins: [tsconfigPaths()],
-    /* server: {
+		plugins: [tsconfigPaths()]
+		/* server: {
       allowedHosts: ['scratch.local']
     } */
 	},
@@ -83,7 +83,7 @@ export default defineNuxtConfig({
 		spotifyClientSecret: process.env.NUXT_SPOTIFY_CLIENT_SECRET,
 		unsplashAccessKey: process.env.NUXT_UNSPLASH_ACCESS_KEY,
 		public: {
-			unsplashBase: "https://api.unsplash.com",
+			unsplashBase: process.env,
 			fonts: {
 				selfHosted: false
 			}
@@ -109,5 +109,5 @@ export default defineNuxtConfig({
 			inline: ["ipx", "ofetch"]
 		}
 	},
-  content: {}
+	content: {}
 })
