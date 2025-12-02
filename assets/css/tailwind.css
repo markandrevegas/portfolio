@@ -8,7 +8,7 @@
 }
 @layer base {
   body {
-    @apply dark:bg-slate-900 dark:text-yellow-50/90 text-abyssal;
+    @apply bg-[#f6f6f6] dark:bg-slate-900 dark:text-yellow-50/90 text-abyssal;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-sans font-black;
@@ -17,8 +17,10 @@
 
 @layer components {
   .menu {
-    &--item {
-      @apply text-8xl uppercase font-medium text-neutral-400;
+    @apply pt-4;
+    li {
+      @apply text-[2.75rem] uppercase font-medium text-abyssal mb-4;
+      letter-spacing: -.035em;
     }
   }
 }
