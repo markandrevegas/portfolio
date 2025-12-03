@@ -17,6 +17,7 @@ interface UnsplashPhoto {
 interface QueryParams {
 	query?: string
 	orientation?: string
+	content_filter?: string
 }
 
 export default defineEventHandler(async (event: H3Event) => {
@@ -27,9 +28,9 @@ export default defineEventHandler(async (event: H3Event) => {
 		const query = getQuery(event) as QueryParams
 
 		const params = new URLSearchParams({
-			query: query.query || "nature",
+			query: query.query || "fashion",
 			orientation: query.orientation || "portrait",
-			content_filter: "high",
+			content_filter: query.content_filter || "high",
 			count: "1"
 		})
 

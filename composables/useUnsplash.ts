@@ -10,7 +10,8 @@ export const useUnsplash = () => {
 		// Use a combination of 'query' and 'orientation' if they exist, otherwise use defaults.
 		const query = params.query || "fashion"
 		const orientation = params.orientation || "portrait"
-		return `unsplash_cache_${query}_${orientation}`
+		const content_filter = params.content_filter || "high"
+		return `unsplash_cache_${query}_${orientation}_${content_filter}`
 	}
 	
 	/**
