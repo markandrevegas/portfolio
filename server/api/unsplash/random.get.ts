@@ -1,16 +1,34 @@
 // server/api/unsplash/random.get.ts
-import { defineEventHandler, sendError, createError, getQuery } from 'h3'
+import { defineEventHandler, sendError, createError, getQuery, H3Event } from 'h3'
 
-export default defineEventHandler(async (event) => {
-	const UNSPLASH_KEY = process.env.NUXT_UNSPLASH_ACCESS_KEY
-	const UNSPLASH_BASE = process.env.NUXT_UNSPLASH_BASE || "https://api.unsplash.com"
+interface UnsplashPhoto {
+	id: string
+	alt_description: string | null
+	urls: {
+		raw: string
+		full: string
+		regular: string
+		small: string
+		thumb: string
+	}
+	blur_hash: string
+}
+
+interface QueryParams {
+	query?: string
+	orientation?: string
+}
+
+export default defineEventHandler(async (event: H3Event) => {
+	const UNSPLASH_KEY: string | undefined = process.env.NUXT_UNSPLASH_ACCESS_KEY
+	const UNSPLASH_BASE: string = process.env.NUXT_UNSPLASH_BASE || "https://api.unsplash.com"
 
 	try {
-		const query = getQuery(event)
+		const query = getQuery(event) as QueryParams
 
 		const params = new URLSearchParams({
 			query: query.query || "nature",
-			orientation: query.orientation || "landscape",
+			orientation: query.orientation || "portrait",
 			content_filter: "high",
 			count: "1"
 		})
@@ -32,7 +50,7 @@ export default defineEventHandler(async (event) => {
 		}
 
 		const json = await res.json()
-		const photo = Array.isArray(json) ? json[0] : json
+		const photo: UnsplashPhoto = Array.isArray(json) ? json[0] : json
 
 		return {
 			id: photo.id,
