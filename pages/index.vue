@@ -48,8 +48,7 @@ onMounted(() => {
 			</div>
 		</div>
 		<div class="bg-white p-12 text-gray-800">
-      <h2 class="text-3xl font-semibold mb-4">More Scrollable Content</h2>
-      <p>This is where the user will scroll to view the main body of your page. The content has pushed the full-screen image up.</p>
+			<IndexGallery />
       <div class="h-[100vh] flex items-center justify-center">
         <p class="text-xl">Scroll down for more...</p>
       </div>
