@@ -1,6 +1,19 @@
+<script setup lang="ts">
+	import { ref } from "vue"
+	// states
+	const isOpen = ref(false)
+	// helpers
+	function toggleMenu() {
+		isOpen.value = !isOpen.value
+	}
+	const props = defineProps({
+		isScrolled: Boolean
+	})
+</script>
+
 <template>
 	<div>
-		<header class="fixed left-0 top-0 z-40 flex h-[70px] w-full items-center justify-between px-4 backdrop-blur-md">
+		<header :class="props.isScrolled ? 'backdrop-blur-xl text-white bg-abyssal/40' : 'backdrop-blur-md text-abyssal'" class="fixed left-0 top-0 z-40 flex h-[70px] w-full items-center justify-between px-4 transition-colors duration-300">
 			<h1 class="text-5xl uppercase tracking-widest">Tailor</h1>
 			<button class="text-2xl uppercase tracking-tighter" :aria-expanded="isOpen" aria-haspopup="true" @click="toggleMenu">Menu</button>
 		</header>
@@ -33,12 +46,3 @@
 		</nav>
 	</div>
 </template>
-<script setup lang="ts">
-import { ref } from "vue"
-// states
-const isOpen = ref(false)
-// helpers
-function toggleMenu() {
-	isOpen.value = !isOpen.value
-}
-</script>

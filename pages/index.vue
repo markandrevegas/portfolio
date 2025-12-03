@@ -38,12 +38,13 @@ onMounted(() => {
 
 <template>
 	<div class="flex-1 flex flex-col bg-red-100 h-screen overflow-auto">
-		<div class="h-screen relative ">
+		<div class="h-[calc(100vh-70px)] relative">
 			<div v-if="loading">Loading...</div>
-			<NuxtImg v-if="photo" :src="photo.urls.full" :alt="photo.alt" class="w-full h-full object-cover z-0" />
-			<div class="h-48 absolute right-0 bottom-0 left-0 z-10 p-6 text-white">
-				<h1 class="text-4xl font-bold">{{ header }}</h1>
-				<p class="mt-2 max-w-md">{{ text }}</p>
+			<NuxtImg v-if="photo" :src="photo.urls.full" :alt="photo.alt" class="w-full h-full object-cover z-10" />
+			<div class="absolute inset-0 z-20 bg-black/20"></div>
+			<div class="h-72 text-right absolute right-0 bottom-0 left-0 z-30 p-6 text-white flex-flex-col justify-start">
+				<h1 class="text-3xl uppercase font-medium">{{ header }}</h1>
+				<p class="mt-2 max-w-md uppercase">{{ text }}</p>
 			</div>
 		</div>
 		<div class="bg-white p-12 text-gray-800">
