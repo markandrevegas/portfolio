@@ -83,7 +83,7 @@ export default defineNuxtConfig({
 		spotifyClientSecret: process.env.NUXT_SPOTIFY_CLIENT_SECRET,
 		unsplashAccessKey: process.env.NUXT_UNSPLASH_ACCESS_KEY,
 		public: {
-			unsplashBase: process.env,
+			unsplashBase: process.env.NUXT_UNSPLASH_BASE || "https://api.unsplash.com",
 			fonts: {
 				selfHosted: false
 			}

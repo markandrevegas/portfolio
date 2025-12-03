@@ -3,50 +3,57 @@
 @tailwind utilities;
 
 ::root {
-  --abyssal: #1B2632;
-  --palladian: #EEE9DF;
+	--abyssal: #1b2632;
+	--palladian: #eee9df;
 }
 @layer base {
-  body {
-    @apply bg-[#f6f6f6] dark:bg-slate-900 dark:text-yellow-50/90 text-abyssal;
-  }
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-sans font-black;
-  }
+	body {
+		@apply bg-[#f6f6f6] text-abyssal dark:bg-slate-900 dark:text-yellow-50/90;
+	}
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply font-sans font-black;
+	}
 }
 
 @layer components {
-  .menu {
-    @apply pt-4;
-    li {
-      @apply text-[2.75rem] uppercase font-medium text-abyssal;
-      letter-spacing: -.035em;
-    }
-  }
+	.menu {
+		@apply pt-4;
+		li {
+			@apply text-[2.75rem] font-medium uppercase text-abyssal;
+			letter-spacing: -0.035em;
+		}
+	}
 }
 
 .slide-horizontal-enter-active,
 .slide-horizontal-leave-active {
-  transition: transform 0.1s ease-in-out, opacity 0.2s ease-in-out;
-  will-change: transform, opacity;
+	transition:
+		transform 0.1s ease-in-out,
+		opacity 0.2s ease-in-out;
+	will-change: transform, opacity;
 }
 
 .slide-horizontal-enter-from {
-  transform: translateX(-100%);
-  opacity: 0;
+	transform: translateX(-100%);
+	opacity: 0;
 }
 
 .slide-horizontal-enter-to {
-  transform: translateX(0);
-  opacity: 1;
+	transform: translateX(0);
+	opacity: 1;
 }
 
 .slide-horizontal-leave-from {
-  transform: translateX(0);
-  opacity: 1;
+	transform: translateX(0);
+	opacity: 1;
 }
 
 .slide-horizontal-leave-to {
-  transform: translateX(0);
-  opacity: 0;
+	transform: translateX(0);
+	opacity: 0;
 }

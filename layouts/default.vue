@@ -1,9 +1,9 @@
 <script setup></script>
 <template>
-	<div class="relative min-h-screen overflow-y-scroll flex flex-col">
+	<div class="relative flex min-h-screen flex-col overflow-hidden">
 		<MainMenuSidebar />
 		<!-- Main scroll area -->
-		<main class="pt-[70px] flex-1 flex flex-col">
+		<main class="flex flex-1 flex-col pt-[70px]">
 			<NuxtPage />
 		</main>
 	</div>

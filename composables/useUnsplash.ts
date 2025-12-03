@@ -1,12 +1,15 @@
-import { $fetch } from "ofetch"
-
+// composables/useUnsplash.ts
 export const useUnsplash = () => {
-	// --- API calls ---
-	const getRandomPhoto = async (params: Record<string, string> = {}) => {
-		return await $fetch("/api/unsplash/random", { query: params })
+	const getRandomPhoto = async (params = {}) => {
+		try {
+			const photo = await $fetch("/api/unsplash/random", {
+				query: params
+			})
+			return { data: photo, error: null }
+		} catch (err) {
+			return { data: null, error: err }
+		}
 	}
 
-	return {
-		getRandomPhoto
-	}
+	return { getRandomPhoto }
 }

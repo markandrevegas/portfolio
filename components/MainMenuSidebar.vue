@@ -1,7 +1,7 @@
 <template>
 	<div>
-		<header class="fixed left-0 top-0 z-40 h-[70px] w-full flex justify-between items-center px-4 backdrop-blur-md">
-      <h1 class="text-5xl uppercase tracking-widest">Tailor</h1>
+		<header class="fixed left-0 top-0 z-40 flex h-[70px] w-full items-center justify-between px-4 backdrop-blur-md">
+			<h1 class="text-5xl uppercase tracking-widest">Tailor</h1>
 			<button class="text-2xl uppercase tracking-tighter" :aria-expanded="isOpen" aria-haspopup="true" @click="toggleMenu">Menu</button>
 		</header>
 		<!-- Drawer overlay -->
@@ -24,11 +24,11 @@
 						<div class="bg-yellow-200"></div>
 					</div>
 				</div>
-				<div class="socials fixed bottom-0 left-0 right-0 z-20 flex h-24 items-center justify-start bg-white px-4 gap-4">
+				<div class="socials fixed bottom-0 left-0 right-0 z-20 flex h-24 items-center justify-start gap-4 bg-white px-4">
 					<div class="flex h-12 w-12 items-center justify-center rounded-full border border-abyssal text-xl">IG</div>
 					<div class="flex h-12 w-12 items-center justify-center rounded-full border border-abyssal text-xl">PT</div>
 				</div>
-        <div>Copyright </div>
+				<div>Copyright</div>
 			</div>
 		</nav>
 	</div>

@@ -1,3 +1,8 @@
 {
-  "cSpell.words": ["iconoir", "Jost", "nuxi", "Nuxt", "nuxtjs", "ofetch", "vueuse", "xmark"]
+	"cSpell.words": ["blurhash", "iconoir", "Jost", "nuxi", "Nuxt", "nuxtjs", "ofetch", "vueuse", "xmark"],
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.formatOnSave": true,
+	"prettier.requireConfig": true,
+	"bladeFormatter.format.enabled": false,
+	"intelephense.format.enable": false
 }
