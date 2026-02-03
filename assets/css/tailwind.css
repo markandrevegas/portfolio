@@ -24,7 +24,7 @@
 	.menu {
 		@apply pt-4;
 		li {
-			@apply text-[2.75rem] font-medium uppercase text-abyssal;
+			@apply text-[4rem] font-medium uppercase text-abyssal;
 			letter-spacing: -0.035em;
 		}
 	}
