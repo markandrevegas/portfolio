@@ -14,7 +14,7 @@
 <template>
 	<div>
 		<header :class="props.isScrolled ? 'backdrop-blur-xl text-white bg-abyssal/40' : 'backdrop-blur-md text-abyssal'" class="fixed left-0 top-0 z-40 flex h-[70px] w-full items-center justify-between px-4 transition-colors duration-300">
-			<h1 class="text-5xl uppercase tracking-widest">Tailor</h1>
+			<h1 class="text-xl">Tailor</h1>
 			<MenuIcon :is-open="isOpen" @click="toggleMenu"/>
 		</header>
 		<!-- Drawer overlay -->

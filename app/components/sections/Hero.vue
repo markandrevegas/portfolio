@@ -3,7 +3,6 @@ import { inject } from "vue"
 
 const photo = inject("photo")
 const header = inject("header")
-const text = inject("text")
 const loading = inject("loading")
 
 const loadingIconWidth = "2.5rem"
@@ -16,8 +15,7 @@ const loadingIconHeight = "2.5rem"
 			<Loading :width="loadingIconWidth" :height="loadingIconHeight" />
 		</div>
 		<div class="flex-1 flex flex-col justify-end z-30 p-6">
-			<h1 class="text-3xl uppercase font-medium">{{ header }}</h1>
-			<p class="mt-2 max-w-md uppercase">{{ text }}</p>
+			<h1 class="text-4xl font-medium tracking-tighter">{{ header }}</h1>
 		</div>
 		<div class="flex-1 relative w-full z-10 overflow-hidden">
 			<NuxtImg v-if="photo" :src="photo.urls.full" :alt="photo.alt" class="object-cover w-full h-full" />
