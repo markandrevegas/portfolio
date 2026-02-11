@@ -3,6 +3,7 @@ import { useUnsplash } from "~/composables/useUnsplash"
 import block from '~/content/blocks/image.json'
 
 import { ref, onMounted, provide } from "vue"
+import Contact from "../components/sections/Contact.vue"
 
 // state
 const loading = ref(false)
@@ -44,10 +45,9 @@ onMounted(() => {
 <template>
 	<div class="flex-1 flex flex-col h-screen overflow-auto">
 		<Hero />
-		<div>
-			<Grid />
-      <About />
-    </div>
+		<Grid />
+    <About />
+		<Contact />
 	</div>
 </template>
 <style></style>
