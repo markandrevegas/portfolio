@@ -1,11 +1,12 @@
 <script setup lang="ts">
 	import { ref, onMounted } from "vue"
 	import { useUnsplash } from "../../composables/useUnsplash"
-	// states
+
   const images = ref<{ src: string; alt: string }[]>([])
 	const isLoading = ref(true)
+  const loadingIconWidth = "2.5rem"
+  const loadingIconHeight = "2.5rem"
 
-	// helpers
 	const { getRandomPhoto } = useUnsplash()
 	async function fetchImages() {
     isLoading.value = true
@@ -37,13 +38,17 @@
 	})
 </script>
 <template>
-	<div>
-		<h2 v-if="images.length > 0" class="text-2xl uppercase font-medium italic mb-8">Handmade Illusions</h2>
-		<div class="flex justify-start gap-4 w-full overflow-x-scroll">
-			<div v-if="isLoading">Loading...</div>
-			<NuxtImg v-for="(img, index) in images" :key="index" :src="img.src" :alt="img.alt" class="h-72" />
+	<div class="flex-1 flex flex-col justify-center items-center">
+		<!-- Loading State -->
+		<Loading v-if="isLoading" :width="loadingIconWidth" :height="loadingIconHeight" />
+		<!-- Empty State -->
+		<div v-else-if="images.length === 0" class="text-center mt-4">No images found.</div>
+		<!-- Images Grid -->
+		<div v-else class="p-8">
+			<h2 class="text-2xl uppercase font-medium italic mb-8">Handmade Illusions</h2>
+			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-full">
+				<NuxtImg v-for="(img, index) in images" :key="index" :src="img.src" :alt="img.alt" class="h-72" />
+			</div>
 		</div>
-		<div v-if="!isLoading && images.length === 0" class="text-center mt-4">No images found.</div>
 	</div>
-  
 </template>

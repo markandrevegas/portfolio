@@ -44,7 +44,7 @@ onMounted(() => {
 <template>
 	<div class="flex-1 flex flex-col h-screen overflow-auto">
 		<Hero />
-		<div class="p-12">
+		<div>
 			<Grid />
       <div class="h-[100vh] flex items-center justify-center">
         <p class="text-xl">Scroll down for more...</p>
