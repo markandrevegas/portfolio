@@ -19,9 +19,10 @@ export const useContentful = () => {
 
 	const getEntry = <T extends EntrySkeletonType>(id: string) => {
 		return useAsyncData("contentful-entry-" + id, () => client.getEntry<T>(id), {
-			getCachedData: () => undefined,
-			server: false,
-			lazy: true
+			// Fetch on server so content is available during SSR
+			server: true,
+			// Do not use lazy here so the data is resolved immediately
+			lazy: false
 		})
 	}
 
