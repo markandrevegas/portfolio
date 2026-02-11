@@ -22,7 +22,7 @@ const loadPhoto = async () => {
 
 	const { data, error: fetchError } = await getRandomPhoto({
 		query: "fashion",
-		orientation: "portrait"
+		orientation: "landscape"
 	})
 
 	loading.value = false
