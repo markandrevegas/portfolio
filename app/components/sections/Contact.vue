@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import Pinterest from '../icons/Pinterest.vue';
-
 	const iconWidth = "2rem"
   const iconHeight = "2rem"
 </script>
