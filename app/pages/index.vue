@@ -11,7 +11,6 @@ const contentError = ref(null)
 const header = block.header
 const text = block.text
 
-// provide data to Hero component
 provide("photo", photo)
 provide("header", header)
 provide("text", text)
@@ -43,9 +42,9 @@ onMounted(() => {
 </script>
 
 <template>
-	<div class="flex-1 flex flex-col bg-red-100 h-screen overflow-auto">
+	<div class="flex-1 flex flex-col h-screen overflow-auto">
 		<Hero />
-		<div class="bg-white p-12 text-gray-800">
+		<div class="p-12">
 			<Grid />
       <div class="h-[100vh] flex items-center justify-center">
         <p class="text-xl">Scroll down for more...</p>

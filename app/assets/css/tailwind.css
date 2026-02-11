@@ -2,13 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-::root {
-	--abyssal: #1b2632;
-	--palladian: #eee9df;
-}
 @layer base {
+	:root {
+		--abyssal: #1b2632;
+		--palladian: #eee9df;
+	}
 	body {
-		@apply bg-[#f6f6f6] text-abyssal dark:bg-slate-900 dark:text-yellow-50/90;
+		@apply text-abyssal dark:bg-slate-900 dark:text-yellow-50/90;
 	}
 	h1,
 	h2,
@@ -16,7 +16,7 @@
 	h4,
 	h5,
 	h6 {
-		@apply font-sans font-black;
+		@apply font-sans;
 	}
 }
 
@@ -35,32 +35,32 @@
 			}
 		}
 	}
-}
 
-.slide-horizontal-enter-active,
-.slide-horizontal-leave-active {
-	transition:
-		transform 0.1s ease-in-out,
-		opacity 0.2s ease-in-out;
-	will-change: transform, opacity;
-}
+	.slide-horizontal-enter-active,
+	.slide-horizontal-leave-active {
+		transition:
+			transform 0.1s ease-in-out,
+			opacity 0.2s ease-in-out;
+		will-change: transform, opacity;
+	}
 
-.slide-horizontal-enter-from {
-	transform: translateX(-100%);
-	opacity: 0;
-}
+	.slide-horizontal-enter-from {
+		transform: translateX(-100%);
+		opacity: 0;
+	}
 
-.slide-horizontal-enter-to {
-	transform: translateX(0);
-	opacity: 1;
-}
+	.slide-horizontal-enter-to {
+		transform: translateX(0);
+		opacity: 1;
+	}
 
-.slide-horizontal-leave-from {
-	transform: translateX(0);
-	opacity: 1;
-}
+	.slide-horizontal-leave-from {
+		transform: translateX(0);
+		opacity: 1;
+	}
 
-.slide-horizontal-leave-to {
-	transform: translateX(0);
-	opacity: 0;
+	.slide-horizontal-leave-to {
+		transform: translateX(0);
+		opacity: 0;
+	}
 }
