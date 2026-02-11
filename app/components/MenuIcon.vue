@@ -1,6 +1,6 @@
 <template>
 	<div
-		className="cursor-pointer select-none p-2 hover:bg-accent rounded-md transition-colors duration-200 flex items-center justify-center"
+		class="cursor-pointer select-none p-2 hover:bg-accent rounded-md transition-colors duration-200 flex items-center justify-center"
 		role="button"
 		aria-label="Menu Button"
 		tabindex="0"

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 	import { ref, onMounted } from "vue"
-	import { useUnsplash } from "~/composables/useUnsplash"
+	import { useUnsplash } from "../composables/useUnsplash"
 	// states
   const images = ref<{ src: string; alt: string }[]>([])
 	const isLoading = ref(true)

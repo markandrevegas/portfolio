@@ -35,6 +35,14 @@ declare module "nuxt/schema" {
 				}
 			}
 		}
+		nitro?: {
+			preset?: string
+			externals?: {
+				inline?: string[]
+				[key: string]: unknown
+			}
+			[key: string]: unknown
+		}
 	}
 
 	interface NuxtOptions {
@@ -43,7 +51,11 @@ declare module "nuxt/schema" {
 }
 
 export default defineNuxtConfig({
+	dir: {
+		app: "app"
+	},
 	app: {
+		baseURL: "/portfolio/",
 		head: {
 			link: [
 				{ rel: "icon", type: "image/png", href: "/favicon-96x96.png", sizes: "96x96" },
@@ -57,14 +69,28 @@ export default defineNuxtConfig({
 	},
 	compatibilityDate: "2025-07-15",
 	devtools: { enabled: true },
-	css: ["@/assets/css/tailwind.css"],
-	vite: {
-		plugins: [tsconfigPaths()]
-		/* server: {
-      allowedHosts: ['scratch.local']
-    } */
-	},
+	css: ["~/assets/css/tailwind.css"],
+	components: [
+		{
+			path: "~/components",
+			pathPrefix: false
+		}
+	],
 	modules: ["@nuxtjs/color-mode", "@nuxtjs/tailwindcss", "@nuxt/fonts", "@nuxt/image", "@nuxt/eslint", "@nuxt/icon", "@nuxt/content"],
+	fonts: {
+		provider: "google",
+		assets: {},
+		families: [
+			{
+				name: "Jost",
+				weights: [100, 200, 300, 400, 500, 600, 700]
+			},
+			{
+				name: "Inter",
+				weights: [100, 200, 300, 400, 500, 600, 700, 800, 900]
+			}
+		]
+	},
 	image: {
 		providers: {
 			placehold: {
@@ -89,19 +115,8 @@ export default defineNuxtConfig({
 			}
 		}
 	},
-	fonts: {
-		provider: "google",
-		assets: {},
-		families: [
-			{
-				name: "Jost",
-				weights: [100, 200, 300, 400, 500, 600, 700]
-			},
-			{
-				name: "Inter",
-				weights: [100, 200, 300, 400, 500, 600, 700, 800, 900]
-			}
-		]
+	vite: {
+		plugins: [tsconfigPaths()]
 	},
 	nitro: {
 		preset: "node-server",

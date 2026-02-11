@@ -1,5 +1,5 @@
 <script setup>
-import { useUnsplash } from "@/composables/useUnsplash"
+import { useUnsplash } from "~/composables/useUnsplash"
 import block from '~/content/blocks/image.json'
 
 import { ref, onMounted } from "vue"
@@ -48,7 +48,7 @@ onMounted(() => {
 			</div>
 		</div>
 		<div class="bg-white p-12 text-gray-800">
-			<IndexGallery />
+			<Hero />
       <div class="h-[100vh] flex items-center justify-center">
         <p class="text-xl">Scroll down for more...</p>
       </div>
