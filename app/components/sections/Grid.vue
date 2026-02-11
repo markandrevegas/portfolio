@@ -45,14 +45,14 @@
 		<div v-else-if="images.length === 0" class="text-center mt-4">No images found.</div>
 		<!-- Images Grid -->
 		<div v-else class="py-24 flex flex-col gap-16">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full px-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full px-4 text-sm lg:text-lg">
         <div>
-          <h2 class="text-2xl uppercase font-medium italic mb-8">Handmade Illusions</h2>
+          <h2 class="font-medium mb-8">Handmade Illusions</h2>
         </div>
-        <div class="md:hidden"></div>
         <div>
-          <p class="text-right text-sm italic text-gray-500">Photos from Unsplash Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid debitis ut pariatur facere quam</p>
+          <p class="text-right">Photos from Unsplash Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid debitis ut pariatur facere quam</p>
         </div>
+        <div class="self-end"><p class="text-right">View all</p></div>
       </div>
 			
 			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full px-4">
@@ -60,8 +60,8 @@
 					<picture>
 						<NuxtImg :src="img.src" :alt="img.alt" class="object-scale-down w-full" />
 					</picture>
-					<div class="absolute inset-0 bg-black/20 z-20"></div>
-					<figcaption class="absolute bottom-0 right-0 left-0 p-4 z-30 capitalize text-white text-sm">{{ img.alt }}</figcaption>
+					<div class="absolute inset-0 bg-black/40 z-20"></div>
+					<figcaption class="absolute bottom-0 right-0 left-0  p-8 pt-24 z-30 capitalize text-white font-light text-lg lg:text-xl block bg-gradient-to-t from-black/40"><span class="font-semibold">{{ img.alt }}</span><br><span class="opacity-70">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit doloribus exercitationem hic.</span></figcaption>
 				</figure>
 			</div>
 		</div>
