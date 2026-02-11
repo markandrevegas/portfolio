@@ -20,8 +20,8 @@ const contentData = computed(() => {
 	console.log("Raw Contentful Entry:", entry) // Debug log
 	if (!fields) return null
 
-	const title = fields.title?.fields?.title ? fields.title.fields.title : "Default Title"
-	const teaser = fields.teaser?.fields?.teaser ? fields.teaser.fields.teaser : "Default teaser text goes here."
+	const title = fields?.title?.fields.title ?? "Default Title"
+	const teaser = fields.teaser?.fields?.teaser ?? "Default teaser text goes here."
 	console.log("Extracted Title:", title) // Debug log
 	console.log("Extracted Teaser:", teaser) // Debug log
 
@@ -64,7 +64,6 @@ const loadPhoto = async () => {
 
 onMounted(() => {
 	loadPhoto()
-	console.log("OnePager Content:", contentData) // Debug log
 })
 
 </script>

@@ -8,9 +8,8 @@ const contentData = inject("contentData") as Ref<{
 	teaser?: string
 	heroImage?: string
 } | null> | undefined
-const headerFromBlock = inject("header") as string | undefined
 
-const header = computed(() => contentData?.value?.title ?? headerFromBlock ?? "Default Header")
+const header = computed(() => contentData?.value?.title ?? "Default Header")
 const teaser = computed(() => contentData?.value?.teaser ?? "Default teaser text goes here.")
 const heroImage = computed(() => contentData?.value?.heroImage ?? photo?.value?.urls?.full ?? null)
 
