@@ -1,49 +1,22 @@
-<script setup lang="ts">
-	import { ref, onMounted } from "vue"
-	import { useUnsplash } from "../../composables/useUnsplash"
-	// states
-  const images = ref<{ src: string; alt: string }[]>([])
-	const isLoading = ref(true)
+<script setup>
+import { inject } from "vue"
 
-	// helpers
-	const { getRandomPhoto } = useUnsplash()
-	async function fetchImages() {
-    isLoading.value = true
-
-    const params = {
-      query: "fashion",
-      orientation: "portrait",
-      content_filter: "high"
-    }
-
-    const results = []
-
-    for (let i = 0; i < 5; i++) {
-      const { data } = await getRandomPhoto(params)
-      if (data) {
-        results.push({
-          src: data.urls?.regular,
-          alt: data.alt_description || "Unsplash image"
-        })
-      }
-    }
-
-    images.value = results
-    isLoading.value = false
-  }
-
-	onMounted(() => {
-		fetchImages()
-	})
+const photo = inject("photo")
+const header = inject("header")
+const text = inject("text")
+const loading = inject("loading")
 </script>
+
 <template>
-	<div>
-		<h2 v-if="images.length > 0" class="text-2xl uppercase font-medium italic mb-8">Handmade Illusions</h2>
-		<div class="flex justify-start gap-4 w-full overflow-x-scroll">
-			<div v-if="isLoading">Loading...</div>
-			<NuxtImg v-for="(img, index) in images" :key="index" :src="img.src" :alt="img.alt" class="h-72" />
+	<div class="h-[calc(100vh-70px)] relative">
+		<div v-if="loading">Loading...</div>
+		<NuxtImg v-if="photo" :src="photo.urls.full" :alt="photo.alt" class="absolute bottom-0 w-full h-1/2 object-cover z-10" />
+		<div class="absolute inset-0 z-20 bg-black/20"></div>
+		<div class="h-72 text-right absolute right-0 bottom-0 left-0 z-30 p-6 text-white flex-flex-col justify-start">
+			<h1 class="text-3xl uppercase font-medium">{{ header }}</h1>
+			<p class="mt-2 max-w-md uppercase">{{ text }}</p>
 		</div>
-		<div v-if="!isLoading && images.length === 0" class="text-center mt-4">No images found.</div>
 	</div>
-  
 </template>
+
+<style></style>
