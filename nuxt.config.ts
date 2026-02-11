@@ -43,6 +43,17 @@ declare module "nuxt/schema" {
 			}
 			[key: string]: unknown
 		}
+		routeRules?: {
+			[key: string]: {
+				isr?: number | boolean
+				ssr?: boolean
+				cache?: {
+					maxAge?: number
+					[key: string]: unknown
+				}
+				[key: string]: unknown
+			}
+		}
 	}
 
 	interface NuxtOptions {
@@ -105,10 +116,12 @@ export default defineNuxtConfig({
 		quality: 80
 	},
 	runtimeConfig: {
-		spotifyClientId: process.env.NUXT_SPOTIFY_CLIENT_ID,
-		spotifyClientSecret: process.env.NUXT_SPOTIFY_CLIENT_SECRET,
 		unsplashAccessKey: process.env.NUXT_UNSPLASH_ACCESS_KEY,
+		contentfulSpaceId: process.env.CONTENTFUL_SPACE_ID,
+		contentfulAccessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
 		public: {
+			contentfulSpaceId: process.env.CONTENTFUL_SPACE_ID,
+			contentfulAccessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
 			unsplashBase: process.env.NUXT_UNSPLASH_BASE || "https://api.unsplash.com",
 			fonts: {
 				selfHosted: false
@@ -124,5 +137,8 @@ export default defineNuxtConfig({
 			inline: ["ipx", "ofetch"]
 		}
 	},
-	content: {}
+	content: {},
+	routeRules: {
+		"/": { ssr: true }
+	}
 })

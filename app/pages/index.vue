@@ -1,5 +1,9 @@
 <script setup>
 import { useUnsplash } from "~/composables/useUnsplash"
+import { useOnePager } from "~/composables/useOnePager"
+const { data: onePager } = await useOnePager()
+console.log("One Pager Data:", onePager)
+
 import block from '~/content/blocks/image.json'
 
 import { ref, onMounted, provide } from "vue"
@@ -12,6 +16,8 @@ const contentError = ref(null)
 const header = block.header
 const text = block.text
 
+// Provide Contentful data to sections
+provide("contentData", onePager)
 provide("photo", photo)
 provide("header", header)
 provide("text", text)
