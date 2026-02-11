@@ -35,7 +35,16 @@
 			}
 		}
 	}
-
+	.wrapper {
+		@apply py-24 flex flex-col gap-16;
+		&-grid {
+			@apply grid grid-cols-1 auto-cols-max md:grid-cols-2 xl:grid-cols-3 gap-8 w-full px-8 text-sm lg:text-lg;
+			
+			> div:last-child {
+				@apply col-span-full;
+			}
+		}
+	}
 	.slide-horizontal-enter-active,
 	.slide-horizontal-leave-active {
 		transition:
@@ -43,22 +52,18 @@
 			opacity 0.2s ease-in-out;
 		will-change: transform, opacity;
 	}
-
 	.slide-horizontal-enter-from {
 		transform: translateX(-100%);
 		opacity: 0;
 	}
-
 	.slide-horizontal-enter-to {
 		transform: translateX(0);
 		opacity: 1;
 	}
-
 	.slide-horizontal-leave-from {
 		transform: translateX(0);
 		opacity: 1;
 	}
-
 	.slide-horizontal-leave-to {
 		transform: translateX(0);
 		opacity: 0;

@@ -46,10 +46,7 @@ onMounted(() => {
 		<Hero />
 		<div>
 			<Grid />
-      <div class="h-[100vh] flex items-center justify-center">
-        <p class="text-xl">Scroll down for more...</p>
-      </div>
-      <p>More content after the filler to ensure scrollability!</p>
+      <About />
     </div>
 	</div>
 </template>
