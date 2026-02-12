@@ -24,15 +24,8 @@
 	.menu {
 		@apply pt-4;
 		li {
-			@apply relative text-[4rem] font-medium uppercase text-abyssal/30 transition-colors duration-500 hover:pl-24 hover:text-abyssal;
+			@apply text-xl relative font-medium text-abyssal transition-colors duration-500;
 			letter-spacing: -0.035em;
-			&::before {
-				content: "\2192";
-				@apply absolute left-0 -translate-x-4 transform opacity-0 transition-all duration-300;
-			}
-			&:hover::before {
-				@apply translate-x-0 opacity-100;
-			}
 		}
 	}
 	.wrapper {
