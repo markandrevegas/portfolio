@@ -1,5 +1,5 @@
 // server/api/unsplash/random.get.ts
-import { defineEventHandler, sendError, createError, getQuery, H3Event } from 'h3'
+import { defineEventHandler, sendError, createError, getQuery, H3Event } from "h3"
 
 interface UnsplashPhoto {
 	id: string

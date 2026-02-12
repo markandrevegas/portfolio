@@ -24,22 +24,22 @@
 	.menu {
 		@apply pt-4;
 		li {
-			@apply relative text-[4rem] font-medium uppercase text-abyssal/30 hover:text-abyssal transition-colors duration-500 hover:pl-24;
+			@apply relative text-[4rem] font-medium uppercase text-abyssal/30 transition-colors duration-500 hover:pl-24 hover:text-abyssal;
 			letter-spacing: -0.035em;
 			&::before {
 				content: "\2192";
-				@apply absolute left-0 opacity-0 transition-all duration-300 transform -translate-x-4;
+				@apply absolute left-0 -translate-x-4 transform opacity-0 transition-all duration-300;
 			}
 			&:hover::before {
-				@apply opacity-100 translate-x-0;
+				@apply translate-x-0 opacity-100;
 			}
 		}
 	}
 	.wrapper {
-		@apply py-24 flex flex-col gap-16;
+		@apply flex flex-col gap-16 py-24;
 		&-grid {
-			@apply grid grid-cols-1 auto-cols-max md:grid-cols-2 xl:grid-cols-3 gap-8 w-full px-8 text-sm lg:text-lg;
-			
+			@apply grid w-full auto-cols-max grid-cols-1 gap-8 px-8 text-sm md:grid-cols-2 lg:text-lg xl:grid-cols-3;
+
 			> div:last-child {
 				@apply col-span-full;
 			}

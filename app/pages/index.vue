@@ -5,7 +5,7 @@ import { useUnsplash } from "~/composables/useUnsplash"
 import { useOnePager } from "~/composables/useOnePager"
 const { data: onePager } = await useOnePager()
 
-import block from '~/content/blocks/image.json'
+import block from "~/content/blocks/image.json"
 // state
 const loading = ref(false)
 const photo = ref(null)
@@ -26,7 +26,7 @@ const contentData = computed(() => {
 	console.log("Extracted Teaser:", teaser) // Debug log
 
 	const heroAsset = fields.image ?? null
-	const heroImage = heroAsset?.fields?.image?.fields?.file?.url ? `https:${heroAsset.fields.image.fields.file.url}` : heroAsset?.fields?.image?.fields?.file?.url ?? null
+	const heroImage = heroAsset?.fields?.image?.fields?.file?.url ? `https:${heroAsset.fields.image.fields.file.url}` : (heroAsset?.fields?.image?.fields?.file?.url ?? null)
 
 	console.log("Extracted Hero Image URL:", heroImage) // Debug log
 
@@ -65,14 +65,13 @@ const loadPhoto = async () => {
 onMounted(() => {
 	loadPhoto()
 })
-
 </script>
 
 <template>
-	<div class="flex-1 flex flex-col h-screen overflow-auto">
+	<div class="flex h-screen flex-1 flex-col overflow-auto">
 		<Hero />
 		<Grid />
-    <About />
+		<About />
 		<Contact />
 	</div>
 </template>
