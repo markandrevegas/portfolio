@@ -11,6 +11,8 @@ const menuLinks = [
   { name: 'About', to: '/' },
   { name: 'Contact', to: '/' }
 ]
+const iconWidth = "2rem"
+const iconHeight = "2rem"
 function toggleMenu() {
 	isOpen.value = !isOpen.value
 }
@@ -29,26 +31,33 @@ function toggleMenu() {
 			</Transition>
 			<Transition name="slide">
 				<nav v-if="isOpen" class="fixed right-0 top-[70px] z-50 h-full w-full bg-white text-sky-950 transition-transform duration-300">
-					<div class="flex h-full flex-col">
+					<div class="flex h-full flex-col px-4">
 						<div class="flex-1 overflow-y-scroll">
-							<ul class="menu px-4">
+							<ul class="menu">
 								<li v-for="(link, index) in menuLinks" :key="link.name" :style="{ '--i': index }" class="stagger-item">
 									<NuxtLink :to="link.to" @click="toggleMenu" class="block">{{ link.name }}</NuxtLink>
 								</li>
 							</ul>
-							<div class="px-4 mt-8" :style="{ '--i': 3 }">
-								<NuxtImg 
-									src="/images/color.jpeg" 
-									alt="Menu Image" 
-									class="w-full h-auto rounded-lg"
-								/>
+							<div class="relative my-8" :style="{ '--i': 3 }">
+								<div class="relative h-48 rounded-lg overflow-hidden">
+									<NuxtImg 
+										src="/images/color.jpeg" 
+										alt="Menu Image" 
+										class="w-full h-full object-cover relative z-10"
+									/>
+									<div class="absolute inset-0 z-20 bg-black/20"></div>
+									<div class="absolute bottom-0 left-0 right-0 z-30 text-white p-4">
+										<p class="font-semibold">Featured Image</p>
+										<p class="text-xs">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex distinctio illum sit aliquam alias pariatur.</p>
+									</div>
+								</div>
+							</div>
+							<div class="flex items-center justify-start gap-8">
+								<Instagram :width="iconWidth" :height="iconHeight" />
+								<Twitter :width="iconWidth" :height="iconHeight" />
+								<Pinterest :width="iconWidth" :height="iconHeight" />
 							</div>
 						</div>
-						<div class="socials fixed bottom-0 left-0 right-0 z-20 flex h-24 items-center justify-start gap-4 bg-white px-4">
-							<div class="flex h-12 w-12 items-center justify-center rounded-full border border-abyssal text-xl">IG</div>
-							<div class="flex h-12 w-12 items-center justify-center rounded-full border border-abyssal text-xl">PT</div>
-						</div>
-						<div>Copyright</div>
 					</div>
 				</nav>
 			</Transition>
