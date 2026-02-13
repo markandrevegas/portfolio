@@ -26,7 +26,7 @@ const contentData = computed(() => {
 	console.log("Extracted Teaser:", teaser) // Debug log
 
 	const heroAsset = fields.image ?? null
-	const heroImage = heroAsset?.fields?.image?.fields?.file?.url ? `https:${heroAsset.fields.image.fields.file.url}` : (heroAsset?.fields?.image?.fields?.file?.url ?? null)
+	const heroImage = heroAsset?.fields?.image?.fields?.file?.url ? "https:" + heroAsset.fields.image.fields.file.url : (heroAsset?.fields?.image?.fields?.file?.url ?? null)
 
 	console.log("Extracted Hero Image URL:", heroImage) // Debug log
 
@@ -75,4 +75,3 @@ onMounted(() => {
 		<Contact />
 	</div>
 </template>
-<style></style>
