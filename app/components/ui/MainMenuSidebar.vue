@@ -18,7 +18,7 @@ function toggleMenu() {
 
 <template>
 	<div>
-		<header :class="props.isScrolled ? 'bg-abyssal/40 text-white backdrop-blur-xl' : 'text-abyssal backdrop-blur-md'" class="fixed left-0 top-0 z-40 flex h-[70px] w-full items-center justify-between px-4 transition-colors duration-300">
+		<header :class="props.isScrolled ? 'bg-abyssal/40 text-white backdrop-blur-xl' : 'text-abyssal backdrop-blur-md'" class="fixed left-0 top-0 z-40 flex h-[70px] w-full items-center justify-between px-6 transition-colors duration-300">
 			<h1 class="text-xl">Tailor</h1>
 			<MenuIcon :is-open="isOpen" @click="toggleMenu" />
 		</header>
@@ -56,49 +56,62 @@ function toggleMenu() {
 	</div>
 </template>
 <style scoped>
-/* 1. Main Drawer Panel */
+/* 1. MAIN DRAWER PANEL (The last to leave) */
 .slide-enter-active,
 .slide-leave-active {
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+	/* Smooth easing from the video */
+	transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
 }
 
 .slide-leave-active {
-  transition-delay: 0.4s; /* Increased slightly to accommodate the image leaving */
+	/* Action 3: Panel waits for Image (0.2s) + Items (0.2s) = 0.4s total delay */
+	transition-delay: 0.4s;
 }
 
 .slide-enter-from,
 .slide-leave-to {
-  transform: translateX(100%);
-  opacity: 0;
+	transform: translateX(100%);
+	opacity: 0;
 }
 
-/* 2. Menu Items & Image Stagger */
+/* 2. STAGGERED ITEMS (The "ul li" and "NuxtImg") */
 .stagger-item {
-  opacity: 1;
-  transform: translateX(0);
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+	opacity: 1;
+	transform: translateX(0);
+	transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
 }
 
-/* Enter Animation */
+/* Enter Animation (The "Open" sequence) */
 .slide-enter-from .stagger-item {
-  opacity: 0;
-  transform: translateX(30px);
+	opacity: 0;
+	transform: translateX(30px);
 }
 
 .slide-enter-active .stagger-item {
-  /* Items slide in one after another */
-  transition-delay: calc(var(--i) * 0.1s + 0.3s);
+	/* Items slide in after the panel starts */
+	transition-delay: calc(var(--i) * 0.1s + 0.3s);
 }
 
-/* Leave Animation (The Reverse) */
+/* Leave Animation (The "Close" sequence) */
 .slide-leave-active .stagger-item {
-  opacity: 0;
-  transform: translateX(20px);
-  /* Reverse the sequence so the image (index 3) leaves first */
-  transition-delay: calc((3 - var(--i)) * 0.08s);
-  transition-duration: 0.3s;
+	opacity: 0;
+	transform: translateX(20px);
+	transition-duration: 0.3s;
 }
 
+/* Specific Staggering for the Exit Sequence */
+/* Action 1: The Image (index 3) fades out immediately */
+.slide-leave-active .stagger-item[style*="--i: 3"] {
+	transition-delay: 0s;
+}
+
+/* Action 2: Menu items (indices 0, 1, 2) wait 200ms for the image to fade */
+.slide-leave-active .stagger-item:not([style*="--i: 3"]) {
+	/* Reverse stagger starting at 200ms */
+	transition-delay: calc(0.2s + (2 - var(--i)) * 0.05s);
+}
+
+/* 3. OVERLAY FADE */
 .fade-enter-active, .fade-leave-active { transition: opacity 0.4s ease; }
 .fade-enter-from, .fade-leave-to { opacity: 0; }
 </style>
