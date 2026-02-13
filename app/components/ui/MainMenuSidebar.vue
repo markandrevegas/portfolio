@@ -45,10 +45,9 @@ function toggleMenu() {
 										alt="Menu Image" 
 										class="w-full h-full object-cover relative z-10"
 									/>
-									<div class="absolute inset-0 z-20 bg-black/20"></div>
-									<div class="absolute bottom-0 left-0 right-0 z-30 text-white p-4">
-										<p class="font-semibold">Featured Image</p>
-										<p class="text-xs">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex distinctio illum sit aliquam alias pariatur.</p>
+									<div class="absolute inset-0 z-20 bg-gradient-to-t from-black/80 to-transparent text-white p-4 flex flex-col justify-end">
+										<p class="font-semibold drop-shadow-md">Featured Image</p>
+										<p class="text-xs drop-shadow-md">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex distinctio illum sit aliquam alias pariatur.</p>
 									</div>
 								</div>
 							</div>
