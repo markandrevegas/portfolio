@@ -120,6 +120,7 @@ export default defineNuxtConfig({
 		contentfulSpaceId: process.env.CONTENTFUL_SPACE_ID,
 		contentfulAccessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
 		public: {
+			wpBase: "/api/wp",
 			contentfulSpaceId: process.env.CONTENTFUL_SPACE_ID,
 			contentfulAccessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
 			unsplashBase: process.env.NUXT_UNSPLASH_BASE || "https://api.unsplash.com",
@@ -135,6 +136,13 @@ export default defineNuxtConfig({
 		preset: "node-server",
 		externals: {
 			inline: ["ipx", "ofetch"]
+		},
+		devProxy: {
+			"/api/wp": {
+				target: "https://content.local",
+				changeOrigin: true,
+				prependPath: false
+			}
 		}
 	},
 	content: {},

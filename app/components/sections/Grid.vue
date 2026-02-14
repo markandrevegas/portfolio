@@ -1,7 +1,27 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue"
 import { useUnsplash } from "../../composables/useUnsplash"
+import { useWpApi } from "../../composables/useWpApi"
 
+const { fetchFromWp } = useWpApi()
+async function fetchGalleryPage() {
+  isLoading.value = true
+  try {
+    const response = await fetchFromWp('pages', { slug: 'gallery' })
+
+    if (Array.isArray(response) && response.length > 0) {
+      const page = response[0]
+      galleryPage.value = page
+      console.log("--- SUCCESS: Data Received via Proxy ---", page.acf)
+    }
+
+  } catch (error: any) {
+    console.error("Fetch Error:", error.data || error.message)
+  } finally {
+    isLoading.value = false
+  }
+}
+const galleryPage = ref<any>(null)
 const images = ref<{ src: string; alt: string }[]>([])
 const isLoading = ref(true)
 const loadingIconWidth = "2.5rem"
@@ -35,6 +55,7 @@ async function fetchImages() {
 
 onMounted(() => {
 	fetchImages()
+	fetchGalleryPage()
 })
 </script>
 <template>
