@@ -139,7 +139,7 @@ export default defineNuxtConfig({
 		},
 		devProxy: {
 			"/api/wp": {
-				target: "https://content.local",
+				target: "https://content.local/wp",
 				changeOrigin: true,
 				prependPath: false
 			}

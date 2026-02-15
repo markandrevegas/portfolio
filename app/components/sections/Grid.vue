@@ -7,7 +7,9 @@ const { fetchFromWp } = useWpApi()
 async function fetchGalleryPage() {
   isLoading.value = true
   try {
-    const response = await fetchFromWp('pages', { slug: 'gallery' })
+    const response = await fetchFromWp('pages', { 
+      query: { slug: 'gallery' } 
+    })
 
     if (Array.isArray(response) && response.length > 0) {
       const page = response[0]

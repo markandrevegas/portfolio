@@ -17,18 +17,18 @@ const text = block.text
 const contentData = computed(() => {
 	const entry = onePager?.value
 	const fields = entry?.fields
-	console.log("Raw Contentful Entry:", entry) // Debug log
+	// console.log("Raw Contentful Entry:", entry) // Debug log
 	if (!fields) return null
 
 	const title = fields?.title?.fields.title ?? "Default Title"
 	const teaser = fields.teaser?.fields?.teaser ?? "Default teaser text goes here."
-	console.log("Extracted Title:", title) // Debug log
-	console.log("Extracted Teaser:", teaser) // Debug log
+	// console.log("Extracted Title:", title) // Debug log
+	// console.log("Extracted Teaser:", teaser) // Debug log
 
 	const heroAsset = fields.image ?? null
 	const heroImage = heroAsset?.fields?.image?.fields?.file?.url ? "https:" + heroAsset.fields.image.fields.file.url : (heroAsset?.fields?.image?.fields?.file?.url ?? null)
 
-	console.log("Extracted Hero Image URL:", heroImage) // Debug log
+	// console.log("Extracted Hero Image URL:", heroImage) // Debug log
 
 	return {
 		title,
