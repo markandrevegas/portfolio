@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, onMounted } from "vue"
-import { useUnsplash } from "../../composables/useUnsplash"
+import { ref, computed, onMounted } from 'vue'
+// import { useUnsplash } from "../../composables/useUnsplash"
 import { useWpApi } from "../../composables/useWpApi"
 
 const { fetchFromWp } = useWpApi()
@@ -11,15 +11,31 @@ async function fetchGalleryPage() {
 			query: { slug: 'index2', _embed: true }
 		})
 		const page = ((response as unknown) as any[])[0]
-		if (page?.acf?.featured) {
-			images.value = page.acf.featured.map((item: any) => ({
-				src: item.url,
-				alt: item.alt || "Featured image"
-			}))
-		}
+		console.log("--- SUCCESS: Page Data ---", page)
+		if (page?.acf) {
+      const acf = page.acf
+      const results = []
+
+      // Push individual images into your array
+      if (acf.image) {
+        results.push({
+          src: acf.image.url,
+          alt: acf.image.alt || acf.image.title
+        })
+      }
+      
+      if (acf.image2) {
+        results.push({
+          src: acf.image2.url,
+          alt: acf.image2.alt || acf.image2.title
+        })
+      }
+
+      // Repeat for image3, image4, etc.
+      images.value = results
+    }
 		galleryPage.value = page
-		console.log("--- SUCCESS: Data Received via Proxy ---", galleryPage.value)
-		console.log("--- SUCCESS: Images ---", images.value)
+		console.log("--- SUCCESS: Gallery Page ---", galleryPage.value)
   } catch (error: any) {
     console.error("Fetch Error:", error.data || error.message)
   } finally {
@@ -27,13 +43,37 @@ async function fetchGalleryPage() {
   }
 }
 const galleryPage = ref<any>(null)
-const images = ref<{ src: string; alt: string }[]>([])
+// const images = ref<{ src: string; alt: string }[]>([])
 const isLoading = ref(true)
 const loadingIconWidth = "2.5rem"
 const loadingIconHeight = "2.5rem"
 
-const { getRandomPhoto } = useUnsplash()
-async function fetchImages() {
+// const { getRandomPhoto } = useUnsplash()
+const images = computed({
+  get: () => {
+    const results: { src: string; alt: string }[] = []
+    if (galleryPage.value?.acf) {
+      const acf = galleryPage.value.acf
+      Object.keys(acf)
+        .filter(key => key.startsWith('image'))
+        .forEach(key => {
+          if (acf[key]) {
+            results.push({
+              src: acf[key].url,
+              alt: acf[key].alt || acf[key].title || ''
+            })
+          }
+        })
+    }
+    return results
+  },
+  set: (newImages: { src: string; alt: string }[]) => {
+    // optionally update galleryPage or just store somewhere else
+    console.log("New images set:", newImages)
+  }
+})
+
+/*async function fetchImages() {
 	isLoading.value = true
 
 	const params = {
@@ -56,7 +96,7 @@ async function fetchImages() {
 
 	images.value = results
 	isLoading.value = false
-}
+}*/
 
 onMounted(() => {
 	// fetchImages()
