@@ -7,18 +7,20 @@ const { fetchFromWp } = useWpApi()
 async function fetchGalleryPage() {
   isLoading.value = true
   try {
-    const response = await fetchFromWp('pages', { 
-      query: { slug: 'gallery' } 
-    })
-
-    if (Array.isArray(response) && response.length > 0) {
+	const response = await fetchFromWp('pages', {
+			query: { slug: 'gallery' }
+		})
+		const page = ((response as unknown) as any[])[0]
+		galleryPage.value = page
+		console.log("--- SUCCESS: Data Received via Proxy ---", galleryPage.value)
+    /*if (Array.isArray(response) && response.length > 0) {
       const page = response[0]
       galleryPage.value = page
-      console.log("--- SUCCESS: Data Received via Proxy ---", page.acf)
-    }
+      console.log("--- SUCCESS: Data Received via Proxy ---", galleryPage.value)
+    }*/
 
   } catch (error: any) {
-    console.error("Fetch Error:", error.data || error.message)
+    // console.error("Fetch Error:", error.data || error.message)
   } finally {
     isLoading.value = false
   }
