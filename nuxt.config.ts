@@ -139,7 +139,7 @@ export default defineNuxtConfig({
 		},
 		devProxy: {
 			"/portfolio/api/wp": {
-				target: "https://content.local", // Removed /wp here to avoid double nesting
+				target: "https://content.local",
 				changeOrigin: true,
 				secure: false
 			}

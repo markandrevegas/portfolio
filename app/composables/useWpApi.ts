@@ -4,7 +4,6 @@ export const useWpApi = () => {
   const fetchFromWp = async (endpoint: string, options = {}) => {
 		const baseUrl = config.public.wpBase
 
-		// Check if baseUrl exists to avoid 'undefined'
 		if (!baseUrl) {
 			throw new Error("WP Base URL is undefined.")
 		}

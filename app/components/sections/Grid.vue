@@ -8,19 +8,20 @@ async function fetchGalleryPage() {
   isLoading.value = true
   try {
 	const response = await fetchFromWp('pages', {
-			query: { slug: 'gallery' }
+			query: { slug: 'index2', _embed: true }
 		})
 		const page = ((response as unknown) as any[])[0]
+		if (page?.acf?.featured) {
+			images.value = page.acf.featured.map((item: any) => ({
+				src: item.url,
+				alt: item.alt || "Featured image"
+			}))
+		}
 		galleryPage.value = page
 		console.log("--- SUCCESS: Data Received via Proxy ---", galleryPage.value)
-    /*if (Array.isArray(response) && response.length > 0) {
-      const page = response[0]
-      galleryPage.value = page
-      console.log("--- SUCCESS: Data Received via Proxy ---", galleryPage.value)
-    }*/
-
+		console.log("--- SUCCESS: Images ---", images.value)
   } catch (error: any) {
-    // console.error("Fetch Error:", error.data || error.message)
+    console.error("Fetch Error:", error.data || error.message)
   } finally {
     isLoading.value = false
   }
@@ -58,7 +59,7 @@ async function fetchImages() {
 }
 
 onMounted(() => {
-	fetchImages()
+	// fetchImages()
 	fetchGalleryPage()
 })
 </script>
