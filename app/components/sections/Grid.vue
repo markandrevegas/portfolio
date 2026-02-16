@@ -18,7 +18,6 @@ async function fetchGalleryPage() {
     isLoading.value = false
   }
 }
-
 const galleryPage = ref<any>(null)
 const isLoading = ref(true)
 const loadingIconWidth = "2.5rem"
@@ -26,7 +25,7 @@ const loadingIconHeight = "2.5rem"
 
 const images = computed({
   get: () => {
-    const results: { src: string; alt: string }[] = []
+    const results: { src: string; description: string; alt: string }[] = []
     if (galleryPage.value?.acf) {
       const acf = galleryPage.value.acf
       Object.keys(acf)
@@ -35,7 +34,8 @@ const images = computed({
           if (acf[key]) {
             results.push({
               src: acf[key].url,
-              alt: acf[key].alt || acf[key].title || ''
+              alt: acf[key].alt || acf[key].title || '',
+							description: acf[key].description || acf[key].title || ''
             })
           }
         })
@@ -75,9 +75,9 @@ onMounted(() => {
 						<NuxtImg :src="img.src" :alt="img.alt" class="w-full object-scale-down" />
 					</picture>
 					<div class="absolute inset-0 z-20 bg-black/40"></div>
-					<figcaption class="absolute bottom-0 left-0 right-0 z-30 block bg-gradient-to-t from-black/40 p-4 pt-24 text-sm font-light capitalize text-white lg:p-8 lg:text-xl">
+					<figcaption class="absolute bottom-0 left-0 right-0 z-30 block bg-gradient-to-t from-black/40 p-4 pt-24 text-xs text-white lg:p-8 lg:text-xl">
 						<span class="font-semibold">{{ img.alt }}</span
-						><br /><span class="opacity-70">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit doloribus exercitationem hic.</span>
+						><br /><span class="opacity-70">{{ truncateText(img.description, 32) }}</span>
 					</figcaption>
 				</figure>
 			</div>
