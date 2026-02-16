@@ -10,9 +10,8 @@ async function fetchGalleryPage() {
 			query: { slug: 'latest-designs', _embed: true }
 		})
 		const page = ((response as unknown) as any[])[0]
-		console.log("--- SUCCESS: Page Data ---", page)
+		console.log("page", page)
 		galleryPage.value = page
-		console.log("--- SUCCESS: Gallery Page ---", galleryPage.value)
   } catch (error: any) {
     console.error("Fetch Error:", error.data || error.message)
   } finally {
