@@ -1,39 +1,16 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
-// import { useUnsplash } from "../../composables/useUnsplash"
 import { useWpApi } from "../../composables/useWpApi"
 
 const { fetchFromWp } = useWpApi()
 async function fetchGalleryPage() {
   isLoading.value = true
   try {
-	const response = await fetchFromWp('pages', {
-			query: { slug: 'index2', _embed: true }
+	const response = await fetchFromWp('feature', {
+			query: { slug: 'latest-designs', _embed: true }
 		})
 		const page = ((response as unknown) as any[])[0]
 		console.log("--- SUCCESS: Page Data ---", page)
-		if (page?.acf) {
-      const acf = page.acf
-      const results = []
-
-      // Push individual images into your array
-      if (acf.image) {
-        results.push({
-          src: acf.image.url,
-          alt: acf.image.alt || acf.image.title
-        })
-      }
-      
-      if (acf.image2) {
-        results.push({
-          src: acf.image2.url,
-          alt: acf.image2.alt || acf.image2.title
-        })
-      }
-
-      // Repeat for image3, image4, etc.
-      images.value = results
-    }
 		galleryPage.value = page
 		console.log("--- SUCCESS: Gallery Page ---", galleryPage.value)
   } catch (error: any) {
@@ -42,13 +19,12 @@ async function fetchGalleryPage() {
     isLoading.value = false
   }
 }
+
 const galleryPage = ref<any>(null)
-// const images = ref<{ src: string; alt: string }[]>([])
 const isLoading = ref(true)
 const loadingIconWidth = "2.5rem"
 const loadingIconHeight = "2.5rem"
 
-// const { getRandomPhoto } = useUnsplash()
 const images = computed({
   get: () => {
     const results: { src: string; alt: string }[] = []
@@ -73,33 +49,7 @@ const images = computed({
   }
 })
 
-/*async function fetchImages() {
-	isLoading.value = true
-
-	const params = {
-		query: "fashion",
-		orientation: "portrait",
-		content_filter: "high"
-	}
-
-	const results = []
-
-	for (let i = 0; i < 5; i++) {
-		const { data } = await getRandomPhoto(params)
-		if (data) {
-			results.push({
-				src: data.urls?.regular,
-				alt: data.alt || "Unsplash image"
-			})
-		}
-	}
-
-	images.value = results
-	isLoading.value = false
-}*/
-
 onMounted(() => {
-	// fetchImages()
 	fetchGalleryPage()
 })
 </script>
