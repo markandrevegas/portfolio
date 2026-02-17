@@ -7,20 +7,7 @@ const { fetchFromWp } = useWpApi()
 const heroContent = ref<any>(null)
 const heroImage = ref<any>(null)
 const heroSizes = '100vw'
-const heroSrcSet = computed(() => {
-  if (!heroImage.value || !heroImage.value.sizes) return []
 
-  const sizes = heroImage.value.sizes
-  return Object.keys(sizes)
-    .filter(key => !key.includes('width') && !key.includes('height')) // skip dimension keys
-    .map(key => ({
-      src: sizes[key],
-      width: sizes[`${key}-width`] || 0,
-      height: sizes[`${key}-height`] || 0
-    }))
-})
-const heroWidth = computed(() => heroImage.value?.sizes['2048x2048-width'] || 1080)
-const heroHeight = computed(() => heroImage.value?.sizes['2048x2048-height'] || 1618)
 const isLoading = ref(true)
 const loadingIconWidth = "2.5rem"
 const loadingIconHeight = "2.5rem"
@@ -63,12 +50,12 @@ const teaser = computed(() => heroContent?.value?.acf.teaser ?? "Default teaser 
 			<NuxtImg
 				v-if="heroImage"
 				:src="heroImage.url"
-				:srcset="heroSrcSet"
 				:sizes="heroSizes"
 				class="absolute inset-0 object-cover w-full h-full"
-				:width="heroWidth"
-				:height="heroHeight"
+				:width="heroImage.width || 1080"
+				:height="heroImage.height || 1618"
 				:alt="heroImage.alt || ''"
+				loading="eager"
 			/>
 			<div class="absolute inset-0 z-20 bg-black/20"></div>
 		</div>
