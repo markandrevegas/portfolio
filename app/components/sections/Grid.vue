@@ -25,7 +25,7 @@ const loadingIconHeight = "2.5rem"
 
 const images = computed({
   get: () => {
-    const results: { src: string; description: string; alt: string }[] = []
+    const results: { src: string; caption: string; alt: string }[] = []
     if (galleryPage.value?.acf) {
       const acf = galleryPage.value.acf
       Object.keys(acf)
@@ -35,7 +35,7 @@ const images = computed({
             results.push({
               src: acf[key].url,
               alt: acf[key].alt || acf[key].title || '',
-							description: acf[key].description || acf[key].title || ''
+							caption: acf[key].caption || acf[key].title || ''
             })
           }
         })
@@ -77,7 +77,7 @@ onMounted(() => {
 					<div class="absolute inset-0 z-20 bg-black/40"></div>
 					<figcaption class="absolute bottom-0 left-0 right-0 z-30 block bg-gradient-to-t from-black/40 p-4 pt-24 text-xs text-white lg:p-8 lg:text-xl">
 						<span class="font-semibold">{{ img.alt }}</span
-						><br /><span class="opacity-70">{{ truncateText(img.description, 72) }}</span>
+						><br /><span class="opacity-70">{{ truncateText(img.caption, 72) }}</span>
 					</figcaption>
 				</figure>
 			</div>
