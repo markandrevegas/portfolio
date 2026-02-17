@@ -11,11 +11,11 @@
 defineProps({
 	width: {
 		type: String,
-		default: "1em"
+		default: "2.5em"
 	},
 	height: {
 		type: String,
-		default: "1em"
+		default: "2.5em"
 	}
 })
 </script>
