@@ -30,7 +30,7 @@ function toggleMenu() {
 				<div v-if="isOpen" class="hidden fixed inset-0 z-40 bg-white/50" @click="toggleMenu"></div>
 			</Transition>
 			<Transition name="slide">
-				<nav v-if="isOpen" class="fixed right-0 top-[70px] z-50 h-full w-full bg-white text-sky-950 transition-transform duration-300">
+				<nav v-if="isOpen" class="fixed right-0 top-[70px] z-50 h-full w-full bg-palladian text-sky-950 transition-transform duration-300">
 					<div class="flex h-full flex-col px-4">
 						<div class="flex-1 overflow-y-scroll">
 							<ul class="menu">
