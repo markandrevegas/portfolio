@@ -6,7 +6,7 @@ const { fetchFromWp } = useWpApi()
 
 const heroContent = ref<any>(null)
 const heroImage = ref<any>(null)
-const heroSizes = '(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw'
+const heroSizes = '100vw'
 const heroSrcSet = computed(() => {
   if (!heroImage.value || !heroImage.value.sizes) return []
 
@@ -25,7 +25,7 @@ const isLoading = ref(true)
 const loadingIconWidth = "2.5rem"
 const loadingIconHeight = "2.5rem"
 
-async function fetchGalleryPage() {
+async function fetchHeroContent() {
   isLoading.value = true
   try {
 	const response = await fetchFromWp('hero', {
@@ -42,12 +42,11 @@ async function fetchGalleryPage() {
   }
 }
 onMounted(() => {
-	fetchGalleryPage()
+	fetchHeroContent()
 })
 
 const header = computed(() => heroContent?.value?.acf.title ?? "Default Header")
 const teaser = computed(() => heroContent?.value?.acf.teaser ?? "Default teaser text goes here.")
-
 
 </script>
 
@@ -71,7 +70,6 @@ const teaser = computed(() => heroContent?.value?.acf.teaser ?? "Default teaser 
 				:height="heroHeight"
 				:alt="heroImage.alt || ''"
 			/>
-			<!--<div :style="heroBackgroundStyle" class="h-full w-full bg-cover bg-center"></div>-->
 			<div class="absolute inset-0 z-20 bg-black/20"></div>
 		</div>
 	</div>
