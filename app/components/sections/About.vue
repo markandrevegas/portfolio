@@ -1,5 +1,5 @@
 <script setup lang="ts">
-	import { computed, onMounted } from 'vue'
+	import { computed } from 'vue'
 	import { useWpApi } from "../../composables/useWpApi"
 
 	const { fetchFromWp } = useWpApi()
@@ -15,14 +15,10 @@
 	const header = computed(() => aboutContent?.value?.acf?.title ?? "Default Header")
 	const teaser = computed(() => aboutContent?.value?.acf?.description ?? "Default teaser text goes here.")
 
-	onMounted(async () => {
-		console.log(aboutContent.value)
-	})
-
 </script>
 <template>
 	<div class="wrapper">
-		<div v-if="pending" class="absolute bottom-0 left-0 right-0 top-0 z-50 flex flex-col items-center justify-center bg-white">
+		<div v-if="pending" class="absolute top-0 right-0 bottom-0 left-0 z-50 flex flex-col items-center justify-center bg-white">
 			<Loading />
 		</div>
 		<div v-else-if="aboutContent" class="wrapper-grid">
