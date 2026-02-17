@@ -62,22 +62,22 @@ onMounted(() => {
 		<div v-else class="wrapper">
 			<div class="wrapper-grid">
 				<div>
-					<h2 class="mb-8 font-medium">Handmade Illusions</h2>
+					<h2 class="mb-8 font-medium">{{galleryPage.acf.title}}</h2>
 				</div>
 				<div>
-					<p class="text-right">Photos from Unsplash Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid debitis ut pariatur facere quam</p>
+					<p class="text-right">{{galleryPage.acf.description}}</p>
 				</div>
 				<div class="lg:place-self-end"><p class="text-right">View all</p></div>
 			</div>
 			<div class="wrapper-grid">
-				<figure v-for="(img, index) in images" :key="index" class="relative overflow-hidden">
+				<figure v-for="(img, index) in images" :key="index" class="relative aspect-[4/3] overflow-hidden">
 					<picture>
-						<NuxtImg :src="img.src" :alt="img.alt" class="w-full object-scale-down" />
+						<NuxtImg :src="img.src" :alt="img.alt" class="absolute inset-0 h-full w-full object-cover" />
 					</picture>
 					<div class="absolute inset-0 z-20 bg-black/40"></div>
 					<figcaption class="absolute bottom-0 left-0 right-0 z-30 block bg-gradient-to-t from-black/40 p-4 pt-24 text-xs text-white lg:p-8 lg:text-xl">
 						<span class="font-semibold">{{ img.alt }}</span
-						><br /><span class="opacity-70">{{ truncateText(img.description, 32) }}</span>
+						><br /><span class="opacity-70">{{ truncateText(img.description, 72) }}</span>
 					</figcaption>
 				</figure>
 			</div>
