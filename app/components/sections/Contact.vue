@@ -19,7 +19,7 @@
 			const contactInfo = (response as any[])[0]
 			if (contactInfo) {
 				contactInfoContent.value = contactInfo
-				console.log('contactInfoContent = ', contactInfoContent.value.acf)
+				// console.log('contactInfoContent = ', contactInfoContent.value.acf)
 			}
 		} catch (error: any) {
 			console.error("Fetch Error:", error.data || error.message)
