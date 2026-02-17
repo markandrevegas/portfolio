@@ -3,6 +3,12 @@ import { ref, computed, onMounted } from 'vue'
 import { useWpApi } from "../../composables/useWpApi"
 
 const { fetchFromWp } = useWpApi()
+
+const galleryPage = ref<any>(null)
+const isLoading = ref(true)
+const loadingIconWidth = "2.5rem"
+const loadingIconHeight = "2.5rem"
+
 async function fetchGalleryPage() {
   isLoading.value = true
   try {
@@ -10,7 +16,7 @@ async function fetchGalleryPage() {
 			query: { slug: 'latest-designs', _embed: true }
 		})
 		const page = ((response as unknown) as any[])[0]
-		console.log("page", page)
+		// console.log("page", page)
 		galleryPage.value = page
   } catch (error: any) {
     console.error("Fetch Error:", error.data || error.message)
@@ -18,10 +24,6 @@ async function fetchGalleryPage() {
     isLoading.value = false
   }
 }
-const galleryPage = ref<any>(null)
-const isLoading = ref(true)
-const loadingIconWidth = "2.5rem"
-const loadingIconHeight = "2.5rem"
 
 const images = computed({
   get: () => {
