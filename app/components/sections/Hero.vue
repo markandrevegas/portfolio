@@ -21,7 +21,7 @@ async function fetchHeroContent() {
 		const hero = ((response as unknown) as any[])[0]
 		heroContent.value = hero
 		heroImage.value = hero.acf.image
-		console.log('hero image', heroImage.value)
+		// console.log('hero image', heroImage.value)
   } catch (error: any) {
     console.error("Fetch Error:", error.data || error.message)
   } finally {
