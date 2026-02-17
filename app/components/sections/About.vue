@@ -23,7 +23,6 @@ async function fetchAboutContent() {
       aboutContent.value = bio
       aboutImage.value = bio.acf?.image || null
     }
-		console.log('aboutImage', aboutImage.value)
   } catch (error: any) {
     console.error("Fetch Error:", error.data || error.message)
   } finally {
