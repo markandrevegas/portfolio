@@ -1,39 +1,19 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
-import { useWpApi } from "../../composables/useWpApi"
+import { computed } from 'vue'
 
-const { fetchFromWp } = useWpApi()
+const props = defineProps<{
+  data: any
+	isLoading: boolean
+	hasError: boolean
+}>()
 
-const heroContent = ref<any>(null)
-const heroImage = ref<any>(null)
 const heroSizes = '100vw'
-
-const isLoading = ref(true)
 const loadingIconWidth = "2.5rem"
 const loadingIconHeight = "2.5rem"
 
-async function fetchHeroContent() {
-  isLoading.value = true
-  try {
-	const response = await fetchFromWp('hero', {
-			query: { slug: 'moments-captured-stories-untold', _embed: true }
-		})
-		const hero = ((response as unknown) as any[])[0]
-		heroContent.value = hero
-		heroImage.value = hero.acf.image
-		// console.log('hero image', heroImage.value)
-  } catch (error: any) {
-    console.error("Fetch Error:", error.data || error.message)
-  } finally {
-    isLoading.value = false
-  }
-}
-onMounted(() => {
-	fetchHeroContent()
-})
-
-const header = computed(() => heroContent?.value?.acf.title ?? "Default Header")
-const teaser = computed(() => heroContent?.value?.acf.teaser ?? "Default teaser text goes here.")
+const header = computed(() => props.data?.acf?.title ?? "Default Header")
+const teaser = computed(() => props.data?.acf?.teaser ?? "Default teaser text.")
+const heroImage = computed(() => props.data?.acf?.image ?? null)
 
 </script>
 
@@ -42,6 +22,9 @@ const teaser = computed(() => heroContent?.value?.acf.teaser ?? "Default teaser 
 		<div v-if="isLoading" class="absolute bottom-0 left-0 right-0 top-0 z-50 flex flex-col items-center justify-center bg-white">
 			<Loading :width="loadingIconWidth" :height="loadingIconHeight" />
 		</div>
+		<div v-if="hasError && !isLoading" class="absolute inset-0 z-40 flex items-center justify-center bg-red-50/50 text-red-600 p-6 text-center">
+			<p>Failed to load content. Please check back later.</p>
+    </div>
 		<div class="z-30 flex h-48 flex-1 flex-col justify-end p-6 md:max-h-64">
 			<h1 class="mb-4 text-4xl font-medium tracking-tighter">{{ header }}</h1>
 			<p class="text-sm">{{ teaser }}</p>
