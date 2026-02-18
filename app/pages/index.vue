@@ -2,14 +2,18 @@
 	const { fetchFromWp } = useWpApi()
 
 	// Single source of truth for the Home Page
-	const { data: homeData } = await useAsyncData('home-content', async () => {
+	const { data: homeData, error } = await useAsyncData('home-v4', async () => {
 		const [hero, bio, feature, contact] = await Promise.all([
-			fetchFromWp('hero', { params: { slug: 'moments-captured-stories-untold', _embed: true } }),
-			fetchFromWp('bio', { params: { slug: 'bio', _embed: true } }),
-			fetchFromWp('contact', { params: { slug: 'contactinfo', _embed: true } }),
-			fetchFromWp('feature', { params: { slug: 'latest-designs', _embed: true } })
+			fetchFromWp('hero', { query: { slug: 'moments-captured-stories-untold', _embed: true } }),
+			fetchFromWp('bio', { query: { slug: 'bio', _embed: true } }),
+			fetchFromWp('contact', { query: { slug: 'contactinfo', _embed: true } }),
+			fetchFromWp('feature', { query: { slug: 'latest-designs', _embed: true } }),
 		]) as [any[], any[], any[], any[]]
-		return { hero: hero[0], bio: bio[0], feature: feature[0], contactInfo: contact[0] }
+		return { hero: hero[0], bio: bio[0], contact: contact[0], feature: feature[0] }
+	},
+	{
+		server: false,
+		lazy: false
 	})
 </script>
 <template>
@@ -17,6 +21,6 @@
 		<Hero :data="homeData?.hero" />
 		<Grid :data="homeData?.feature" />
 		<About :data="homeData?.bio" />
-		<Contact :data="homeData?.contactInfo" />
+		<Contact :data="homeData?.contact" />
 	</div>
 </template>
