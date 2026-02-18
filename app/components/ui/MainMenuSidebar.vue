@@ -1,21 +1,35 @@
 <script setup lang="ts">
-import { ref } from "vue"
+	import { ref } from "vue"
 
-const isOpen = ref(false)
-const props = defineProps({
-	isScrolled: Boolean
-})
-// Define links to loop through for the stagger effect
-const menuLinks = [
-  { name: 'Work', to: '/' },
-  { name: 'About', to: '/' },
-  { name: 'Contact', to: '/' }
-]
-const iconWidth = "2rem"
-const iconHeight = "2rem"
-function toggleMenu() {
-	isOpen.value = !isOpen.value
-}
+	interface MenuItem {
+		title: string
+		url: string
+	}
+
+	const props = withDefaults(defineProps<{
+		error?: boolean
+		isScrolled?: boolean
+		loading?: boolean
+	}>(), {
+		error: false,
+		isScrolled: false,
+		loading: false
+	})
+	const menu = useState<MenuItem[]>('global-menu', () => [])
+	// console.log('menu from global-menu ', menu.value)
+	const config = useRuntimeConfig()
+	const formatPath = (url: string) => {
+		return url.replace(config.public.wpBase, '') || '/'
+	}
+	
+	const isOpen = ref(false)
+	const iconWidth = "2rem"
+	const iconHeight = "2rem"
+	const loadingIconWidth = "2.5rem"
+	const loadingIconHeight = "2.5rem"
+	function toggleMenu() {
+		isOpen.value = !isOpen.value
+	}
 </script>
 
 <template>
@@ -33,9 +47,15 @@ function toggleMenu() {
 				<nav v-if="isOpen" class="fixed right-0 top-[70px] z-50 h-full w-full bg-palladian text-sky-950 transition-transform duration-300">
 					<div class="flex h-full flex-col px-4">
 						<div class="flex-1 overflow-y-scroll">
+							<div v-if="error">
+								Error
+							</div>
+							<div v-if="loading">
+								<Loading :width="loadingIconWidth" :height="loadingIconHeight" />
+							</div>
 							<ul class="menu">
-								<li v-for="(link, index) in menuLinks" :key="link.name" :style="{ '--i': index }" class="stagger-item">
-									<NuxtLink :to="link.to" @click="toggleMenu" class="block">{{ link.name }}</NuxtLink>
+								<li v-for="(item, index) in menu" :key="item.url" :style="{ '--i': index }" class="stagger-item">
+									<NuxtLink :to="formatPath(item.url)" @click="toggleMenu" class="block">{{ item.title }}</NuxtLink>
 								</li>
 							</ul>
 							<div class="relative my-8" :style="{ '--i': 3 }">

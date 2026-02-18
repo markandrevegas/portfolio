@@ -9,7 +9,7 @@
 			fetchFromWp('contact', { query: { slug: 'contactinfo', _embed: true } }),
 			fetchFromWp('feature', { query: { slug: 'latest-designs', _embed: true } }),
 		]) as [any[], any[], any[], any[]]
-		console.log(contact)
+		// console.log(contact)
 		return { hero: hero[0], bio: bio[0], contact: contact[0], feature: feature[0] }
 	},
 	{
