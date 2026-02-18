@@ -1,9 +1,9 @@
 import { defineNuxtConfig } from "nuxt/config"
 import tsconfigPaths from "vite-tsconfig-paths"
 
-if (process.env.NODE_ENV === 'development') {
+/*if (process.env.NODE_ENV === 'development') {
   process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
-}
+}*/
 
 // Extend the NuxtConfig type
 declare module "nuxt/schema" {
