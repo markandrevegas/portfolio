@@ -33,7 +33,7 @@
 		</div>
 		<div class="wrapper-grid">
 			<div>
-				<h2 class="mb-8 font-medium">{{header}}</h2>
+				<h2 class="mb-8 font-bold">{{header}}</h2>
 				<p>{{teaser}}</p>
 			</div>
 			<div class="flex items-center justify-start gap-8">
@@ -42,7 +42,7 @@
 				<Pinterest v-if="pinterestURL" :width="iconWidth" :height="iconHeight" />
 			</div>
 			<div class="lg:place-self-end">
-				<h3 class="my-8 font-medium sm:mt-0">{{ altHeader}}</h3>
+				<h3 class="my-8 font-bold sm:mt-0">{{ altHeader}}</h3>
 				<p>{{ homeAddress }}</p>
 				<p>Email: {{ personalEmail }}</p>
 				<p>Phone: {{ personalPhone }}</p>

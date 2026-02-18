@@ -37,7 +37,7 @@
 	<div>
 		<header :class="props.isScrolled ? 'bg-abyssal/40 text-white backdrop-blur-xl' : 'text-abyssal backdrop-blur-md'" class="fixed left-0 top-0 z-40 flex h-[70px] w-full items-center justify-between px-6 transition-colors duration-300">
 			<NuxtLink to="/" class="block">
-				<h1 class="text-xl">Tailor</h1>
+				<h1 class="text-xl font-bold">Tailor</h1>
 			</NuxtLink>
 			
 			<MenuIcon :is-open="isOpen" @click="toggleMenu" />

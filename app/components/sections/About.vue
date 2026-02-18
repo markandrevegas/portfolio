@@ -23,7 +23,7 @@
 		</div>
 		<div v-else-if="data" class="wrapper-grid">
 			<div>
-				<h2 class="mb-8 font-medium">{{header}}</h2>
+				<h2 class="mb-8 font-bold">{{header}}</h2>
 			</div>
 			<div class="relative z-10 w-full flex-1 overflow-hidden aspect-[16/9]">
 				<NuxtImg

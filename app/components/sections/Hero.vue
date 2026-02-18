@@ -25,7 +25,7 @@
 			<p>Failed to load content. Please check back later.</p>
     </div>
 		<div class="z-30 flex h-48 flex-1 flex-col justify-end p-6 md:max-h-64">
-			<h1 class="mb-4 text-4xl font-medium tracking-tighter">{{ header }}</h1>
+			<h1 class="mb-4 text-4xl font-bold tracking-tighter">{{ header }}</h1>
 			<p class="text-sm">{{ teaser }}</p>
 		</div>
 		<div class="relative z-10 w-full flex-1 overflow-hidden">

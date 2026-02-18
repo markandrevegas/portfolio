@@ -44,7 +44,7 @@
 		<div class="wrapper">
 			<div class="wrapper-grid">
 				<div>
-					<h2 class="mb-8 font-medium">{{title}}</h2>
+					<h2 class="mb-8 font-bold">{{title}}</h2>
 				</div>
 				<div>
 					<p class="text-right">{{description}}</p>
