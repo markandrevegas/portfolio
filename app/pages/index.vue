@@ -2,7 +2,7 @@
 	const { fetchFromWp } = useWpApi()
 
 	// Single source of truth for the Home Page
-	const { data: homeData, pending, error } = await useAsyncData('home-v4', async () => {
+	const { data: homeData, pending, error } = await useAsyncData('index', async () => {
 		const [hero, bio, contact, feature] = await Promise.all([
 			fetchFromWp('hero', { query: { slug: 'moments-captured-stories-untold', _embed: true } }),
 			fetchFromWp('bio', { query: { slug: 'bio', _embed: true } }),

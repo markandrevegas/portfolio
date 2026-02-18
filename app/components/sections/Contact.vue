@@ -1,44 +1,35 @@
 <script setup lang="ts">
-	import { ref, computed, onMounted } from 'vue'
-	import { useWpApi } from "../../composables/useWpApi"
+	import { computed } from 'vue'
 
-	const { fetchFromWp } = useWpApi()
+	const props = defineProps<{
+		data: any
+		isLoading: boolean
+		hasError: boolean
+	}>()
 
-	const contactInfoContent = ref<any>(null)
-	const isLoading = ref(true)
-	const iconWidth = "2rem"
-	const iconHeight = "2rem"
+	const loadingIconWidth = "2.5rem"
+	const loadingIconHeight = "2.5rem"
 
-	async function fetchContactInfo() {
-		isLoading.value = true
-		try {
-			const response = await fetchFromWp('contact', {
-				// Note: verify if slug is 'about' or 'bio' in your WP admin
-				query: { slug: 'contactinfo', _embed: true }
-			})
-			const contactInfo = (response as any[])[0]
-			if (contactInfo) {
-				contactInfoContent.value = contactInfo
-				// console.log('contactInfoContent = ', contactInfoContent.value.acf)
-			}
-		} catch (error: any) {
-			console.error("Fetch Error:", error.data || error.message)
-		} finally {
-			isLoading.value = false
-		}
-	}
-	onMounted(() => {
-		fetchContactInfo()
-	})
-	const header = computed(() => contactInfoContent.value?.acf?.title ?? "Default Header")
-	const teaser = computed(() => contactInfoContent.value?.acf?.teaser ?? "Default teaser text goes here.")
-	const twitterURL = computed(() => contactInfoContent.value?.acf.twitterurl ?? null)
-	const instagramURL = computed(() => contactInfoContent.value?.instagramurl ?? null)
-	const pinterestURL = computed(() => contactInfoContent.value?.pinteresturl ?? null)
+	const header = computed(() => props.data?.acf?.title ?? "Default Header")
+	const teaser = computed(() => props.data?.acf?.teaser ?? "Default teaser text goes here.")
+	const altHeader = computed(() => props.data?.acf?.contactHeader ?? "ContactInformation")
+
+	const iconHeight = '1.5rem'
+	const iconWidth = '1.5rem'
+	const twitterURL = computed(() => props.data?.acf?.twitterurl ?? null)
+	const instagramURL = computed(() => props.data?.acf?.instagramurl ?? null)
+	const pinterestURL = computed(() => props.data?.acf?.pinteresturl ?? null)
+
+	const homeAddress = computed(() => props.data?.acf?.homeaddress)
+	const personalEmail = computed(() => props.data?.acf?.personalemail)
+	const personalPhone = computed(() => props.data?.acf?.personalphone)
 	
 </script>
 <template>
 	<div class="wrapper">
+		<div v-if="isLoading" class="absolute top-0 right-0 bottom-0 left-0 z-50 flex flex-col items-center justify-center bg-white">
+			<Loading :width="loadingIconWidth" :height="loadingIconHeight" />
+		</div>
 		<div class="wrapper-grid">
 			<div>
 				<h2 class="mb-8 font-medium">{{header}}</h2>
@@ -50,10 +41,10 @@
 				<Pinterest v-if="pinterestURL" :width="iconWidth" :height="iconHeight" />
 			</div>
 			<div class="lg:place-self-end">
-				<h3 class="my-8 font-medium sm:mt-0">Contact Information</h3>
-				<p>123 Example Street, City, Country</p>
-				<p>Email: markandevega@me.com</p>
-				<p>Phone: +1 (555) 123-4567</p>
+				<h3 class="my-8 font-medium sm:mt-0">{{ altHeader}}</h3>
+				<p>{{ homeAddress }}</p>
+				<p>Email: {{ personalEmail }}</p>
+				<p>Phone: {{ personalPhone }}</p>
 				<p class="mt-8">Feel free to reach out for collaborations, inquiries, or just to say hello</p>
 			</div>
 		</div>
