@@ -135,6 +135,9 @@ export default defineNuxtConfig({
 		}
 	},
 	vite: {
+		server: {
+      allowedHosts: ["portfolio.local"]
+    },
 		plugins: [tsconfigPaths()]
 	},
 	nitro: {
