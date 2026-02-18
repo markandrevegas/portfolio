@@ -33,13 +33,13 @@
 				v-if="heroImage"
 				:src="heroImage.url"
 				:sizes="heroSizes"
-				class="absolute inset-0 object-cover w-full h-full"
+				class="absolute inset-0 object-cover md:object-fit object-center md:object-top md:aspect-4/3 w-full h-full"
 				:width="heroImage.width || 1080"
 				:height="heroImage.height || 1618"
 				:alt="heroImage.alt || ''"
 				loading="eager"
 			/>
-			<div class="absolute inset-0 z-20 bg-black/20"></div>
+			<div class="absolute inset-0 z-20 bg-black/30"></div>
 		</div>
 	</div>
 </template>
