@@ -23,6 +23,7 @@
 	const homeAddress = computed(() => props.data?.acf?.homeaddress)
 	const personalEmail = computed(() => props.data?.acf?.personalemail)
 	const personalPhone = computed(() => props.data?.acf?.personalphone)
+	const closer = computed(() => props.data?.acf?.closer)
 	
 </script>
 <template>
@@ -45,7 +46,7 @@
 				<p>{{ homeAddress }}</p>
 				<p>Email: {{ personalEmail }}</p>
 				<p>Phone: {{ personalPhone }}</p>
-				<p class="mt-8">Feel free to reach out for collaborations, inquiries, or just to say hello</p>
+				<p class="mt-8">{{ closer }}</p>
 			</div>
 		</div>
 	</div>
