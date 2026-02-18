@@ -16,6 +16,10 @@
 		server: false,
 		lazy: false
 	})
+	useSeoMeta({
+		title: () => 'Tailor | Portfolio of JWS',
+		description: () => ''
+	})
 </script>
 <template>
 	<div class="flex h-screen flex-1 flex-col overflow-auto">

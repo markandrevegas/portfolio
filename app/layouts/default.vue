@@ -5,7 +5,6 @@
 		title: string
 		url: string
 	}
-	// const config = useRuntimeConfig()
 
 	const menu = useState<MenuItem[]>('global-menu', () => [])
 	const { data, pending, error } = await useAsyncData('menu', () => {
@@ -26,8 +25,6 @@
 			menu.value = newData as MenuItem[]
 		}
 	}, { immediate: true })
-	console.log('data ', data.value)
-
 	
 	const isScrolled = ref(false)
 	const scrollContainer = ref<HTMLElement | null>(null)
