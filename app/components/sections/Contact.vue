@@ -1,6 +1,17 @@
 <script setup lang="ts">
 	import { computed } from 'vue'
 
+	interface MenuItem {
+		title: string
+		url: string
+	}
+	const menu = useState<MenuItem[]>('global-menu')
+	const config = useRuntimeConfig()
+	const formatPath = (url: string) => {
+		if (!url) return '/'
+		return url.replace('https://content.local', '').replace(config.public.wpBase, '') || '/'
+	}
+
 	const props = defineProps<{
 		data: any
 		isLoading: boolean
@@ -36,17 +47,27 @@
 				<h2 class="mb-8 font-bold">{{header}}</h2>
 				<p>{{teaser}}</p>
 				<p class="mt-8">{{ closer }}</p>
-				<div class="flex items-center justify-start gap-8 my-8">
-					<Instagram v-if="instagramURL" :width="iconWidth" :height="iconHeight" />
-					<Twitter v-if="twitterURL" :width="iconWidth" :height="iconHeight" />
-					<Pinterest v-if="pinterestURL" :width="iconWidth" :height="iconHeight" />
-				</div>
 			</div>
 			<div class="lg:place-self-end">
 				<h3 class="my-8 font-bold sm:mt-0">{{ altHeader}}</h3>
 				<p>{{ homeAddress }}</p>
 				<p>Email: {{ personalEmail }}</p>
 				<p>Phone: {{ personalPhone }}</p>
+			</div>
+		</div>
+		<div class="wrapper-grid-3 mt-16">
+			<h2 class="text-xl">Jeremias Stephens</h2>
+			<div>
+				<ul class="menu">
+					<li v-for="(item, index) in menu" :key="item.url" :style="{ '--i': index }" class="stagger-item">
+						<NuxtLink :to="formatPath(item.url)" class="block">{{ item.title }}</NuxtLink>
+					</li>
+				</ul>
+			</div>
+			<div class="flex justify-start gap-8">
+				<Instagram v-if="instagramURL" :width="iconWidth" :height="iconHeight" />
+				<Twitter v-if="twitterURL" :width="iconWidth" :height="iconHeight" />
+				<Pinterest v-if="pinterestURL" :width="iconWidth" :height="iconHeight" />
 			</div>
 		</div>
 	</div>

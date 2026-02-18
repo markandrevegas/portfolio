@@ -7,7 +7,7 @@
 		hasError: boolean
 	}>()
 
-	// const heroSizes = '100vw'
+	const imgSize = '100vw'
 	const loadingIconWidth = "2.5rem"
 	const loadingIconHeight = "2.5rem"
 	const title = computed(() => props.data?.acf?.title ?? "Latest Features")
@@ -54,6 +54,13 @@
 				<figure v-for="(img, index) in images" :key="index" class="relative aspect-[4/3] overflow-hidden">
 					<picture>
 						<NuxtImg :src="img.src" :alt="img.alt" class="absolute inset-0 h-full w-full object-cover" />
+						<NuxtImg
+							v-if="img"
+							:src="img.src"
+							:sizes="imgSize"
+							class="w-full h-full object-cover"
+							:alt="img.alt || ''"
+						/>
 					</picture>
 					<div class="absolute inset-0 z-20 bg-black/40"></div>
 					<figcaption class="absolute bottom-0 left-0 right-0 z-30 block bg-gradient-to-t from-black/40 p-4 pt-24 text-xs text-white lg:p-8 lg:text-xl">

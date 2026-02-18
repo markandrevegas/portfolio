@@ -17,7 +17,6 @@
 
 @layer components {
 	.menu {
-		@apply pt-4;
 		li {
 			@apply text-xl relative font-medium text-abyssal transition-colors duration-500;
 			letter-spacing: -0.035em;
@@ -27,6 +26,9 @@
 		@apply flex flex-col gap-16 py-24;
 		&-grid {
 			@apply grid w-full grid-cols-1 gap-4 text-sm sm:grid-cols-2 lg:text-lg xl:grid-cols-3;
+		}
+		&-grid-3 {
+			@apply grid w-full grid-cols-1 gap-4 text-sm sm:grid-cols-3 lg:text-lg;
 		}
 	}
 	.slide-horizontal-enter-active,
