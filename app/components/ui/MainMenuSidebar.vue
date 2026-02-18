@@ -1,5 +1,6 @@
 <script setup lang="ts">
-	import { ref } from "vue"
+	import { close } from "fs";
+import { ref } from "vue"
 
 	interface MenuItem {
 		title: string
@@ -28,15 +29,21 @@
 	const iconHeight = "2rem"
 	const loadingIconWidth = "2.5rem"
 	const loadingIconHeight = "2.5rem"
-	function toggleMenu() {
+
+	const toggleMenu = () => {
 		isOpen.value = !isOpen.value
+	}
+	const closeMenu = () => {
+		if (isOpen.value) {
+			isOpen.value = false
+		}
 	}
 </script>
 
 <template>
 	<div>
 		<header :class="props.isScrolled ? 'bg-abyssal/40 text-white backdrop-blur-xl' : 'text-abyssal backdrop-blur-md'" class="fixed left-0 top-0 z-40 flex h-[70px] w-full items-center justify-between px-6 transition-colors duration-300">
-			<NuxtLink to="/" class="block">
+			<NuxtLink to="/" class="block" @click="closeMenu">
 				<h1 class="text-xl font-bold">Tailor</h1>
 			</NuxtLink>
 			
