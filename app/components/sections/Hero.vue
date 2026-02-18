@@ -17,7 +17,7 @@
 </script>
 
 <template>
-	<div class="relative flex h-[calc(100vh-70px)] flex-col">
+	<div class="relative flex h-[calc(100vh-70px)] lg:h-[60vh] flex-col lg:flex-row lg:items-center">
 		<div v-if="isLoading" class="absolute bottom-0 left-0 right-0 top-0 z-50 flex flex-col items-center justify-center bg-white">
 			<Loading :width="loadingIconWidth" :height="loadingIconHeight" />
 		</div>
@@ -28,7 +28,7 @@
 			<h1 class="mb-4 text-4xl font-bold tracking-tighter">{{ header }}</h1>
 			<p class="text-sm">{{ teaser }}</p>
 		</div>
-		<div class="relative z-10 w-full flex-1 overflow-hidden">
+		<div class="relative z-10 w-full lg:h-full flex-1 overflow-hidden">
 			<NuxtImg
 				v-if="heroImage"
 				:src="heroImage.url"
