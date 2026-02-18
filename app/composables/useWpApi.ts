@@ -1,4 +1,4 @@
-export const useWpApi = () => {
+/*export const useWpApi = () => {
   const config = useRuntimeConfig()
 	const wpBase = config.public.wpBase
 
@@ -12,5 +12,22 @@ export const useWpApi = () => {
 		return await $fetch(url, { ...options })
 	}
 
+  return { fetchFromWp }
+}
+*/
+// composables/useWpApi.ts
+export const useWpApi = () => {
+  // Add <T> before the parentheses
+  const fetchFromWp = <T>(endpoint: string, options?: any) => {
+    const config = useRuntimeConfig()
+    
+    const baseURL = import.meta.server 
+      ? 'https://content.local' 
+      : '/portfolio/api/wp'
+    
+    // Pass that <T> down into the $fetch call
+    return $fetch<T>(`${baseURL}/wp-json/wp/v2/${endpoint}`, options)
+  }
+  
   return { fetchFromWp }
 }
