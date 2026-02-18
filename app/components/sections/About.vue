@@ -1,49 +1,27 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
-import { useWpApi } from "../../composables/useWpApi"
+	import { computed } from 'vue'
 
-const { fetchFromWp } = useWpApi()
+	const props = defineProps<{
+		data: any
+		isLoading: boolean
+		hasError: boolean
+	}>()
 
-// Use refs instead of useAsyncData to match Hero.vue
-const aboutContent = ref<any>(null)
-const aboutImage = ref<any>(null)
-const isLoading = ref(true)
+	const imageSizes = '100vw'
+	const loadingIconWidth = "2.5rem"
+	const loadingIconHeight = "2.5rem"
 
-const imageSizes = '100vw'
+	const header = computed(() => props.data?.acf?.title ?? "Default Header")
+	const teaser = computed(() => props.data?.acf?.description ?? "Default teaser text.")
+	const aboutImage = computed(() => props.data?.acf?.image ?? null)
 
-async function fetchAboutContent() {
-  isLoading.value = true
-  try {
-    const response = await fetchFromWp('bio', {
-      // Note: verify if slug is 'about' or 'bio' in your WP admin
-      query: { slug: 'bio', _embed: true }
-    })
-    const bio = (response as any[])[0]
-    if (bio) {
-      aboutContent.value = bio
-      aboutImage.value = bio.acf?.image || null
-    }
-  } catch (error: any) {
-    console.error("Fetch Error:", error.data || error.message)
-  } finally {
-    isLoading.value = false
-  }
-}
-
-// Data fetching happens ONLY on the client
-onMounted(() => {
-  fetchAboutContent()
-})
-
-const header = computed(() => aboutContent.value?.acf?.title ?? "Default Header")
-const teaser = computed(() => aboutContent.value?.acf?.description ?? "Default teaser text goes here.")
 </script>
 <template>
 	<div class="wrapper">
 		<div v-if="isLoading" class="absolute top-0 right-0 bottom-0 left-0 z-50 flex flex-col items-center justify-center bg-white">
-			<Loading />
+			<Loading :width="loadingIconWidth" :height="loadingIconHeight" />
 		</div>
-		<div v-else-if="aboutContent" class="wrapper-grid">
+		<div v-else-if="data" class="wrapper-grid">
 			<div>
 				<h2 class="mb-8 font-medium">{{header}}</h2>
 			</div>

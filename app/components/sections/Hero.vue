@@ -1,20 +1,19 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+	import { computed } from 'vue'
 
-const props = defineProps<{
-  data: any
-	isLoading: boolean
-	hasError: boolean
-}>()
+	const props = defineProps<{
+		data: any
+		isLoading: boolean
+		hasError: boolean
+	}>()
 
-const heroSizes = '100vw'
-const loadingIconWidth = "2.5rem"
-const loadingIconHeight = "2.5rem"
+	const heroSizes = '100vw'
+	const loadingIconWidth = "2.5rem"
+	const loadingIconHeight = "2.5rem"
 
-const header = computed(() => props.data?.acf?.title ?? "Default Header")
-const teaser = computed(() => props.data?.acf?.teaser ?? "Default teaser text.")
-const heroImage = computed(() => props.data?.acf?.image ?? null)
-
+	const header = computed(() => props.data?.acf?.title ?? "Default Header")
+	const teaser = computed(() => props.data?.acf?.teaser ?? "Default teaser text.")
+	const heroImage = computed(() => props.data?.acf?.image ?? null)
 </script>
 
 <template>
