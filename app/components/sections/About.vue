@@ -24,20 +24,22 @@
 		<div v-else-if="data" class="wrapper-grid">
 			<div>
 				<h2 class="mb-8 font-bold">{{header}}</h2>
+				<div class="relative z-10 w-full flex-1 overflow-hidden aspect-[16/9]">
+					<NuxtImg
+						v-if="aboutImage"
+						:src="aboutImage.url"
+						:sizes="imageSizes"
+						class="w-full h-full object-cover"
+						:width="aboutImage.width || 1080"
+						:height="aboutImage.height || 1618"
+						:alt="aboutImage.alt || ''"
+					/>
+					<div class="absolute inset-0 z-20 bg-black/20"></div>
+				</div>
 			</div>
-			<div class="relative z-10 w-full flex-1 overflow-hidden aspect-[16/9]">
-				<NuxtImg
-					v-if="aboutImage"
-					:src="aboutImage.url"
-					:sizes="imageSizes"
-					class="w-full h-full object-cover"
-					:width="aboutImage.width || 1080"
-					:height="aboutImage.height || 1618"
-					:alt="aboutImage.alt || ''"
-				/>
-				<div class="absolute inset-0 z-20 bg-black/20"></div>
+			<div class="relative z-10 w-full flex-1 sm:pt-16">
+				<p>{{teaser}}</p>
 			</div>
-			<div class="lg:place-self-end"><p>{{teaser}}</p></div>
 		</div>
 	</div>
 </template>

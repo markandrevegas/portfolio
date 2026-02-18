@@ -26,11 +26,7 @@
 	.wrapper {
 		@apply flex flex-col gap-16 py-24;
 		&-grid {
-			@apply grid w-full auto-cols-max grid-cols-1 gap-4 text-sm md:grid-cols-2 lg:text-lg xl:grid-cols-3;
-
-			> div:last-child {
-				@apply col-span-full;
-			}
+			@apply grid w-full grid-cols-1 gap-4 text-sm sm:grid-cols-2 lg:text-lg xl:grid-cols-3;
 		}
 	}
 	.slide-horizontal-enter-active,

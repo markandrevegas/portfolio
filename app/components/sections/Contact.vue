@@ -35,18 +35,18 @@
 			<div>
 				<h2 class="mb-8 font-bold">{{header}}</h2>
 				<p>{{teaser}}</p>
-			</div>
-			<div class="flex items-center justify-start gap-8">
-				<Instagram v-if="instagramURL" :width="iconWidth" :height="iconHeight" />
-				<Twitter v-if="twitterURL" :width="iconWidth" :height="iconHeight" />
-				<Pinterest v-if="pinterestURL" :width="iconWidth" :height="iconHeight" />
+				<p class="mt-8">{{ closer }}</p>
+				<div class="flex items-center justify-start gap-8 my-8">
+					<Instagram v-if="instagramURL" :width="iconWidth" :height="iconHeight" />
+					<Twitter v-if="twitterURL" :width="iconWidth" :height="iconHeight" />
+					<Pinterest v-if="pinterestURL" :width="iconWidth" :height="iconHeight" />
+				</div>
 			</div>
 			<div class="lg:place-self-end">
 				<h3 class="my-8 font-bold sm:mt-0">{{ altHeader}}</h3>
 				<p>{{ homeAddress }}</p>
 				<p>Email: {{ personalEmail }}</p>
 				<p>Phone: {{ personalPhone }}</p>
-				<p class="mt-8">{{ closer }}</p>
 			</div>
 		</div>
 	</div>

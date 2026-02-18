@@ -47,9 +47,8 @@
 					<h2 class="mb-8 font-bold">{{title}}</h2>
 				</div>
 				<div>
-					<p class="text-right">{{description}}</p>
+					<p>{{description}}</p>
 				</div>
-				<div class="lg:place-self-end"><p class="text-right">View all</p></div>
 			</div>
 			<div class="wrapper-grid">
 				<figure v-for="(img, index) in images" :key="index" class="relative aspect-[4/3] overflow-hidden">
