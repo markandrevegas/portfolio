@@ -3,12 +3,13 @@
 
 	// Single source of truth for the Home Page
 	const { data: homeData, pending, error } = await useAsyncData('home-v4', async () => {
-		const [hero, bio, feature, contact] = await Promise.all([
+		const [hero, bio, contact, feature] = await Promise.all([
 			fetchFromWp('hero', { query: { slug: 'moments-captured-stories-untold', _embed: true } }),
 			fetchFromWp('bio', { query: { slug: 'bio', _embed: true } }),
 			fetchFromWp('contact', { query: { slug: 'contactinfo', _embed: true } }),
 			fetchFromWp('feature', { query: { slug: 'latest-designs', _embed: true } }),
 		]) as [any[], any[], any[], any[]]
+		console.log(feature)
 		return { hero: hero[0], bio: bio[0], contact: contact[0], feature: feature[0] }
 	},
 	{

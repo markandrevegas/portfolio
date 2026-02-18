@@ -1,73 +1,53 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
-import { useWpApi } from "../../composables/useWpApi"
+	import { computed } from 'vue'
 
-const { fetchFromWp } = useWpApi()
+	const props = defineProps<{
+		data: any
+		isLoading: boolean
+		hasError: boolean
+	}>()
 
-const galleryPage = ref<any>(null)
-const isLoading = ref(true)
-const loadingIconWidth = "2.5rem"
-const loadingIconHeight = "2.5rem"
+	// const heroSizes = '100vw'
+	const loadingIconWidth = "2.5rem"
+	const loadingIconHeight = "2.5rem"
+	const title = computed(() => props.data?.acf?.title ?? "Latest Features")
+	const description = computed(() => props.data?.acf?.description ?? "")
 
-async function fetchGalleryPage() {
-  isLoading.value = true
-  try {
-	const response = await fetchFromWp('feature', {
-			query: { slug: 'latest-designs', _embed: true }
-		})
-		const page = ((response as unknown) as any[])[0]
-		// console.log("page", page)
-		galleryPage.value = page
-  } catch (error: any) {
-    console.error("Fetch Error:", error.data || error.message)
-  } finally {
-    isLoading.value = false
-  }
-}
-
-const images = computed({
-  get: () => {
+	const images = computed(() => {
     const results: { src: string; caption: string; alt: string }[] = []
-    if (galleryPage.value?.acf) {
-      const acf = galleryPage.value.acf
-      Object.keys(acf)
-        .filter(key => key.startsWith('image'))
-        .forEach(key => {
-          if (acf[key]) {
-            results.push({
-              src: acf[key].url,
-              alt: acf[key].alt || acf[key].title || '',
-							caption: acf[key].caption || acf[key].title || ''
-            })
-          }
-        })
+    if (props.data?.acf) {
+			const acf = props.data.acf
+			Object.keys(acf)
+			.filter(key => key.startsWith('image'))
+			.forEach(key => {
+				if (acf[key] && typeof acf[key] === 'object') {
+					results.push({
+						src: acf[key].url,
+						alt: acf[key].alt || acf[key].title || '',
+						caption: acf[key].caption || acf[key].title || ''
+					})
+				}
+			})
     }
     return results
-  },
-  set: (newImages: { src: string; alt: string }[]) => {
-    // optionally update galleryPage or just store somewhere else
-    console.log("New images set:", newImages)
-  }
-})
+	})
 
-onMounted(() => {
-	fetchGalleryPage()
-})
 </script>
 <template>
 	<div class="flex flex-1 flex-col">
-		<!-- Loading State -->
-		<Loading v-if="isLoading" :width="loadingIconWidth" :height="loadingIconHeight" />
-		<!-- Empty State -->
-		<div v-else-if="images.length === 0" class="mt-4 text-center">No images found.</div>
-		<!-- Images Grid -->
-		<div v-else class="wrapper">
+		<div v-if="isLoading" class="absolute bottom-0 left-0 right-0 top-0 z-50 flex flex-col items-center justify-center bg-white">
+			<Loading :width="loadingIconWidth" :height="loadingIconHeight" />
+		</div>
+		<div v-if="hasError && !isLoading" class="absolute inset-0 z-40 flex items-center justify-center bg-red-50/50 text-red-600 p-6 text-center">
+			<p>Failed to load content. Please check back later.</p>
+    </div>
+		<div class="wrapper">
 			<div class="wrapper-grid">
 				<div>
-					<h2 class="mb-8 font-medium">{{galleryPage.acf.title}}</h2>
+					<h2 class="mb-8 font-medium">{{title}}</h2>
 				</div>
 				<div>
-					<p class="text-right">{{galleryPage.acf.description}}</p>
+					<p class="text-right">{{description}}</p>
 				</div>
 				<div class="lg:place-self-end"><p class="text-right">View all</p></div>
 			</div>
