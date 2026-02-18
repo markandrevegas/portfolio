@@ -5,26 +5,30 @@
 		title: string
 		url: string
 	}
-
-	const { fetchFromWp } = useWpApi()
+	// const config = useRuntimeConfig()
 
 	const menu = useState<MenuItem[]>('global-menu', () => [])
-	const { data, pending, error } = await useAsyncData('menu', async () => {
-		return await fetchFromWp('menu')
+	const { data, pending, error } = await useAsyncData('menu', () => {
+		// If we're on the server, we MUST use the full URL
+		// If we're on the client, the proxy works with the relative path
+		const baseURL = import.meta.server 
+			? 'https://content.local' 
+			: '/portfolio/api/wp'
+			
+		return $fetch(`${baseURL}/wp-json/wp/v2/menu`, {
+			onRequestError({ error }) {
+				console.error('Fetch Error:', error)
+			}
+		})
 	})
 	watch(data, (newData) => {
 		if (newData) {
 			menu.value = newData as MenuItem[]
 		}
 	}, { immediate: true })
-	if (data.value) {
-    menu.value = data.value as MenuItem[]
-		console.log('menu in default =', menu.value)
-	}
-	
-	
-	
+	console.log('data ', data.value)
 
+	
 	const isScrolled = ref(false)
 	const scrollContainer = ref<HTMLElement | null>(null)
 	function onScroll() {

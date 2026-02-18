@@ -1,6 +1,10 @@
 import { defineNuxtConfig } from "nuxt/config"
 import tsconfigPaths from "vite-tsconfig-paths"
 
+if (process.env.NODE_ENV === 'development') {
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
+}
+
 // Extend the NuxtConfig type
 declare module "nuxt/schema" {
 	interface NuxtConfig {
@@ -119,7 +123,9 @@ export default defineNuxtConfig({
 		contentfulSpaceId: process.env.CONTENTFUL_SPACE_ID,
 		contentfulAccessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
 		public: {
-			wpBase: "/portfolio/api/wp",
+			wpBase: process.env.WP_URL || "https://content.local",
+			apiPrefix: "/portfolio/api/wp",
+			// wpBase: "/portfolio/api/wp",
 			contentfulSpaceId: process.env.CONTENTFUL_SPACE_ID,
 			contentfulAccessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
 			unsplashBase: process.env.NUXT_UNSPLASH_BASE || "https://api.unsplash.com",
@@ -140,7 +146,9 @@ export default defineNuxtConfig({
 			"/portfolio/api/wp": {
 				target: "https://content.local",
 				changeOrigin: true,
-				secure: false
+				secure: false,
+				// Ensure the /wp-json part is appended correctly
+				rewrite: (path) => path.replace(/^\/portfolio\/api\/wp/, '')
 			}
 		}
 	},

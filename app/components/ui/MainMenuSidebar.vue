@@ -15,11 +15,12 @@
 		isScrolled: false,
 		loading: false
 	})
-	const menu = useState<MenuItem[]>('global-menu', () => [])
+	const menu = useState<MenuItem[]>('global-menu')
 	// console.log('menu from global-menu ', menu.value)
 	const config = useRuntimeConfig()
 	const formatPath = (url: string) => {
-		return url.replace(config.public.wpBase, '') || '/'
+		if (!url) return '/'
+		return url.replace('https://content.local', '').replace(config.public.wpBase, '') || '/'
 	}
 	
 	const isOpen = ref(false)
