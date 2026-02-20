@@ -41,7 +41,11 @@ const { data: page, pending } = await useAsyncData<WpPage>(
 		const result = res[0]
 
 		if (!result) {
-			throw createError({ statusCode: 404, statusMessage: "Page Not Found" })
+			throw createError({ 
+				statusCode: 404, 
+				statusMessage: 'Page Not Found',
+				fatal: true
+			});
 		}
 
 		pageStore.value[slug] = result

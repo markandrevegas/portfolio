@@ -157,7 +157,7 @@ export default defineNuxtConfig({
 		},
 		prerender: {
 			crawlLinks: true,
-			routes: ["/"]
+			routes: ["/portfolio/"]
 		}
 	},
 	content: {},
