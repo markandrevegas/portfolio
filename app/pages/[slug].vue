@@ -95,9 +95,15 @@
 
     <article v-else class="max-w-4xl mx-auto flex flex-col">
 			<BackButton><ArrowLeftIcon /><span class="font-semibold">Back</span></BackButton>
-      <h1 class="text-4xl tracking-tighter my-4" v-html="page.title.rendered"></h1>
-      <p>{{ page.acf.excerpt }}</p>
-			<p>{{ content }}</p>
+			<div class="flex flex-col md:flex-row md:items-center">
+				<div>
+					<h1 class="text-5xl tracking-tighter my-8" v-html="page.title.rendered"></h1>
+					<p class="text-lg leading-6">{{ page.acf.excerpt }}</p>
+				</div>
+				<div class="md:h-screen md:overflow-scroll">
+					<div v-html="content" class="prose"></div>
+				</div>
+			</div>
 			<div class="wrapper-grid">
 				<figure v-for="(img, index) in galleryImages" :key="index" class="relative aspect-[4/3] overflow-hidden">
 					<picture>
