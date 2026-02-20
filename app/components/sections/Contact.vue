@@ -54,12 +54,12 @@
 			</div>
 		</div>
 		<div class="wrapper-grid-3 mt-16">
-			<h2 class="text-xl font-semibold">Jeremias Stephens</h2>
+			<h2 class="text-lg font-semibold">Jeremias Stephens</h2>
 			<div>
 				<ul>
 					<li v-for="item in menu" :key="item.url">
 						<NuxtLink :to="formatPath(item.url)" class="slide-link">
-							<span class="slide-wrap text-xl font-semibold">
+							<span class="slide-wrap text-lg font-semibold">
 								<span class="slide-text">{{ item.title }}</span>
 								<span class="slide-text slide-text--clone">{{ item.title }}</span>
 							</span>
@@ -71,7 +71,7 @@
 				<ul>
 					<li>
 						<a :href="instagramURL" target="_blank" class="slide-link">
-							<span class="slide-wrap text-xl font-semibold">
+							<span class="slide-wrap text-lg font-semibold">
 								<span class="slide-text">Instagram</span>
 								<span class="slide-text slide-text--clone">Instagram</span>
 							</span>
@@ -79,7 +79,7 @@
 					</li>
 					<li>
 						<a :href="twitterURL" target="_blank" class="slide-link">
-							<span class="slide-wrap text-xl font-semibold">
+							<span class="slide-wrap text-lg font-semibold">
 								<span class="slide-text">Twitter</span>
 								<span class="slide-text slide-text--clone">Twitter</span>
 							</span>
@@ -87,7 +87,7 @@
 					</li>
 					<li>
 						<a :href="pinterestURL" target="_blank" class="slide-link">
-							<span class="slide-wrap text-xl font-semibold">
+							<span class="slide-wrap text-lg font-semibold">
 								<span class="slide-text">Pinterest</span>
 								<span class="slide-text slide-text--clone">Pinterest</span>
 							</span>
@@ -98,7 +98,7 @@
 		</div>
 		<footer class="wrapper-grid-3 mt-8">
 			<div><p>Copyright © 2026 Jeremias Stephens</p></div>
-			<div><p>Privacy policy</p></div>
+			<div></div>
 			<div></div>
 		</footer>
 	</div>
