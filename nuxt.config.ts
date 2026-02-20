@@ -74,10 +74,10 @@ export default defineNuxtConfig({
 		pageTransition: { name: "page", mode: "out-in" },
 		head: {
 			link: [
-				{ rel: "icon", type: "image/png", href: "/favicon-96x96.png", sizes: "96x96" },
-				{ rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
-				{ rel: "shortcut icon", href: "/favicon.ico" },
-				{ rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" }
+				{ rel: "icon", type: "image/png", href: "favicon-96x96.png", sizes: "96x96" },
+				{ rel: "icon", type: "image/svg+xml", href: "favicon.svg" },
+				{ rel: "shortcut icon", href: "favicon.ico" },
+				{ rel: "apple-touch-icon", sizes: "180x180", href: "apple-touch-icon.png" }
 			],
 			meta: [{ name: "apple-mobile-web-app-title", content: "Scratch" }]
 		}
@@ -120,16 +120,9 @@ export default defineNuxtConfig({
 		quality: 80
 	},
 	runtimeConfig: {
-		unsplashAccessKey: process.env.NUXT_UNSPLASH_ACCESS_KEY,
-		contentfulSpaceId: process.env.CONTENTFUL_SPACE_ID,
-		contentfulAccessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
 		public: {
 			wpBase: process.env.WP_BASE_URL || "http://localhost:3001",
 			apiPrefix: "/portfolio/api/wp",
-			// wpBase: "/portfolio/api/wp",
-			contentfulSpaceId: process.env.CONTENTFUL_SPACE_ID,
-			contentfulAccessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-			unsplashBase: process.env.NUXT_UNSPLASH_BASE || "https://api.unsplash.com",
 			fonts: {
 				selfHosted: false
 			}
@@ -157,7 +150,7 @@ export default defineNuxtConfig({
 		},
 		prerender: {
 			crawlLinks: true,
-			routes: ["/portfolio/"]
+			routes: ["/"]
 		}
 	},
 	content: {},
