@@ -25,16 +25,18 @@
 		caption: string
 		description: string
 	}
-	const { data: page, pending, error } = await useAsyncData(`gallery-${slug}`, async () => {
-    const response = await fetchFromWp<WpPage[]>('gallery', { 
-			query: { 
-				slug: slug,
-				_embed: true 
-			} 
-    })
-		console.log('slug data = ', response)
-		return response?.[0] || null
-	})
+
+	const pageStore = useState<Record<string, any>>('pages', () => ({}))
+
+	const { data: page, pending, error } = await useAsyncData<WpPage | null>(
+		() => `page-${route.params.slug}`,
+		async () => {
+			const res = await fetchFromWp<WpPage[]>('pages', {
+				query: { slug: route.params.slug }
+			})
+			return res[0] ?? null
+		}
+	)
 	const galleryImages = computed(() => {
 		if (!page.value?.acf) return []
 		

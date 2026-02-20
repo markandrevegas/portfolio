@@ -123,7 +123,7 @@ export default defineNuxtConfig({
 		contentfulSpaceId: process.env.CONTENTFUL_SPACE_ID,
 		contentfulAccessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
 		public: {
-			wpBase: process.env.WP_URL || "https://content.local",
+			wpBase: process.env.WP_BASE_URL || "http://localhost:3001",
 			apiPrefix: "/portfolio/api/wp",
 			// wpBase: "/portfolio/api/wp",
 			contentfulSpaceId: process.env.CONTENTFUL_SPACE_ID,

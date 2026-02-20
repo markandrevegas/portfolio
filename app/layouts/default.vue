@@ -7,19 +7,14 @@
 	}
 
 	const menu = useState<MenuItem[]>('global-menu', () => [])
-	const { data, pending, error } = await useAsyncData('menu', () => {
-		// If we're on the server, we MUST use the full URL
-		// If we're on the client, the proxy works with the relative path
-		const baseURL = import.meta.server 
-			? 'https://content.local' 
-			: '/portfolio/api/wp'
-			
-		return $fetch(`${baseURL}/wp-json/wp/v2/menu`, {
-			onRequestError({ error }) {
-				console.error('Fetch Error:', error)
-			}
-		})
-	})
+	const { data, pending, error } = await useAsyncData('menu-' + Date.now(), () => {
+  const config = useRuntimeConfig()
+  const baseURL = config.public.apiPrefix
+
+  return $fetch(baseURL + '/wp-json/wp/v2/menu')
+}, {
+  server: false
+})
 	watch(data, (newData) => {
 		if (newData) {
 			menu.value = newData as MenuItem[]

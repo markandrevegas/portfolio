@@ -17,7 +17,7 @@
 		loading: false
 	})
 	const menu = useState<MenuItem[]>('global-menu')
-	// console.log('menu from global-menu ', menu.value)
+	console.log('menu from global-menu ', menu.value)
 	const config = useRuntimeConfig()
 	const formatPath = (url: string) => {
 		if (!url) return '/'
