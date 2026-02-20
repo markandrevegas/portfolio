@@ -8,7 +8,7 @@
 		--palladian: #eee9df;
 	}
 	body {
-		@apply font-sans text-abyssal bg-palladian dark:bg-slate-900 dark:text-yellow-50/90;
+		@apply bg-palladian font-sans text-abyssal dark:bg-slate-900 dark:text-yellow-50/90;
 	}
 	p {
 		@apply text-sm;
@@ -18,7 +18,7 @@
 @layer components {
 	.menu {
 		li {
-			@apply text-xl relative font-medium text-abyssal transition-colors duration-500;
+			@apply relative text-xl font-medium text-abyssal transition-colors duration-500;
 			letter-spacing: -0.035em;
 		}
 	}
@@ -84,21 +84,21 @@
 		transform: translateY(-100%);
 	}
 	.prose {
-    @apply max-w-none flex flex-col gap-1;
-  }
-  .prose p {
-    @apply my-4 leading-relaxed text-sm;
-  }
-  .prose h2 {
-    @apply font-semibold mt-8 mb-4;
-  }
-  .prose h3 {
-    @apply font-semibold mt-6 mb-3;
-  }
-  .prose ul {
-    @apply list-disc list-inside ml-0;
-  }
-  .prose li {
-    @apply my-2;
-  }
+		@apply flex max-w-none flex-col gap-1;
+	}
+	.prose p {
+		@apply my-4 text-sm leading-relaxed;
+	}
+	.prose h2 {
+		@apply mb-4 mt-8 font-semibold;
+	}
+	.prose h3 {
+		@apply mb-3 mt-6 font-semibold;
+	}
+	.prose ul {
+		@apply ml-0 list-inside list-disc;
+	}
+	.prose li {
+		@apply my-2;
+	}
 }

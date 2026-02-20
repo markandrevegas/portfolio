@@ -17,16 +17,14 @@
 */
 // composables/useWpApi.ts
 export const useWpApi = () => {
-  // Add <T> before the parentheses
-  const config = useRuntimeConfig()
-  
-  const fetchFromWp = <T>(endpoint: string, options?: any) => {
-    const baseURL = import.meta.server
-      ? config.public.wpBase
-      : config.public.apiPrefix
+	// Add <T> before the parentheses
+	const config = useRuntimeConfig()
 
-    return $fetch<T>(`${baseURL}/wp-json/wp/v2/${endpoint}`, options)
-  }
-  
-  return { fetchFromWp }
+	const fetchFromWp = <T>(endpoint: string, options?: any) => {
+		const baseURL = import.meta.server ? config.public.wpBase : config.public.apiPrefix
+
+		return $fetch<T>(`${baseURL}/wp-json/wp/v2/${endpoint}`, options)
+	}
+
+	return { fetchFromWp }
 }

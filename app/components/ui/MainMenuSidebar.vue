@@ -1,43 +1,45 @@
 <script setup lang="ts">
+import { ref } from "vue"
 
-	import { ref } from "vue"
+interface MenuItem {
+	title: string
+	url: string
+}
 
-	interface MenuItem {
-		title: string
-		url: string
-	}
-
-	const props = withDefaults(defineProps<{
+const props = withDefaults(
+	defineProps<{
 		error?: boolean
 		isScrolled?: boolean
 		loading?: boolean
-	}>(), {
+	}>(),
+	{
 		error: false,
 		isScrolled: false,
 		loading: false
-	})
-	const menu = useState<MenuItem[]>('global-menu')
-	console.log('menu from global-menu ', menu.value)
-	const config = useRuntimeConfig()
-	const formatPath = (url: string) => {
-		if (!url) return '/'
-		return url.replace('https://content.local', '').replace(config.public.wpBase, '') || '/'
 	}
-	
-	const isOpen = ref(false)
-	const iconWidth = "2rem"
-	const iconHeight = "2rem"
-	const loadingIconWidth = "2.5rem"
-	const loadingIconHeight = "2.5rem"
+)
+const menu = useState<MenuItem[]>("global-menu")
+console.log("menu from global-menu ", menu.value)
+const config = useRuntimeConfig()
+const formatPath = (url: string) => {
+	if (!url) return "/"
+	return url.replace("https://content.local", "").replace(config.public.wpBase, "") || "/"
+}
 
-	const toggleMenu = () => {
-		isOpen.value = !isOpen.value
+const isOpen = ref(false)
+const iconWidth = "2rem"
+const iconHeight = "2rem"
+const loadingIconWidth = "2.5rem"
+const loadingIconHeight = "2.5rem"
+
+const toggleMenu = () => {
+	isOpen.value = !isOpen.value
+}
+const closeMenu = () => {
+	if (isOpen.value) {
+		isOpen.value = false
 	}
-	const closeMenu = () => {
-		if (isOpen.value) {
-			isOpen.value = false
-		}
-	}
+}
 </script>
 
 <template>
@@ -46,7 +48,7 @@
 			<NuxtLink to="/" class="block" @click="closeMenu">
 				<h1 class="text-xl font-bold">Tailor</h1>
 			</NuxtLink>
-			
+
 			<MenuIcon :is-open="isOpen" @click="toggleMenu" />
 		</header>
 		<!-- Drawer overlay -->
@@ -58,9 +60,7 @@
 				<nav v-if="isOpen" class="fixed right-0 top-[70px] z-50 h-full w-3/4 bg-palladian text-sky-950 transition-transform duration-300">
 					<div class="flex h-full flex-col px-4 pt-16">
 						<div class="flex-1 overflow-y-scroll">
-							<div v-if="error">
-								Error
-							</div>
+							<div v-if="error">Error</div>
 							<div v-if="loading">
 								<Loading :width="loadingIconWidth" :height="loadingIconHeight" />
 							</div>
@@ -70,13 +70,9 @@
 								</li>
 							</ul>
 							<div class="relative my-8" :style="{ '--i': 3 }">
-								<div class="relative h-48 rounded-lg overflow-hidden">
-									<NuxtImg 
-										src="/images/color.jpeg" 
-										alt="Menu Image" 
-										class="w-full h-full object-cover relative z-10"
-									/>
-									<div class="absolute inset-0 z-20 bg-gradient-to-t from-black/80 to-transparent text-white p-4 flex flex-col justify-end">
+								<div class="relative h-48 overflow-hidden rounded-lg">
+									<NuxtImg src="/images/color.jpeg" alt="Menu Image" class="relative z-10 h-full w-full object-cover" />
+									<div class="absolute inset-0 z-20 flex flex-col justify-end bg-gradient-to-t from-black/80 to-transparent p-4 text-white">
 										<p class="font-semibold drop-shadow-md">Featured Image</p>
 										<p class="text-xs drop-shadow-md">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex distinctio illum sit aliquam alias pariatur.</p>
 									</div>
@@ -99,7 +95,9 @@
 .slide-enter-active,
 .slide-leave-active {
 	/* Smooth easing from the video */
-	transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+	transition:
+		transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+		opacity 0.6s ease;
 }
 
 .slide-leave-active {
@@ -117,7 +115,9 @@
 .stagger-item {
 	opacity: 1;
 	transform: translateX(0);
-	transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+	transition:
+		transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+		opacity 0.5s ease;
 }
 
 /* Enter Animation (The "Open" sequence) */
@@ -151,6 +151,12 @@
 }
 
 /* 3. OVERLAY FADE */
-.fade-enter-active, .fade-leave-active { transition: opacity 0.4s ease; }
-.fade-enter-from, .fade-leave-to { opacity: 0; }
+.fade-enter-active,
+.fade-leave-active {
+	transition: opacity 0.4s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+	opacity: 0;
+}
 </style>

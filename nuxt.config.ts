@@ -71,7 +71,7 @@ export default defineNuxtConfig({
 	},
 	app: {
 		baseURL: "/portfolio/",
-		pageTransition: { name: 'page', mode: 'out-in' },
+		pageTransition: { name: "page", mode: "out-in" },
 		head: {
 			link: [
 				{ rel: "icon", type: "image/png", href: "/favicon-96x96.png", sizes: "96x96" },
@@ -137,8 +137,8 @@ export default defineNuxtConfig({
 	},
 	vite: {
 		server: {
-      allowedHosts: ["portfolio.local"]
-    },
+			allowedHosts: ["portfolio.local"]
+		},
 		plugins: [tsconfigPaths()]
 	},
 	nitro: {
@@ -152,13 +152,13 @@ export default defineNuxtConfig({
 				changeOrigin: true,
 				secure: false,
 				// Ensure the /wp-json part is appended correctly
-				rewrite: (path) => path.replace(/^\/portfolio\/api\/wp/, '')
+				rewrite: (path) => path.replace(/^\/portfolio\/api\/wp/, "")
 			}
 		},
 		prerender: {
-      crawlLinks: true,
-      routes: ['/']
-    }
+			crawlLinks: true,
+			routes: ["/"]
+		}
 	},
 	content: {},
 	routeRules: {
