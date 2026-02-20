@@ -71,6 +71,7 @@ export default defineNuxtConfig({
 	},
 	app: {
 		baseURL: "/portfolio/",
+		pageTransition: { name: 'page', mode: 'out-in' },
 		head: {
 			link: [
 				{ rel: "icon", type: "image/png", href: "/favicon-96x96.png", sizes: "96x96" },
@@ -153,7 +154,11 @@ export default defineNuxtConfig({
 				// Ensure the /wp-json part is appended correctly
 				rewrite: (path) => path.replace(/^\/portfolio\/api\/wp/, '')
 			}
-		}
+		},
+		prerender: {
+      crawlLinks: true,
+      routes: ['/']
+    }
 	},
 	content: {},
 	routeRules: {

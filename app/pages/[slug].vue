@@ -7,14 +7,11 @@
 	const loadingIconHeight = "2.5rem"
 	const imageSizes = '100vw'
 
-	const slug = route.params.slug as string
-
 	interface WpPage {
     title: { rendered: string }
     excerpt: { rendered: string }
     acf: { 
 			teaser: string
-			// This allows indexing like acf['image2']
 			[key: string]: any
 		}
 	}
@@ -26,37 +23,60 @@
 		description: string
 	}
 
-	const pageStore = useState<Record<string, any>>('pages', () => ({}))
+	const pageStore = useState<Record<string, WpPage | null>>(
+		'pages-store',
+		() => ({})
+	)
+	console.log('Page store initial state:', pageStore.value)
 
-	const { data: page, pending, error } = await useAsyncData<WpPage | null>(
-		() => `page-${route.params.slug}`,
+	const slug = route.params.slug as string
+		console.log('Current route slug:', slug)
+		
+		const { data: page, pending, error } = await useAsyncData<WpPage | null>(
+		'slug-' + slug,
 		async () => {
-			const res = await fetchFromWp<WpPage[]>('pages', {
-				query: { slug: route.params.slug }
-			})
-			return res[0] ?? null
+			console.log('Fetching page for slug:', slug)
+
+			if (pageStore.value[slug]) {
+				console.log('Found page in store:', pageStore.value[slug])
+				return pageStore.value[slug]
+			}
+
+			try {
+				const res = await fetchFromWp<WpPage[]>('pages', {
+					query: { slug }
+				})
+				const result = res[0] ?? null
+				console.log('Fetched page from WP:', result)
+				pageStore.value[slug] = result
+				return result
+			} catch (err) {
+				console.error('Error fetching page:', err)
+				return null
+			}
 		}
 	)
+
+	console.log('Page reactive data:', page.value)
+
 	const galleryImages = computed(() => {
 		if (!page.value?.acf) return []
 		
 		const acf = page.value.acf
 		return Object.keys(acf)
-		.filter(key => key.startsWith('image')) // Get image, image2, etc.
+		.filter(key => key.startsWith('image'))
 		.sort((a, b) => {
-				// Sort numerically so image10 doesn't come before image2
 				return a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' })
 		})
 		.map(key => acf[key])
-		.filter(img => img && typeof img === 'object' && img.url) // Only keep valid objects
+		.filter(img => img && typeof img === 'object' && img.url)
 	})
 
-	// Helper to clean up WP text
-	const truncateText = (text: string, length: number) => {
-		if (!text) return ''
-		const cleanText = text.replace(/<[^>]*>/g, '')
-		return cleanText.length > length ? cleanText.substring(0, length) + '...' : cleanText
-	}
+	const content = computed(() => {
+		if (!page.value?.acf) return ''
+		console.log('Page content:', page.value.acf.content)
+		return page.value.acf.content ?? ''
+	})
 	useSeoMeta({
 		title: () => page.value?.title?.rendered || 'Loading...',
 		description: () => page.value?.excerpt?.rendered?.replace(/<[^>]*>/g, '') || ''
@@ -73,9 +93,11 @@
       <NuxtLink to="/" class="mt-4 inline-block text-blue-500 underline">Go Home</NuxtLink>
     </div>
 
-    <article v-else class="max-w-4xl mx-auto flex flex-col gap-8">
-      <h1 class="text-4xl tracking-tighter mb-8" v-html="page.title.rendered"></h1>
-      <p>{{ page.acf.teaser }}</p>
+    <article v-else class="max-w-4xl mx-auto flex flex-col">
+			<BackButton><ArrowLeftIcon /><span class="font-semibold">Back</span></BackButton>
+      <h1 class="text-4xl tracking-tighter my-4" v-html="page.title.rendered"></h1>
+      <p>{{ page.acf.excerpt }}</p>
+			<p>{{ content }}</p>
 			<div class="wrapper-grid">
 				<figure v-for="(img, index) in galleryImages" :key="index" class="relative aspect-[4/3] overflow-hidden">
 					<picture>
