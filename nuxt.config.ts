@@ -120,8 +120,10 @@ export default defineNuxtConfig({
 	},
 	runtimeConfig: {
 		public: {
-			wpBase: process.env.WP_BASE_URL || "http://localhost:3001",
-			apiPrefix: "/api/wp",
+			wpBase: process.env.WP_BASE_URL || "https://content.local",
+			apiPrefix: process.env.NODE_ENV === 'development' 
+        ? "/api/wp" 
+        : "https://content.local",
 			fonts: {
 				selfHosted: false
 			}
