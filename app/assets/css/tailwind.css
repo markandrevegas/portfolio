@@ -17,7 +17,7 @@
 
 @layer components {
 	.container {
-		@apply overflow-hidden max-h-[calc(100vh-70px)]
+		@apply max-h-[calc(100vh-70px)]
 	}
 	.menu {
 		li {

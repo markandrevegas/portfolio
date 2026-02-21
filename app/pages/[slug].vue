@@ -89,7 +89,7 @@ useSeoMeta({
 		<div v-if="pending" class="absolute bottom-0 left-0 right-0 top-0 z-50 flex flex-col items-center justify-center bg-white">
 			<Loading :height="loadingIconHeight" :width="loadingIconWidth" />
 		</div>
-		<div v-else-if="page" class="mx-auto flex max-w-4xl flex-col">
+		<div v-else-if="page" class="mx-auto flex max-w-5xl flex-col pb-16">
 			<BackButton><ArrowLeftIcon /><span class="font-semibold">Back</span></BackButton>
 			<article class="flex flex-col md:flex-row md:items-start">
 				<div>
@@ -98,7 +98,6 @@ useSeoMeta({
 				</div>
 				<div class="md:h-screen md:overflow-scroll md:pl-16 md:pb-32">
 					<div v-html="content" class="prose"></div>
-					<div class="h-96 bg-green-100"></div>
 				</div>
 			</article>
 			<div v-if="galleryImages" class="wrapper-grid">
