@@ -83,19 +83,19 @@
 		transform: translateY(-100%);
 	}
 	.prose {
-		@apply flex max-w-none flex-col gap-1;
-	}
-	.prose p {
-		@apply my-4 text-sm leading-relaxed;
+		@apply flex max-w-none flex-col leading-6 text-sm;
 	}
 	.prose h2 {
-		@apply mb-4 mt-8 font-semibold;
+		@apply mb-4 mt-6 font-semibold text-lg;
 	}
 	.prose h3 {
 		@apply mb-3 mt-6 font-semibold;
 	}
 	.prose ul {
-		@apply ml-0 list-inside list-disc;
+		@apply ml-0 list-inside list-disc space-y-1 my-2;
+	}
+	.prose  strong {
+		@apply block mt-4
 	}
 	.prose li {
 		@apply my-2;

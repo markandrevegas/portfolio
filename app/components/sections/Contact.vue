@@ -27,8 +27,8 @@ const closer = computed(() => props.data?.acf?.closer)
 		<div class="wrapper-grid">
 			<div>
 				<h2 class="mb-8 font-bold">{{ header }}</h2>
-				<p>{{ teaser }}</p>
-				<p class="mt-8">{{ closer }}</p>
+				<p class="max-w-96">{{ teaser }}</p>
+				<p class="mt-8 max-w-96">{{ closer }}</p>
 			</div>
 			<div>
 				<h3 class="my-8 font-bold sm:mt-0">{{ altHeader }}</h3>

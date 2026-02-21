@@ -29,7 +29,7 @@ const aboutImage = computed(() => props.data?.acf?.image ?? null)
 				</div>
 			</div>
 			<div class="relative z-10 w-full flex-1 sm:pt-16">
-				<p>{{ teaser }}</p>
+				<p class="max-w-96">{{ teaser }}</p>
 			</div>
 		</div>
 	</div>

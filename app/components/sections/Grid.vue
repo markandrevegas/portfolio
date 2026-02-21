@@ -46,7 +46,7 @@ const images = computed(() => {
 					<h2 class="mb-8 font-bold">{{ title }}</h2>
 				</div>
 				<div>
-					<p>{{ description }}</p>
+					<p class="max-w-96">{{ description }}</p>
 				</div>
 			</div>
 			<div class="wrapper-grid">
@@ -56,7 +56,7 @@ const images = computed(() => {
 						<NuxtImg v-if="img" :src="img.src" :sizes="imgSize" class="h-full w-full object-cover" :alt="img.alt || ''" />
 					</picture>
 					<div class="absolute inset-0 z-20 bg-black/40"></div>
-					<figcaption class="absolute bottom-0 left-0 right-0 z-30 block bg-gradient-to-t from-black/40 p-4 pt-24 text-xs text-white lg:p-8 lg:text-xl">
+					<figcaption class="absolute bottom-0 left-0 right-0 z-30 block bg-gradient-to-t from-black/40 p-4 pt-24 text-xs text-white">
 						<span class="font-semibold">{{ img.alt }}</span
 						><br /><span class="opacity-70">{{ truncateText(img.caption, 48) }}</span>
 					</figcaption>

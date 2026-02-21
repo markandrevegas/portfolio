@@ -26,7 +26,7 @@ const heroImage = computed(() => props.data?.acf?.image ?? null)
 		</div>
 		<div class="z-30 flex h-48 flex-1 flex-col justify-end p-6 md:max-h-64">
 			<h1 class="mb-4 text-4xl font-bold tracking-tighter">{{ header }}</h1>
-			<p class="text-sm">{{ teaser }}</p>
+			<p class="text-sm max-w-96">{{ teaser }}</p>
 		</div>
 		<div class="relative z-10 w-full flex-1 overflow-hidden lg:h-full">
 			<NuxtImg v-if="heroImage" :src="heroImage.url" :sizes="heroSizes" class="md:object-fit md:aspect-4/3 absolute inset-0 h-full w-full object-cover object-center md:object-top" :width="heroImage.width || 1080" :height="heroImage.height || 1618" :alt="heroImage.alt || ''" loading="eager" />
