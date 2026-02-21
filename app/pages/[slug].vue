@@ -25,10 +25,10 @@ interface WpImage {
 }
 
 const pageStore = useState<Record<string, WpPage | null>>("pages-store", () => ({}))
-console.log("Page store initial state:", pageStore.value)
+// console.log("Page store initial state:", pageStore.value)
 
 const slug = route.params.slug as string
-console.log("Current route slug:", slug)
+// console.log("Current route slug:", slug)
 
 const { data: page, pending, error } = await useAsyncData<WpPage>(
 	`page-${slug}`, // Unique key per slug
@@ -44,7 +44,7 @@ const { data: page, pending, error } = await useAsyncData<WpPage>(
 			throw createError({ 
 				statusCode: 404, 
 				statusMessage: 'Page Not Found',
-				fatal: true
+				// fatal: true
 			});
 		}
 
@@ -63,9 +63,9 @@ if (error.value) {
 
 watch(page, (newPage) => {
 	if (!newPage) return
-	console.log("Page refreshed:", newPage.title.rendered)
+	// console.log("Page refreshed:", newPage.title.rendered)
 })
-console.log("Page reactive data:", page.value)
+// console.log("Page reactive data:", page.value)
 
 const galleryImages = computed(() => {
 	const acf = page.value?.acf
@@ -92,8 +92,10 @@ useSeoMeta({
 		<div v-if="pending" class="absolute bottom-0 left-0 right-0 top-0 z-50 flex flex-col items-center justify-center bg-white">
 			<Loading :height="loadingIconHeight" :width="loadingIconWidth" />
 		</div>
-
-		<article v-if="page" class="mx-auto flex max-w-4xl flex-col">
+		<div v-else-if="!page">
+			<h2>404</h2>
+		</div>
+		<article v-else-if="page" class="mx-auto flex max-w-4xl flex-col">
 			<BackButton><ArrowLeftIcon /><span class="font-semibold">Back</span></BackButton>
 			<div class="flex flex-col md:flex-row md:items-center">
 				<div>

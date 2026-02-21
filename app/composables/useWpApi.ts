@@ -6,7 +6,7 @@ export const useWpApi = () => {
       ? config.public.wpBase 
       : config.public.apiPrefix
 		if (import.meta.server) {
-			console.log('--- SERVER SIDE FETCH ---')
+			// console.log('--- SERVER SIDE FETCH ---')
 			console.log('Target URL:', baseUrl + '/wp-json/wp/v2/' + endpoint)
 		}
     try {
@@ -15,12 +15,12 @@ export const useWpApi = () => {
         timeout: 10000 
       })
     } catch (err: any) {
-      console.error('[WP API Error] Failed to fetch: ' + baseUrl + '/wp-json/wp/v2/' + endpoint)
+      // console.error('[WP API Error] Failed to fetch: ' + baseUrl + '/wp-json/wp/v2/' + endpoint)
       
       throw createError({
         statusCode: err.response?.status || 500,
-        statusMessage: `WordPress API Error: ${err.message}`,
-        fatal: true
+        statusMessage:'WordPress API Error: ' + err.message,
+        // fatal: true
       })
     }
   }
