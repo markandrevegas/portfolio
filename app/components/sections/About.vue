@@ -21,8 +21,8 @@ const aboutImage = computed(() => props.data?.acf?.image ?? null)
 			<Loading :width="loadingIconWidth" :height="loadingIconHeight" />
 		</div>
 		<div v-else-if="data" class="wrapper-grid">
+			<h2 class="mb-8 font-bold">{{ header }}</h2>
 			<div>
-				<h2 class="mb-8 font-bold">{{ header }}</h2>
 				<div class="relative z-10 aspect-[16/9] w-full flex-1 overflow-hidden">
 					<NuxtImg v-if="aboutImage" :src="aboutImage.url" :sizes="imageSizes" class="h-full w-full object-cover" :width="aboutImage.width || 1080" :height="aboutImage.height || 1618" :alt="aboutImage.alt || ''" />
 					<div class="absolute inset-0 z-20 bg-black/20"></div>
