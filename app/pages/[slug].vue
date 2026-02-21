@@ -30,7 +30,7 @@ console.log("Page store initial state:", pageStore.value)
 const slug = route.params.slug as string
 console.log("Current route slug:", slug)
 
-const { data: page, pending } = await useAsyncData<WpPage>(
+const { data: page, pending, error } = await useAsyncData<WpPage>(
 	`page-${slug}`, // Unique key per slug
 	async () => {
 		if (pageStore.value[slug]) {
@@ -57,6 +57,9 @@ const { data: page, pending } = await useAsyncData<WpPage>(
 		}
 	}
 )
+if (error.value) {
+  throw createError(error.value)
+}
 
 watch(page, (newPage) => {
 	if (!newPage) return
@@ -90,7 +93,7 @@ useSeoMeta({
 			<Loading :height="loadingIconHeight" :width="loadingIconWidth" />
 		</div>
 
-		<article v-else class="mx-auto flex max-w-4xl flex-col">
+		<article v-if="page" class="mx-auto flex max-w-4xl flex-col">
 			<BackButton><ArrowLeftIcon /><span class="font-semibold">Back</span></BackButton>
 			<div class="flex flex-col md:flex-row md:items-center">
 				<div>
