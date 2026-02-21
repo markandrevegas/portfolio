@@ -70,7 +70,6 @@ export default defineNuxtConfig({
 		app: "app"
 	},
 	app: {
-		baseURL: "/portfolio/",
 		pageTransition: { name: "page", mode: "out-in" },
 		head: {
 			link: [
@@ -122,7 +121,7 @@ export default defineNuxtConfig({
 	runtimeConfig: {
 		public: {
 			wpBase: process.env.WP_BASE_URL || "http://localhost:3001",
-			apiPrefix: "/portfolio/api/wp",
+			apiPrefix: "/api/wp",
 			fonts: {
 				selfHosted: false
 			}
@@ -140,12 +139,12 @@ export default defineNuxtConfig({
 			inline: ["ipx", "ofetch"]
 		},
 		devProxy: {
-			"/portfolio/api/wp": {
+			"/api/wp": {
 				target: "https://content.local",
 				changeOrigin: true,
 				secure: false,
 				// Ensure the /wp-json part is appended correctly
-				rewrite: (path) => path.replace(/^\/portfolio\/api\/wp/, "")
+				rewrite: (path) => path.replace(/^\/api\/wp/, "")
 			}
 		},
 		prerender: {
