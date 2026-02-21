@@ -89,18 +89,19 @@ useSeoMeta({
 		<div v-if="pending" class="absolute bottom-0 left-0 right-0 top-0 z-50 flex flex-col items-center justify-center bg-white">
 			<Loading :height="loadingIconHeight" :width="loadingIconWidth" />
 		</div>
-		<article v-else-if="page" class="mx-auto flex max-w-4xl flex-col">
+		<div v-else-if="page" class="mx-auto flex max-w-4xl flex-col">
 			<BackButton><ArrowLeftIcon /><span class="font-semibold">Back</span></BackButton>
-			<div class="flex flex-col md:flex-row md:items-center">
+			<article class="flex flex-col md:flex-row md:items-start">
 				<div>
 					<h1 class="my-8 text-5xl tracking-tighter" v-html="page?.title.rendered"></h1>
-					<p class="text-lg leading-6">{{ page?.acf.excerpt }}</p>
+					<p class="leading-6">{{ page?.acf.excerpt }}</p>
 				</div>
-				<div class="md:h-screen md:overflow-scroll">
+				<div class="md:h-screen md:overflow-scroll md:pl-16 md:pb-32">
 					<div v-html="content" class="prose"></div>
+					<div class="h-96 bg-green-100"></div>
 				</div>
-			</div>
-			<div class="wrapper-grid">
+			</article>
+			<div v-if="galleryImages" class="wrapper-grid">
 				<figure v-for="(img, index) in galleryImages" :key="index" class="relative aspect-[4/3] overflow-hidden">
 					<picture>
 						<NuxtImg v-if="img" :src="img.url" :sizes="imageSizes" class="h-full w-full object-cover" :width="img.width || 1080" :height="img.height || 1618" :alt="img.alt || ''" />
@@ -112,7 +113,8 @@ useSeoMeta({
 					</figcaption>
 				</figure>
 			</div>
-		</article>
+			<PageFooter :data="page" :isLoading="pending" :hasError="!!error" />
+		</div>
 		<div v-else>
 			<div class="error-container">
 				{{ error }}

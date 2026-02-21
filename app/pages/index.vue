@@ -29,5 +29,6 @@ useSeoMeta({
 		<Grid v-if="homeData?.feature" :data="homeData.feature" :isLoading="pending" :hasError="!!error" class="px-4" />
 		<About v-if="homeData?.bio" :data="homeData.bio" :isLoading="pending" :hasError="!!error" class="px-4" />
 		<Contact v-if="homeData?.contact" :data="homeData.contact" :isLoading="pending" :hasError="!!error" class="px-4" />
+		<PageFooter v-if="homeData?.contact" :data="homeData.contact" :isLoading="pending" :hasError="!!error" class="px-4 pb-4" />
 	</div>
 </template>

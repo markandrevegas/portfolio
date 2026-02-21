@@ -16,6 +16,9 @@
 }
 
 @layer components {
+	.container {
+		@apply overflow-hidden max-h-[calc(100vh-70px)]
+	}
 	.menu {
 		li {
 			@apply relative text-xl font-medium text-abyssal transition-colors duration-500;
@@ -60,26 +63,22 @@
 		color: black;
 		overflow: hidden;
 	}
-
 	.slide-wrap {
 		display: inline-block;
 		position: relative;
 		overflow: hidden;
 		height: 1em;
 	}
-
 	.slide-text {
 		display: block;
 		line-height: 1em;
 		transition: transform 0.4s ease;
 	}
-
 	.slide-text--clone {
 		position: absolute;
 		left: 0;
 		top: 100%;
 	}
-
 	.slide-link:hover .slide-text {
 		transform: translateY(-100%);
 	}
