@@ -44,9 +44,9 @@ const closeMenu = () => {
 
 <template>
 	<div>
-		<header :class="props.isScrolled ? 'bg-abyssal/20 text-white backdrop-blur-lg' : 'text-abyssal backdrop-blur-md'" class="fixed left-0 top-0 z-40 flex h-[70px] w-full items-center justify-between px-6 transition-colors duration-300">
+		<header :class="props.isScrolled ? 'bg-abyssal/20 text-white backdrop-blur-lg' : 'text-abyssal backdrop-blur'" class="fixed left-0 top-0 z-40 flex h-[70px] w-full items-center justify-between px-6 transition-colors duration-300">
 			<NuxtLink to="/" class="block" @click="closeMenu">
-				<h1 class="text-xl font-bold">Tailor</h1>
+				<h1 class="text-xl font-bold">Stitched</h1>
 			</NuxtLink>
 
 			<MenuIcon :is-open="isOpen" @click="toggleMenu" />
@@ -57,7 +57,7 @@ const closeMenu = () => {
 				<div v-if="isOpen" class="fixed inset-0 top-[70px] z-40 bg-black/50" @click="toggleMenu"></div>
 			</Transition>
 			<Transition name="slide">
-				<nav v-if="isOpen" class="fixed right-0 top-[70px] z-50 h-full w-3/4 sm:w-2/3 md:w-1/3 bg-palladian text-sky-950 transition-transform duration-300">
+				<nav v-if="isOpen" class="fixed right-0 top-[70px] z-50 h-full w-3/4 sm:w-2/3 md:w-1/3 bg-palladian text-abyssal transition-transform duration-300">
 					<div class="flex h-full flex-col px-4 pt-16">
 						<div class="flex-1 overflow-y-scroll">
 							<div v-if="error">Error</div>

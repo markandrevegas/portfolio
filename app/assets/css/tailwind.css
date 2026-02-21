@@ -58,6 +58,7 @@
 		opacity: 0;
 	}
 	.slide-link {
+		@apply hover:cursor-pointer;
 		display: inline-block;
 		text-decoration: none;
 		color: black;
@@ -95,7 +96,7 @@
 		@apply ml-0 list-inside list-disc space-y-1 my-2;
 	}
 	.prose  strong {
-		@apply block mt-4
+		@apply block mt-4 font-semibold;
 	}
 	.prose li {
 		@apply my-2;
