@@ -44,7 +44,7 @@ const { data: page, pending, error } = await useAsyncData<WpPage>(
 			throw createError({ 
 				statusCode: 404, 
 				statusMessage: 'Page Not Found',
-				// fatal: true
+				fatal: true
 			});
 		}
 
@@ -57,9 +57,6 @@ const { data: page, pending, error } = await useAsyncData<WpPage>(
 		}
 	}
 )
-if (error.value) {
-  throw createError(error.value)
-}
 
 watch(page, (newPage) => {
 	if (!newPage) return
@@ -92,9 +89,6 @@ useSeoMeta({
 		<div v-if="pending" class="absolute bottom-0 left-0 right-0 top-0 z-50 flex flex-col items-center justify-center bg-white">
 			<Loading :height="loadingIconHeight" :width="loadingIconWidth" />
 		</div>
-		<div v-else-if="!page">
-			<h2>404</h2>
-		</div>
 		<article v-else-if="page" class="mx-auto flex max-w-4xl flex-col">
 			<BackButton><ArrowLeftIcon /><span class="font-semibold">Back</span></BackButton>
 			<div class="flex flex-col md:flex-row md:items-center">
@@ -119,5 +113,13 @@ useSeoMeta({
 				</figure>
 			</div>
 		</article>
+		<div v-else>
+			<div class="error-container">
+				{{ error }}
+				<!--<h1>{{ props.error?.statusCode }}</h1>
+				<p>{{ props.error?.statusMessage }}</p>
+				<button @click="handleError">Go Home</button>-->
+			</div>
+		</div>
 	</div>
 </template>

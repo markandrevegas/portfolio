@@ -8,6 +8,7 @@
 
 <template>
   <div class="error-container">
+    {{ error }}
     <h1>{{ props.error?.statusCode }}</h1>
     <p>{{ props.error?.statusMessage }}</p>
     <button @click="handleError">Go Home</button>
