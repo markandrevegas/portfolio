@@ -90,7 +90,15 @@ useSeoMeta({
 			<Loading :height="loadingIconHeight" :width="loadingIconWidth" />
 		</div>
 		<div v-else-if="page" class="mx-auto flex max-w-5xl flex-col pb-16">
-			<BackButton><ArrowLeftIcon /><span class="font-semibold">Back</span></BackButton>
+			<BackButton>
+				<ArrowLeftIcon />
+				<span class="slide-link">
+					<span class="slide-wrap font-semibold">
+						<span class="slide-text">Back</span>
+						<span class="slide-text slide-text--clone">Back</span>
+					</span>
+				</span>
+			</BackButton>
 			<article class="flex flex-col md:flex-row md:items-start">
 				<div>
 					<h1 class="my-8 text-5xl tracking-tighter" v-html="page?.title.rendered"></h1>
