@@ -85,7 +85,7 @@ useSeoMeta({
 })
 </script>
 <template>
-	<div class="container mx-auto px-6 py-24">
+	<div class="container mx-auto px-4">
 		<div v-if="pending" class="absolute bottom-0 left-0 right-0 top-0 z-50 flex flex-col items-center justify-center bg-white">
 			<Loading :height="loadingIconHeight" :width="loadingIconWidth" />
 		</div>

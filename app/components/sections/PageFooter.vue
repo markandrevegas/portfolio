@@ -17,10 +17,10 @@
 	const twitterURL = computed(() => props.data?.acf?.twitterurl ?? null)
 	const instagramURL = computed(() => props.data?.acf?.instagramurl ?? null)
 	const pinterestURL = computed(() => props.data?.acf?.pinteresturl ?? null)
-	
+
 </script>
 <template>
-	<div>
+	<footer>
 		<div class="wrapper-grid-3 mt-16">
 			<h2 class="text-lg font-semibold">Jeremias Stephens</h2>
 			<div>
@@ -64,10 +64,13 @@
 				</ul>
 			</div>
 		</div>
-		<footer class="wrapper-grid-3 mt-8">
+		<div class="wrapper-grid mt-16 text-xm">
 			<div><p>Copyright © 2026 Jeremias Stephens</p></div>
-			<div></div>
-			<div></div>
-		</footer>
-	</div>
+			<div>
+				<NuxtLink to="/privacy-policy" class="block">
+					<p>Privacy policy</p>
+				</NuxtLink>
+			</div>
+		</div>
+	</footer>
 </template>
