@@ -85,8 +85,8 @@ useSeoMeta({
 })
 </script>
 <template>
-	<div class="px-4">
-		<div v-if="pending" class="absolute bottom-0 left-0 right-0 top-0 z-50 flex flex-col items-center justify-center bg-white">
+	<div class="px-4 relative">
+		<div v-if="pending" class="absolute bottom-0 left-0 right-0 top-0 z-50 flex flex-col items-center justify-center">
 			<Loading :height="loadingIconHeight" :width="loadingIconWidth" />
 		</div>
 		<div v-else-if="page" class="flex flex-col pb-16">
@@ -122,12 +122,22 @@ useSeoMeta({
 			</div>
 			<PageFooter :data="page" :isLoading="pending" :hasError="!!error" />
 		</div>
-		<div v-else>
+		<div v-else class="flex flex-col pb-16">
+			<BackButton>
+				<ArrowLeftIcon />
+				<span class="slide-link">
+					<span class="slide-wrap font-semibold">
+						<span class="slide-text">Back</span>
+						<span class="slide-text slide-text--clone">Back</span>
+					</span>
+				</span>
+			</BackButton>
 			<div class="error-container">
-				{{ error }}
-				<!--<h1>{{ props.error?.statusCode }}</h1>
-				<p>{{ props.error?.statusMessage }}</p>
-				<button @click="handleError">Go Home</button>-->
+				<article class="md:w-1/2">
+					<h1 class="my-8 text-5xl tracking-tighter">{{ error?.statusMessage }}</h1>
+					<p class="leading-6 max-w-96">Like a photo that was never developed, this page might have faded into the dark. Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur odio, excepturi a at sint maxime eveniet assumenda delectus adipisci dolore quae explicabo quidem expedita voluptates aperiam incidunt ipsam consequatur nobis?</p>
+				</article>
+				<div></div>
 			</div>
 		</div>
 	</div>

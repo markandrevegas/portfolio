@@ -7,7 +7,7 @@ export const useWpApi = () => {
       : config.public.apiPrefix
 		if (import.meta.server) {
 			// console.log('--- SERVER SIDE FETCH ---')
-			console.log('Target URL:', baseUrl + '/wp-json/wp/v2/' + endpoint)
+			// console.log('Target URL:', baseUrl + '/wp-json/wp/v2/' + endpoint)
 		}
     try {
       return await $fetch<T>(baseUrl + '/wp-json/wp/v2/' + endpoint, {
@@ -20,7 +20,7 @@ export const useWpApi = () => {
       throw createError({
         statusCode: err.response?.status || 500,
         statusMessage:'WordPress API Error: ' + err.message,
-        // fatal: true
+        fatal: true
       })
     }
   }

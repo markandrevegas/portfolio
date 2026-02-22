@@ -145,7 +145,6 @@ export default defineNuxtConfig({
 				target: "https://content.local",
 				changeOrigin: true,
 				secure: false,
-				// Ensure the /wp-json part is appended correctly
 				rewrite: (path) => path.replace(/^\/api\/wp/, "")
 			}
 		},
