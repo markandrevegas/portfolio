@@ -62,7 +62,7 @@ watch(page, (newPage) => {
 	if (!newPage) return
 	// console.log("Page refreshed:", newPage.title.rendered)
 })
-// console.log("Page reactive data:", page.value)
+console.log("Page reactive data:", page.value)
 
 const galleryImages = computed(() => {
 	const acf = page.value?.acf
@@ -80,8 +80,12 @@ const galleryImages = computed(() => {
 const content = computed(() => page.value?.acf?.content ?? "")
 
 useSeoMeta({
-	title: () => page.value?.title?.rendered || "Loading...",
-	description: () => page.value?.excerpt?.rendered?.replace(/<[^>]*>/g, "") || ""
+	title: () => page.value?.title?.rendered + ' | Portfolio' || "Portfolio",
+	description: () => {
+    const rawDesc = page.value?.acf?.metadescription || "";
+    const cleanDesc = rawDesc.replace(/<[^>]*>/g, "").trim();
+    return cleanDesc || "Explore 3 years of bespoke tailoring and custom alterations. Precision craftsmanship for the perfect fit.";
+  }
 })
 </script>
 <template>
