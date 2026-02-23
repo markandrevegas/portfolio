@@ -9,7 +9,8 @@
 		"preview": "npx serve .output/public",
 		"postinstall": "nuxt prepare",
 		"format": "prettier --write **/*.{vue,ts,css,md}",
-		"start": "node .output/server/index.mjs --hostname portfolio.local NODE_TLS_REJECT_UNAUTHORIZED=0"
+		"start": "node .output/server/index.mjs --hostname portfolio.local NODE_TLS_REJECT_UNAUTHORIZED=0",
+		"export:wp": "node scripts/export-wp.mjs"
 	},
 	"dependencies": {
 		"@nuxt/content": "^3.8.2",
