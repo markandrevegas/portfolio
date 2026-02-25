@@ -11,8 +11,6 @@
 	}
 	const props = defineProps<{
 		data: any
-		isLoading: boolean
-		hasError: boolean
 	}>()
 	const twitterURL = computed(() => props.data?.acf?.twitterurl ?? null)
 	const instagramURL = computed(() => props.data?.acf?.instagramurl ?? null)

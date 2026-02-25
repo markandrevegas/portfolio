@@ -1,11 +1,20 @@
 import { defineNuxtConfig } from "nuxt/config"
 import tsconfigPaths from "vite-tsconfig-paths"
 
-/*if (process.env.NODE_ENV === 'development') {
-  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
-}*/
+import fs from 'fs'
+import path from 'path'
 
-// Extend the NuxtConfig type
+const pagesPath = path.join(process.cwd(), 'public/data/pages.json')
+let routes: string[] = ['/']
+
+try {
+  const pages = JSON.parse(fs.readFileSync(pagesPath, 'utf-8'))
+  routes = ['/', ...pages.map((page: any) => page.slug)]
+} catch (error) {
+  console.warn('Could not load pages.json for prerendering')
+}
+
+
 declare module "nuxt/schema" {
 	interface NuxtConfig {
 		content?: {
@@ -70,6 +79,8 @@ export default defineNuxtConfig({
 		app: "app"
 	},
 	app: {
+    buildAssetsDir: '/_nuxt/',
+    cdnURL: '/portfolio',
 		pageTransition: { name: "page", mode: "out-in" },
 		head: {
 			link: [
@@ -78,19 +89,22 @@ export default defineNuxtConfig({
 				{ rel: "shortcut icon", href: "favicon.ico" },
 				{ rel: "apple-touch-icon", sizes: "180x180", href: "apple-touch-icon.png" }
 			],
-			meta: [{ name: "apple-mobile-web-app-title", content: "Scratch" }]
+			meta: [{ name: "apple-mobile-web-app-title", content: "Portfolio" }]
 		}
 	},
 	compatibilityDate: "2025-07-15",
 	devtools: { enabled: true },
 	css: ["~/assets/css/tailwind.css"],
+	experimental: {
+    inlineSSRStyles: false
+  },
 	components: [
 		{
 			path: "~/components",
 			pathPrefix: false
 		}
 	],
-	modules: ["@nuxtjs/color-mode", "@nuxtjs/tailwindcss", "@nuxt/fonts", "@nuxt/image", "@nuxt/eslint", "@nuxt/icon", "@nuxt/content"],
+	modules: ["@nuxtjs/color-mode", "@nuxtjs/tailwindcss", "@nuxt/fonts", "@nuxt/image", "@nuxt/eslint", "@nuxt/icon"],
 	fonts: {
 		provider: "google",
 		assets: {},
@@ -121,9 +135,6 @@ export default defineNuxtConfig({
 	runtimeConfig: {
 		public: {
 			wpBase: process.env.WP_BASE_URL || "https://content.local",
-			apiPrefix: process.env.NODE_ENV === 'development' 
-        ? "/api/wp" 
-        : "https://content.local",
 			fonts: {
 				selfHosted: false
 			}
@@ -136,7 +147,7 @@ export default defineNuxtConfig({
 		plugins: [tsconfigPaths()]
 	},
 	nitro: {
-		preset: "node-server",
+		preset: "static",
 		externals: {
 			inline: ["ipx", "ofetch"]
 		},
@@ -149,12 +160,11 @@ export default defineNuxtConfig({
 			}
 		},
 		prerender: {
-			crawlLinks: true,
-			routes: ["/"]
-		}
+      routes: routes,
+      crawlLinks: false
+    }
 	},
-	content: {},
-	routeRules: {
-		"/": { ssr: true }
-	}
+	build: {
+    extractCSS: true
+  }
 })

@@ -1,0 +1,253 @@
+[
+  {
+    "id": 108,
+    "date": "2026-02-17T10:41:21",
+    "date_gmt": "2026-02-17T10:41:21",
+    "guid": {
+      "rendered": "https://content.local/?post_type=bio&#038;p=108"
+    },
+    "modified": "2026-02-17T19:49:37",
+    "modified_gmt": "2026-02-17T19:49:37",
+    "slug": "bio",
+    "status": "publish",
+    "type": "bio",
+    "link": "https://content.local/bio/bio/",
+    "title": {
+      "rendered": "About"
+    },
+    "content": {
+      "rendered": "",
+      "protected": false
+    },
+    "author": 1,
+    "featured_media": 0,
+    "menu_order": 0,
+    "template": "",
+    "format": "standard",
+    "meta": {
+      "_acf_changed": true
+    },
+    "class_list": [
+      "post-108",
+      "bio",
+      "type-bio",
+      "status-publish",
+      "format-standard",
+      "hentry"
+    ],
+    "acf": {
+      "title": "About the tailor",
+      "description": "Exploring bespoke craftsmanship, fine materials and contemporary style through detailed case studies and behind-the-seams insights.",
+      "image": {
+        "ID": {
+          "ID": 109,
+          "id": 109,
+          "title": "blackhat",
+          "filename": "blackhat-scaled.jpeg",
+          "filesize": 165752,
+          "url": "https://content.local/wp-content/uploads/2026/02/blackhat-scaled.jpeg",
+          "link": "https://content.local/bio/bio/blackhat/",
+          "alt": "BlackHat",
+          "author": "1",
+          "description": "Exploring bespoke craftsmanship, fine materials and contemporary style through detailed case studies and behind-the-seams insights.",
+          "caption": "Exploring bespoke craftsmanship, fine materials and contemporary style through detailed case studies and behind-the-seams insights.",
+          "name": "blackhat",
+          "status": "inherit",
+          "uploaded_to": 108,
+          "date": "2026-02-17 10:40:24",
+          "modified": "2026-02-17 10:40:54",
+          "menu_order": 0,
+          "mime_type": "image/jpeg",
+          "type": "image",
+          "subtype": "jpeg",
+          "icon": "https://content.local/wp-includes/images/media/default.png",
+          "width": 2560,
+          "height": 1707,
+          "sizes": {
+            "thumbnail": "https://content.local/wp-content/uploads/2026/02/blackhat-150x150.jpeg",
+            "thumbnail-width": 150,
+            "thumbnail-height": 150,
+            "medium": "https://content.local/wp-content/uploads/2026/02/blackhat-300x200.jpeg",
+            "medium-width": 300,
+            "medium-height": 200,
+            "medium_large": "https://content.local/wp-content/uploads/2026/02/blackhat-768x512.jpeg",
+            "medium_large-width": 768,
+            "medium_large-height": 512,
+            "large": "https://content.local/wp-content/uploads/2026/02/blackhat-1024x683.jpeg",
+            "large-width": 1024,
+            "large-height": 683,
+            "1536x1536": "https://content.local/wp-content/uploads/2026/02/blackhat-1536x1024.jpeg",
+            "1536x1536-width": 1536,
+            "1536x1536-height": 1024,
+            "2048x2048": "https://content.local/wp-content/uploads/2026/02/blackhat-2048x1365.jpeg",
+            "2048x2048-width": 2048,
+            "2048x2048-height": 1365
+          }
+        },
+        "id": {
+          "ID": 109,
+          "id": 109,
+          "title": "blackhat",
+          "filename": "blackhat-scaled.jpeg",
+          "filesize": 165752,
+          "url": "https://content.local/wp-content/uploads/2026/02/blackhat-scaled.jpeg",
+          "link": "https://content.local/bio/bio/blackhat/",
+          "alt": "BlackHat",
+          "author": "1",
+          "description": "Exploring bespoke craftsmanship, fine materials and contemporary style through detailed case studies and behind-the-seams insights.",
+          "caption": "Exploring bespoke craftsmanship, fine materials and contemporary style through detailed case studies and behind-the-seams insights.",
+          "name": "blackhat",
+          "status": "inherit",
+          "uploaded_to": 108,
+          "date": "2026-02-17 10:40:24",
+          "modified": "2026-02-17 10:40:54",
+          "menu_order": 0,
+          "mime_type": "image/jpeg",
+          "type": "image",
+          "subtype": "jpeg",
+          "icon": "https://content.local/wp-includes/images/media/default.png",
+          "width": 2560,
+          "height": 1707,
+          "sizes": {
+            "thumbnail": "https://content.local/wp-content/uploads/2026/02/blackhat-150x150.jpeg",
+            "thumbnail-width": 150,
+            "thumbnail-height": 150,
+            "medium": "https://content.local/wp-content/uploads/2026/02/blackhat-300x200.jpeg",
+            "medium-width": 300,
+            "medium-height": 200,
+            "medium_large": "https://content.local/wp-content/uploads/2026/02/blackhat-768x512.jpeg",
+            "medium_large-width": 768,
+            "medium_large-height": 512,
+            "large": "https://content.local/wp-content/uploads/2026/02/blackhat-1024x683.jpeg",
+            "large-width": 1024,
+            "large-height": 683,
+            "1536x1536": "https://content.local/wp-content/uploads/2026/02/blackhat-1536x1024.jpeg",
+            "1536x1536-width": 1536,
+            "1536x1536-height": 1024,
+            "2048x2048": "https://content.local/wp-content/uploads/2026/02/blackhat-2048x1365.jpeg",
+            "2048x2048-width": 2048,
+            "2048x2048-height": 1365
+          }
+        },
+        "title": "blackhat",
+        "filename": "blackhat-scaled.jpeg",
+        "filesize": false,
+        "url": "https://content.local/wp-content/uploads/2026/02/blackhat-scaled.jpeg",
+        "link": "https://content.local/bio/bio/blackhat/",
+        "alt": "BlackHat",
+        "author": false,
+        "description": "Exploring bespoke craftsmanship, fine materials and contemporary style through detailed case studies and behind-the-seams insights.",
+        "caption": "Exploring bespoke craftsmanship, fine materials and contemporary style through detailed case studies and behind-the-seams insights.",
+        "name": "blackhat",
+        "status": "inherit",
+        "uploaded_to": false,
+        "date": "2026-02-17 10:40:24",
+        "modified": "2026-02-17 10:40:54",
+        "menu_order": false,
+        "mime_type": "image/jpeg",
+        "type": "image",
+        "subtype": "jpeg",
+        "icon": "https://content.local/wp-includes/images/media/default.png",
+        "width": false,
+        "height": false,
+        "sizes": {
+          "thumbnail": "https://content.local/wp-content/uploads/2026/02/blackhat-150x150.jpeg",
+          "thumbnail-width": 150,
+          "thumbnail-height": 150,
+          "medium": "https://content.local/wp-content/uploads/2026/02/blackhat-300x200.jpeg",
+          "medium-width": 300,
+          "medium-height": 200,
+          "medium_large": "https://content.local/wp-content/uploads/2026/02/blackhat-768x512.jpeg",
+          "medium_large-width": 768,
+          "medium_large-height": 512,
+          "large": "https://content.local/wp-content/uploads/2026/02/blackhat-1024x683.jpeg",
+          "large-width": 1024,
+          "large-height": 683,
+          "1536x1536": "https://content.local/wp-content/uploads/2026/02/blackhat-1536x1024.jpeg",
+          "1536x1536-width": 1536,
+          "1536x1536-height": 1024,
+          "2048x2048": "https://content.local/wp-content/uploads/2026/02/blackhat-2048x1365.jpeg",
+          "2048x2048-width": 2048,
+          "2048x2048-height": 1365
+        }
+      }
+    },
+    "has_blocks": false,
+    "block_data": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://content.local/wp-json/wp/v2/bio/108",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://content.local/wp-json/wp/v2/bio"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://content.local/wp-json/wp/v2/types/bio"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://content.local/wp-json/wp/v2/users/1"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://content.local/wp-json/wp/v2/media?parent=108"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    },
+    "_embedded": {
+      "author": [
+        {
+          "id": 1,
+          "name": "admin",
+          "url": "https://content.local",
+          "description": "",
+          "link": "https://content.local/author/admin/",
+          "slug": "admin",
+          "avatar_urls": {
+            "24": "https://secure.gravatar.com/avatar/09d676315600f8ecb3fd074b45c964506807c4702b834c1d2b94861e47f47c17?s=24&d=mm&r=g",
+            "48": "https://secure.gravatar.com/avatar/09d676315600f8ecb3fd074b45c964506807c4702b834c1d2b94861e47f47c17?s=48&d=mm&r=g",
+            "96": "https://secure.gravatar.com/avatar/09d676315600f8ecb3fd074b45c964506807c4702b834c1d2b94861e47f47c17?s=96&d=mm&r=g"
+          },
+          "acf": [],
+          "_links": {
+            "self": [
+              {
+                "href": "https://content.local/wp-json/wp/v2/users/1",
+                "targetHints": {
+                  "allow": [
+                    "GET"
+                  ]
+                }
+              }
+            ],
+            "collection": [
+              {
+                "href": "https://content.local/wp-json/wp/v2/users"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

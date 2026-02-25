@@ -3,7 +3,6 @@ import { computed } from "vue"
 
 const props = defineProps<{
 	data: any
-	isLoading: boolean
 	hasError: boolean
 }>()
 
@@ -21,9 +20,9 @@ const closer = computed(() => props.data?.acf?.closer)
 </script>
 <template>
 	<div class="wrapper">
-		<div v-if="isLoading" class="absolute bottom-0 left-0 right-0 top-0 z-50 flex flex-col items-center justify-center bg-white">
+		<!--<div v-if="isLoading" class="absolute bottom-0 left-0 right-0 top-0 z-50 flex flex-col items-center justify-center bg-white">
 			<Loading :width="loadingIconWidth" :height="loadingIconHeight" />
-		</div>
+		</div>-->
 		<div class="wrapper-grid">
 			<div>
 				<h2 class="mb-8 font-bold">{{ header }}</h2>

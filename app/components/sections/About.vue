@@ -3,13 +3,12 @@ import { computed } from "vue"
 
 const props = defineProps<{
 	data: any
-	isLoading: boolean
 	hasError: boolean
 }>()
 
 const imageSizes = "100vw"
-const loadingIconWidth = "2.5rem"
-const loadingIconHeight = "2.5rem"
+// const loadingIconWidth = "2.5rem"
+// const loadingIconHeight = "2.5rem"
 
 const header = computed(() => props.data?.acf?.title ?? "Default Header")
 const teaser = computed(() => props.data?.acf?.description ?? "Default teaser text.")
@@ -17,10 +16,10 @@ const aboutImage = computed(() => props.data?.acf?.image ?? null)
 </script>
 <template>
 	<div class="wrapper">
-		<div v-if="isLoading" class="absolute bottom-0 left-0 right-0 top-0 z-50 flex flex-col items-center justify-center bg-white">
+		<!--<div v-if="isLoading" class="absolute bottom-0 left-0 right-0 top-0 z-50 flex flex-col items-center justify-center bg-white">
 			<Loading :width="loadingIconWidth" :height="loadingIconHeight" />
-		</div>
-		<div v-else-if="data" class="wrapper-grid">
+		</div>-->
+		<div class="wrapper-grid">
 			<h2 class="mb-8 font-bold">{{ header }}</h2>
 			<div>
 				<div class="relative z-10 aspect-[16/9] w-full flex-1 overflow-hidden">

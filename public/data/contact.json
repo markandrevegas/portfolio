@@ -1,0 +1,83 @@
+[
+  {
+    "id": 119,
+    "date": "2026-02-17T20:16:19",
+    "date_gmt": "2026-02-17T20:16:19",
+    "guid": {
+      "rendered": "https://content.local/?post_type=contact&#038;p=119"
+    },
+    "modified": "2026-02-18T20:05:38",
+    "modified_gmt": "2026-02-18T20:05:38",
+    "slug": "contactinfo",
+    "status": "publish",
+    "type": "contact",
+    "link": "https://content.local/contact/contactinfo/",
+    "title": {
+      "rendered": "ContactInfo"
+    },
+    "content": {
+      "rendered": "",
+      "protected": false
+    },
+    "featured_media": 0,
+    "template": "",
+    "meta": {
+      "_acf_changed": true
+    },
+    "class_list": [
+      "post-119",
+      "contact",
+      "type-contact",
+      "status-publish",
+      "hentry"
+    ],
+    "acf": {
+      "title": "Get in touch",
+      "teaser": "Have a question or a project that needs a creative touch? I’m currently accepting new work and would love to connect. Get in touch using the form below, and I’ll get back to you as soon as possible.",
+      "contectheader": "Contact Information",
+      "instagramurl": "https://www.instagram.com/stories/jeremiaswstephens/?hl=en",
+      "twitterurl": "https://x.com/markandrevega",
+      "pinteresturl": "https://dk.pinterest.com/markandre/fashion-portfolio-layout/",
+      "homeaddress": "123 Example Street, City, Country",
+      "personalemail": "markandevega@me.com",
+      "personalphone": "53540371",
+      "closer": "Feel free to reach out for collaborations, inquiries, or just to say hello"
+    },
+    "has_blocks": false,
+    "block_data": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://content.local/wp-json/wp/v2/contact/119",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://content.local/wp-json/wp/v2/contact"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://content.local/wp-json/wp/v2/types/contact"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://content.local/wp-json/wp/v2/media?parent=119"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  }
+]

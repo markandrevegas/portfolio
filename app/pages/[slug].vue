@@ -1,99 +1,73 @@
-<!--pages/[slug].vue-->
 <script setup lang="ts">
 const route = useRoute()
-const { fetchFromWp } = useWpApi()
-const nuxtApp = useNuxtApp()
-
-const loadingIconWidth = "2.5rem"
-const loadingIconHeight = "2.5rem"
-const imageSizes = "100vw"
+const slug = route.params.slug as string
 
 interface WpPage {
-	title: { rendered: string }
-	excerpt: { rendered: string }
-	acf: {
-		teaser: string
-		[key: string]: any
-	}
-}
-interface WpImage {
-	url: string
-	alt: string
-	title: string
-	caption: string
-	description: string
+  title: { rendered: string }
+  excerpt: { rendered: string }
+  slug: string
+  acf: {
+    teaser: string
+    [key: string]: any
+  }
 }
 
-const pageStore = useState<Record<string, WpPage | null>>("pages-store", () => ({}))
-// console.log("Page store initial state:", pageStore.value)
-
-const slug = route.params.slug as string
-// console.log("Current route slug:", slug)
-
-const { data: page, pending, error } = await useAsyncData<WpPage>(
-	`page-${slug}`, // Unique key per slug
-	async () => {
-		if (pageStore.value[slug]) {
-			return pageStore.value[slug]
-		}
-
-		const res = await fetchFromWp<WpPage[]>("pages", { query: { slug } })
-		const result = res[0]
-
-		if (!result) {
-			throw createError({ 
-				statusCode: 404, 
-				statusMessage: 'Page Not Found',
-				fatal: true
-			});
-		}
-
-		pageStore.value[slug] = result
-		return result
-	},
-	{
-		getCachedData: (key) => {
-			return nuxtApp.payload.data[key] || pageStore.value[slug]
-		}
-	}
-)
-
-watch(page, (newPage) => {
-	if (!newPage) return
-	// console.log("Page refreshed:", newPage.title.rendered)
+const { data: page } = await useAsyncData(`page-${slug}`, async () => {
+  let pages: WpPage[]
+  
+  if (import.meta.server) {
+    const { readFileSync } = await import('fs')
+    const { join } = await import('path')
+    
+    const pagesPath = join(process.cwd(), 'public/data/pages.json')
+    pages = JSON.parse(readFileSync(pagesPath, 'utf-8'))
+  } else {
+    // Client-side: fetch from public directory
+    pages = await $fetch('/data/pages.json')
+  }
+  
+  const result = pages.find(p => p.slug === slug)
+  
+  if (!result) {
+    throw createError({ 
+      statusCode: 404, 
+      statusMessage: 'Page Not Found',
+      fatal: true
+    })
+  }
+  
+  return result
 })
-console.log("Page reactive data:", page.value)
 
+const imageSizes = "100vw"
 const galleryImages = computed(() => {
-	const acf = page.value?.acf
-	if (!acf) return []
+  const acf = page.value?.acf
+  if (!acf) return []
 
-	return Object.keys(acf)
-		.filter((key) => key.startsWith("image"))
-		.sort((a, b) => {
-			return a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" })
-		})
-		.map((key) => acf[key])
-		.filter((img) => img && typeof img === "object" && img.url)
+  return Object.keys(acf)
+    .filter((key) => key.startsWith("image"))
+    .sort((a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" }))
+    .map((key) => acf[key])
+    .filter((img) => img && typeof img === "object" && img.url)
 })
 
 const content = computed(() => page.value?.acf?.content ?? "")
 
 useSeoMeta({
-	title: () => page.value?.title?.rendered + ' | Portfolio' || "Portfolio",
-	description: () => {
-    const rawDesc = page.value?.acf?.metadescription || "";
-    const cleanDesc = rawDesc.replace(/<[^>]*>/g, "").trim();
-    return cleanDesc || "Explore 3 years of bespoke tailoring and custom alterations. Precision craftsmanship for the perfect fit.";
+  title: () => page.value?.title?.rendered + ' | Portfolio' || "Portfolio",
+  description: () => {
+    const rawDesc = page.value?.acf?.metadescription || ""
+    const cleanDesc = rawDesc.replace(/<[^>]*>/g, "").trim()
+    return cleanDesc || "Explore 3 years of bespoke tailoring and custom alterations."
   }
 })
 </script>
 <template>
 	<div class="px-4 relative">
-		<div v-if="pending" class="absolute bottom-0 left-0 right-0 top-0 z-50 flex flex-col items-center justify-center">
+		<!--<div v-if="pending" class="absolute bottom-0 left-0 right-0 top-0 z-50 flex flex-col items-center justify-center">
 			<Loading :height="loadingIconHeight" :width="loadingIconWidth" />
-		</div>
-		<div v-else-if="page" class="flex flex-col pb-16">
+		</div>-->
+		<div v-if="page" class="flex flex-col pb-16">
 			<BackButton>
 				<ArrowLeftIcon />
 				<span class="slide-link">
@@ -124,7 +98,7 @@ useSeoMeta({
 					</figcaption>
 				</figure>
 			</div>
-			<PageFooter :data="page" :isLoading="pending" :hasError="!!error" />
+			<PageFooter :data="page" />
 		</div>
 		<div v-else class="flex flex-col pb-16">
 			<BackButton>
@@ -136,13 +110,13 @@ useSeoMeta({
 					</span>
 				</span>
 			</BackButton>
-			<div class="error-container">
+			<!--<div class="error-container">
 				<article class="md:w-1/2">
 					<h1 class="my-8 text-5xl tracking-tighter">{{ error?.statusMessage }}</h1>
 					<p class="leading-6 max-w-96">Like a photo that was never developed, this page might have faded into the dark. Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur odio, excepturi a at sint maxime eveniet assumenda delectus adipisci dolore quae explicabo quidem expedita voluptates aperiam incidunt ipsam consequatur nobis?</p>
 				</article>
 				<div></div>
-			</div>
+			</div>-->
 		</div>
 	</div>
 </template>

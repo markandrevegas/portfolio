@@ -1,34 +1,51 @@
 <script setup lang="ts">
-const { fetchFromWp } = useWpApi()
+const { data: homeData } = await useAsyncData('home-data', async () => {
+  if (process.server) {
+    const { readFileSync } = await import('fs')
+    const { join } = await import('path')
+    
+    const dataDir = join(process.cwd(), 'public/data')
+    
+    const heroData = JSON.parse(readFileSync(join(dataDir, 'hero.json'), 'utf-8'))
+    const bioData = JSON.parse(readFileSync(join(dataDir, 'bio.json'), 'utf-8'))
+    const contactData = JSON.parse(readFileSync(join(dataDir, 'contact.json'), 'utf-8'))
+    const featureData = JSON.parse(readFileSync(join(dataDir, 'feature.json'), 'utf-8'))
+    
+    return {
+      hero: Array.isArray(heroData) && heroData.length > 0 ? heroData[0] : null,
+      bio: Array.isArray(bioData) && bioData.length > 0 ? bioData[0] : null,
+      contact: Array.isArray(contactData) && contactData.length > 0 ? contactData[0] : null,
+      feature: Array.isArray(featureData) && featureData.length > 0 ? featureData[0] : null
+    }
+  } else {
+    // Client-side: fetch from public directory
+    const [heroData, bioData, contactData, featureData] = await Promise.all([
+      $fetch('/data/hero.json'),
+      $fetch('/data/bio.json'),
+      $fetch('/data/contact.json'),
+      $fetch('/data/feature.json')
+    ])
+    
+    return {
+      hero: Array.isArray(heroData) && heroData.length > 0 ? heroData[0] : null,
+      bio: Array.isArray(bioData) && bioData.length > 0 ? bioData[0] : null,
+      contact: Array.isArray(contactData) && contactData.length > 0 ? contactData[0] : null,
+      feature: Array.isArray(featureData) && featureData.length > 0 ? featureData[0] : null
+    }
+  }
+})
 
-// Single source of truth for the Home Page
-const {
-	data: homeData,
-	pending,
-	error
-} = await useAsyncData(
-	"index",
-	async () => {
-		const [hero, bio, contact, feature] = (await Promise.all([fetchFromWp("hero", { query: { slug: "moments-captured-stories-untold", _embed: true } }), fetchFromWp("bio", { query: { slug: "bio", _embed: true } }), fetchFromWp("contact", { query: { slug: "contactinfo", _embed: true } }), fetchFromWp("feature", { query: { slug: "latest-designs", _embed: true } })])) as [any[], any[], any[], any[]]
-		// console.log(contact)
-		return { hero: hero[0], bio: bio[0], contact: contact[0], feature: feature[0] }
-	},
-	{
-		server: false,
-		lazy: false
-	}
-)
 useSeoMeta({
-	title: () => "Tailor | Portfolio of JWS",
-	description: () => ""
+  title: () => "Tailor | Portfolio of JWS",
+  description: () => ""
 })
 </script>
 <template>
 	<div class="flex h-screen flex-1 flex-col overflow-auto">
-		<Hero v-if="homeData?.hero" :data="homeData.hero" :isLoading="pending" :hasError="!!error" />
-		<Grid v-if="homeData?.feature" :data="homeData.feature" :isLoading="pending" :hasError="!!error" class="px-4" />
-		<About v-if="homeData?.bio" :data="homeData.bio" :isLoading="pending" :hasError="!!error" class="px-4" />
-		<Contact v-if="homeData?.contact" :data="homeData.contact" :isLoading="pending" :hasError="!!error" class="px-4" />
-		<PageFooter v-if="homeData?.contact" :data="homeData.contact" :isLoading="pending" :hasError="!!error" class="px-4 pb-4" />
+		<Hero v-if="homeData?.hero" :data="homeData.hero" :hasError="false" />
+		<Grid v-if="homeData?.feature" :data="homeData.feature" :hasError="false" class="px-4" />
+		<About v-if="homeData?.bio" :data="homeData.bio" :hasError="false" class="px-4" />
+		<Contact v-if="homeData?.contact" :data="homeData.contact" :hasError="false" class="px-4" />
+		<PageFooter v-if="homeData?.contact" :data="homeData.contact" :hasError="false" class="px-4 pb-4" />
 	</div>
 </template>

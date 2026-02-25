@@ -9,10 +9,15 @@
 		"preview": "npx serve .output/public",
 		"postinstall": "nuxt prepare",
 		"format": "prettier --write **/*.{vue,ts,css,md}",
-		"start": "node .output/server/index.mjs --hostname portfolio.local NODE_TLS_REJECT_UNAUTHORIZED=0"
+		"start": "node .output/server/index.mjs --hostname portfolio.local NODE_TLS_REJECT_UNAUTHORIZED=0",
+		"generate:menu": "NODE_TLS_REJECT_UNAUTHORIZED=0 node scripts/generate-menu.js",
+		"generate:pages": "NODE_TLS_REJECT_UNAUTHORIZED=0 node scripts/scrape-page-types.js",
+		"build:data": "bun generate:menu && bun download:images && bun rewrite:images && bun generate:pages",
+		"prerender": "bun build:data && nuxt generate",
+		"download:images": "NODE_TLS_REJECT_UNAUTHORIZED=0 node scripts/download-images.js",
+		"rewrite:images": "NODE_TLS_REJECT_UNAUTHORIZED=0 node scripts/rewrite-image-urls.js"
 	},
 	"dependencies": {
-		"@nuxt/content": "^3.8.2",
 		"@nuxt/eslint": "1.8.0",
 		"@nuxt/fonts": "0.11.4",
 		"@nuxt/icon": "1.15.0",

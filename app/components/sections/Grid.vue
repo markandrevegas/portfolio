@@ -3,7 +3,6 @@ import { computed } from "vue"
 
 const props = defineProps<{
 	data: any
-	isLoading: boolean
 	hasError: boolean
 }>()
 
@@ -54,10 +53,10 @@ function closeModal() {
 </script>
 <template>
 	<div class="flex flex-1 flex-col">
-		<div v-if="isLoading" class="absolute bottom-0 left-0 right-0 top-0 z-50 flex flex-col items-center justify-center bg-white">
+		<!--<div v-if="isLoading" class="absolute bottom-0 left-0 right-0 top-0 z-50 flex flex-col items-center justify-center bg-white">
 			<Loading :width="loadingIconWidth" :height="loadingIconHeight" />
-		</div>
-		<div v-if="hasError && !isLoading" class="absolute inset-0 z-40 flex items-center justify-center bg-red-50/50 p-6 text-center text-red-600">
+		</div>-->
+		<div v-if="hasError" class="absolute inset-0 z-40 flex items-center justify-center bg-red-50/50 p-6 text-center text-red-600">
 			<p>Failed to load content. Please check back later.</p>
 		</div>
 		<div class="wrapper">

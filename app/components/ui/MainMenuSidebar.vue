@@ -18,13 +18,7 @@ const props = withDefaults(
 		loading: false
 	}
 )
-const menu = useState<MenuItem[]>("global-menu")
-console.log("menu from global-menu ", menu.value)
-const config = useRuntimeConfig()
-const formatPath = (url: string) => {
-	if (!url) return "/"
-	return url.replace("https://content.local", "").replace(config.public.wpBase, "") || "/"
-}
+const { data: menuItems } = await useFetch<MenuItem[]>('/data/menu.json')
 
 const isOpen = ref(false)
 const iconWidth = "2rem"
@@ -65,8 +59,8 @@ const closeMenu = () => {
 								<Loading :width="loadingIconWidth" :height="loadingIconHeight" />
 							</div>
 							<ul class="menu">
-								<li v-for="(item, index) in menu" :key="item.url" :style="{ '--i': index }" class="stagger-item">
-									<NuxtLink :to="formatPath(item.url)" @click="toggleMenu" class="block">{{ item.title }}</NuxtLink>
+								<li v-for="(item, index) in menuItems" :key="item.url" :style="{ '--i': index }" class="stagger-item">
+									<NuxtLink :to="item.url" @click="toggleMenu" class="block">{{ item.title }}</NuxtLink>
 								</li>
 							</ul>
 							<div class="relative my-8" :style="{ '--i': 3 }">
