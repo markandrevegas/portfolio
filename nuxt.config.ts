@@ -75,9 +75,6 @@ declare module "nuxt/schema" {
 }
 
 export default defineNuxtConfig({
-	dir: {
-		app: "app"
-	},
 	app: {
 		baseURL: '/portfolio/',
 		pageTransition: { name: "page", mode: "out-in" },
