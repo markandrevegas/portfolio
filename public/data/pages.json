@@ -113,7 +113,7 @@
         {
           "id": 1,
           "name": "admin",
-          "url": "https://content.local",
+          "url": "/images/",
           "description": "",
           "link": "https://content.local/author/admin/",
           "slug": "admin",
@@ -258,7 +258,7 @@
         {
           "id": 1,
           "name": "admin",
-          "url": "https://content.local",
+          "url": "/images/",
           "description": "",
           "link": "https://content.local/author/admin/",
           "slug": "admin",
@@ -403,7 +403,7 @@
         {
           "id": 1,
           "name": "admin",
-          "url": "https://content.local",
+          "url": "/images/",
           "description": "",
           "link": "https://content.local/author/admin/",
           "slug": "admin",

@@ -12,7 +12,7 @@
 		"start": "node .output/server/index.mjs --hostname portfolio.local NODE_TLS_REJECT_UNAUTHORIZED=0",
 		"generate:menu": "NODE_TLS_REJECT_UNAUTHORIZED=0 node scripts/generate-menu.js",
 		"generate:pages": "NODE_TLS_REJECT_UNAUTHORIZED=0 node scripts/scrape-page-types.js",
-		"build:data": "bun generate:menu && bun download:images && bun rewrite:images && bun generate:pages",
+		"build:data": "bun run generate:pages && bun run download:images && bun run rewrite:images && bun run generate:menu",
 		"prerender": "bun build:data && nuxt generate",
 		"download:images": "NODE_TLS_REJECT_UNAUTHORIZED=0 node scripts/download-images.js",
 		"rewrite:images": "NODE_TLS_REJECT_UNAUTHORIZED=0 node scripts/rewrite-image-urls.js"
