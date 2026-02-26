@@ -80,7 +80,6 @@ export default defineNuxtConfig({
 	},
 	app: {
 		baseURL: '/portfolio/',
-    buildAssetsDir: '/_nuxt/',
 		pageTransition: { name: "page", mode: "out-in" },
 		head: {
 			link: [
