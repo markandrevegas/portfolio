@@ -1,0 +1,253 @@
+[
+  {
+    "id": 96,
+    "date": "2026-02-17T08:07:25",
+    "date_gmt": "2026-02-17T08:07:25",
+    "guid": {
+      "rendered": "https://content.local/?post_type=hero&#038;p=96"
+    },
+    "modified": "2026-02-18T21:44:53",
+    "modified_gmt": "2026-02-18T21:44:53",
+    "slug": "moments-captured-stories-untold",
+    "status": "publish",
+    "type": "hero",
+    "link": "https://content.local/hero/moments-captured-stories-untold/",
+    "title": {
+      "rendered": "Moments captured, stories untold."
+    },
+    "content": {
+      "rendered": "",
+      "protected": false
+    },
+    "author": 1,
+    "featured_media": 0,
+    "menu_order": 0,
+    "template": "",
+    "format": "standard",
+    "meta": {
+      "_acf_changed": true
+    },
+    "class_list": [
+      "post-96",
+      "hero",
+      "type-hero",
+      "status-publish",
+      "format-standard",
+      "hentry"
+    ],
+    "acf": {
+      "image": {
+        "ID": {
+          "ID": 159,
+          "id": 159,
+          "title": "DressForms",
+          "filename": "graphe-tween-AXqkhXom-K8-unsplash-scaled.jpg",
+          "filesize": 181943,
+          "url": "/images/graphe-tween-AXqkhXom-K8-unsplash-scaled.jpg",
+          "link": "https://content.local/feature/latest-designs/graphe-tween-axqkhxom-k8-unsplash/",
+          "alt": "DressForms",
+          "author": "1",
+          "description": "",
+          "caption": "Black dre4ssforms in studio",
+          "name": "graphe-tween-axqkhxom-k8-unsplash",
+          "status": "inherit",
+          "uploaded_to": 70,
+          "date": "2026-02-18 20:57:43",
+          "modified": "2026-02-18 20:58:15",
+          "menu_order": 0,
+          "mime_type": "image/jpeg",
+          "type": "image",
+          "subtype": "jpeg",
+          "icon": "https://content.local/wp-includes/images/media/default.png",
+          "width": 2560,
+          "height": 1707,
+          "sizes": {
+            "thumbnail": "https://content.local/wp-content/uploads/2026/02/graphe-tween-AXqkhXom-K8-unsplash-150x150.jpg",
+            "thumbnail-width": 150,
+            "thumbnail-height": 150,
+            "medium": "https://content.local/wp-content/uploads/2026/02/graphe-tween-AXqkhXom-K8-unsplash-300x200.jpg",
+            "medium-width": 300,
+            "medium-height": 200,
+            "medium_large": "https://content.local/wp-content/uploads/2026/02/graphe-tween-AXqkhXom-K8-unsplash-768x512.jpg",
+            "medium_large-width": 768,
+            "medium_large-height": 512,
+            "large": "https://content.local/wp-content/uploads/2026/02/graphe-tween-AXqkhXom-K8-unsplash-1024x683.jpg",
+            "large-width": 1024,
+            "large-height": 683,
+            "1536x1536": "https://content.local/wp-content/uploads/2026/02/graphe-tween-AXqkhXom-K8-unsplash-1536x1024.jpg",
+            "1536x1536-width": 1536,
+            "1536x1536-height": 1024,
+            "2048x2048": "https://content.local/wp-content/uploads/2026/02/graphe-tween-AXqkhXom-K8-unsplash-2048x1365.jpg",
+            "2048x2048-width": 2048,
+            "2048x2048-height": 1365
+          }
+        },
+        "id": {
+          "ID": 159,
+          "id": 159,
+          "title": "DressForms",
+          "filename": "graphe-tween-AXqkhXom-K8-unsplash-scaled.jpg",
+          "filesize": 181943,
+          "url": "/images/graphe-tween-AXqkhXom-K8-unsplash-scaled.jpg",
+          "link": "https://content.local/feature/latest-designs/graphe-tween-axqkhxom-k8-unsplash/",
+          "alt": "DressForms",
+          "author": "1",
+          "description": "",
+          "caption": "Black dre4ssforms in studio",
+          "name": "graphe-tween-axqkhxom-k8-unsplash",
+          "status": "inherit",
+          "uploaded_to": 70,
+          "date": "2026-02-18 20:57:43",
+          "modified": "2026-02-18 20:58:15",
+          "menu_order": 0,
+          "mime_type": "image/jpeg",
+          "type": "image",
+          "subtype": "jpeg",
+          "icon": "https://content.local/wp-includes/images/media/default.png",
+          "width": 2560,
+          "height": 1707,
+          "sizes": {
+            "thumbnail": "https://content.local/wp-content/uploads/2026/02/graphe-tween-AXqkhXom-K8-unsplash-150x150.jpg",
+            "thumbnail-width": 150,
+            "thumbnail-height": 150,
+            "medium": "https://content.local/wp-content/uploads/2026/02/graphe-tween-AXqkhXom-K8-unsplash-300x200.jpg",
+            "medium-width": 300,
+            "medium-height": 200,
+            "medium_large": "https://content.local/wp-content/uploads/2026/02/graphe-tween-AXqkhXom-K8-unsplash-768x512.jpg",
+            "medium_large-width": 768,
+            "medium_large-height": 512,
+            "large": "https://content.local/wp-content/uploads/2026/02/graphe-tween-AXqkhXom-K8-unsplash-1024x683.jpg",
+            "large-width": 1024,
+            "large-height": 683,
+            "1536x1536": "https://content.local/wp-content/uploads/2026/02/graphe-tween-AXqkhXom-K8-unsplash-1536x1024.jpg",
+            "1536x1536-width": 1536,
+            "1536x1536-height": 1024,
+            "2048x2048": "https://content.local/wp-content/uploads/2026/02/graphe-tween-AXqkhXom-K8-unsplash-2048x1365.jpg",
+            "2048x2048-width": 2048,
+            "2048x2048-height": 1365
+          }
+        },
+        "title": "DressForms",
+        "filename": "graphe-tween-AXqkhXom-K8-unsplash-scaled.jpg",
+        "filesize": false,
+        "url": "/images/graphe-tween-AXqkhXom-K8-unsplash-scaled.jpg",
+        "link": "https://content.local/feature/latest-designs/graphe-tween-axqkhxom-k8-unsplash/",
+        "alt": "DressForms",
+        "author": false,
+        "description": "",
+        "caption": "Black dre4ssforms in studio",
+        "name": "graphe-tween-axqkhxom-k8-unsplash",
+        "status": "inherit",
+        "uploaded_to": false,
+        "date": "2026-02-18 20:57:43",
+        "modified": "2026-02-18 20:58:15",
+        "menu_order": false,
+        "mime_type": "image/jpeg",
+        "type": "image",
+        "subtype": "jpeg",
+        "icon": "https://content.local/wp-includes/images/media/default.png",
+        "width": false,
+        "height": false,
+        "sizes": {
+          "thumbnail": "https://content.local/wp-content/uploads/2026/02/graphe-tween-AXqkhXom-K8-unsplash-150x150.jpg",
+          "thumbnail-width": 150,
+          "thumbnail-height": 150,
+          "medium": "https://content.local/wp-content/uploads/2026/02/graphe-tween-AXqkhXom-K8-unsplash-300x200.jpg",
+          "medium-width": 300,
+          "medium-height": 200,
+          "medium_large": "https://content.local/wp-content/uploads/2026/02/graphe-tween-AXqkhXom-K8-unsplash-768x512.jpg",
+          "medium_large-width": 768,
+          "medium_large-height": 512,
+          "large": "https://content.local/wp-content/uploads/2026/02/graphe-tween-AXqkhXom-K8-unsplash-1024x683.jpg",
+          "large-width": 1024,
+          "large-height": 683,
+          "1536x1536": "https://content.local/wp-content/uploads/2026/02/graphe-tween-AXqkhXom-K8-unsplash-1536x1024.jpg",
+          "1536x1536-width": 1536,
+          "1536x1536-height": 1024,
+          "2048x2048": "https://content.local/wp-content/uploads/2026/02/graphe-tween-AXqkhXom-K8-unsplash-2048x1365.jpg",
+          "2048x2048-width": 2048,
+          "2048x2048-height": 1365
+        }
+      },
+      "title": "Moments captured, stories untold.",
+      "teaser": "Exploring bespoke craftsmanship, fine materials and contemporary style through detailed case studies and behind-the-seams insights."
+    },
+    "has_blocks": false,
+    "block_data": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://content.local/wp-json/wp/v2/hero/96",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://content.local/wp-json/wp/v2/hero"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://content.local/wp-json/wp/v2/types/hero"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://content.local/wp-json/wp/v2/users/1"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://content.local/wp-json/wp/v2/media?parent=96"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    },
+    "_embedded": {
+      "author": [
+        {
+          "id": 1,
+          "name": "admin",
+          "url": "/images/",
+          "description": "",
+          "link": "https://content.local/author/admin/",
+          "slug": "admin",
+          "avatar_urls": {
+            "24": "https://secure.gravatar.com/avatar/09d676315600f8ecb3fd074b45c964506807c4702b834c1d2b94861e47f47c17?s=24&d=mm&r=g",
+            "48": "https://secure.gravatar.com/avatar/09d676315600f8ecb3fd074b45c964506807c4702b834c1d2b94861e47f47c17?s=48&d=mm&r=g",
+            "96": "https://secure.gravatar.com/avatar/09d676315600f8ecb3fd074b45c964506807c4702b834c1d2b94861e47f47c17?s=96&d=mm&r=g"
+          },
+          "acf": [],
+          "_links": {
+            "self": [
+              {
+                "href": "https://content.local/wp-json/wp/v2/users/1",
+                "targetHints": {
+                  "allow": [
+                    "GET"
+                  ]
+                }
+              }
+            ],
+            "collection": [
+              {
+                "href": "https://content.local/wp-json/wp/v2/users"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

@@ -4,7 +4,7 @@ import tsconfigPaths from "vite-tsconfig-paths"
 import fs from 'fs'
 import path from 'path'
 
-const pagesPath = path.join(process.cwd(), 'public/data/pages.json')
+const pagesPath = path.resolve(process.cwd(), 'public/data/pages.json')
 let routes: string[] = ['/']
 
 try {
@@ -75,6 +75,12 @@ declare module "nuxt/schema" {
 }
 
 export default defineNuxtConfig({
+	dir: {
+		app: 'app',
+    pages: 'app/pages',
+    layouts: 'app/layouts',
+    assets: 'app/assets',
+	},
 	app: {
 		baseURL: '/portfolio/',
 		pageTransition: { name: "page", mode: "out-in" },
@@ -87,7 +93,6 @@ export default defineNuxtConfig({
 			],
 			meta: [{ name: "apple-mobile-web-app-title", content: "Portfolio" }]
 		}
-	},
 	compatibilityDate: "2025-07-15",
 	devtools: { enabled: true },
 	css: ["~/assets/css/tailwind.css"],

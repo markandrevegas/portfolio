@@ -1,0 +1,437 @@
+[
+  {
+    "id": 152,
+    "date": "2026-02-18T20:36:03",
+    "date_gmt": "2026-02-18T20:36:03",
+    "guid": {
+      "rendered": "https://content.local/?page_id=152"
+    },
+    "modified": "2026-02-22T21:16:35",
+    "modified_gmt": "2026-02-22T21:16:35",
+    "slug": "privacy-policy",
+    "status": "publish",
+    "type": "page",
+    "link": "https://content.local/privacy-policy/",
+    "title": {
+      "rendered": "Privacy Policy"
+    },
+    "content": {
+      "rendered": "",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "",
+      "protected": false
+    },
+    "author": 1,
+    "featured_media": 0,
+    "parent": 0,
+    "menu_order": 0,
+    "comment_status": "closed",
+    "ping_status": "closed",
+    "template": "",
+    "meta": {
+      "_acf_changed": false,
+      "footnotes": ""
+    },
+    "class_list": [
+      "post-152",
+      "page",
+      "type-page",
+      "status-publish",
+      "hentry"
+    ],
+    "acf": {
+      "excerpt": "Placeholder privacy policy summary for testing layout and excerpts. Replace with accurate legal language before production deployment.",
+      "content": "<h2>1. Information We Collect</h2>\r\nWe collect information to provide better services and improve your experience. This may include personal details, usage data, and preferences.\r\n\r\n<strong>Types of information collected:</strong>\r\n<ul>\r\n \t<li>Name, email address, and contact details</li>\r\n \t<li>Browsing history and interaction with our services</li>\r\n \t<li>Device and browser information</li>\r\n \t<li>Preferences and settings for personalized experience</li>\r\n</ul>\r\n<h2>2. How We Use Your Information</h2>\r\nYour information helps us improve our services, communicate effectively, and ensure security.\r\n\r\n<strong>Main uses include:</strong>\r\n<ul>\r\n \t<li>Personalizing content and recommendations</li>\r\n \t<li>Sending updates, newsletters, and promotional materials</li>\r\n \t<li>Analyzing site performance and user behavior</li>\r\n \t<li>Protecting against fraud and unauthorized activity</li>\r\n</ul>\r\n<h2>3. Sharing and Protection of Information</h2>\r\nWe value your privacy and ensure your information is protected. We do not sell your data to third parties.\r\n\r\n<strong>Information may be shared with:</strong>\r\n<ul>\r\n \t<li>Service providers who assist with operations</li>\r\n \t<li>Legal authorities when required by law</li>\r\n \t<li>Partners for marketing and analytics purposes</li>\r\n \t<li>Internal teams for maintenance and security purposes</li>\r\n</ul>",
+      "metatitle": "MeatTitle for Portfolio",
+      "meatdescription": "Experience the art of bespoke tailoring. Explore 3 years of custom suits, elegant alterations, and timeless style. See our collected works."
+    },
+    "has_blocks": false,
+    "block_data": [],
+    "blocks": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://content.local/wp-json/wp/v2/pages/152",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://content.local/wp-json/wp/v2/pages"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://content.local/wp-json/wp/v2/types/page"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://content.local/wp-json/wp/v2/users/1"
+        }
+      ],
+      "replies": [
+        {
+          "embeddable": true,
+          "href": "https://content.local/wp-json/wp/v2/comments?post=152"
+        }
+      ],
+      "version-history": [
+        {
+          "count": 5,
+          "href": "https://content.local/wp-json/wp/v2/pages/152/revisions"
+        }
+      ],
+      "predecessor-version": [
+        {
+          "id": 187,
+          "href": "https://content.local/wp-json/wp/v2/pages/152/revisions/187"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://content.local/wp-json/wp/v2/media?parent=152"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    },
+    "_embedded": {
+      "author": [
+        {
+          "id": 1,
+          "name": "admin",
+          "url": "/images/",
+          "description": "",
+          "link": "https://content.local/author/admin/",
+          "slug": "admin",
+          "avatar_urls": {
+            "24": "https://secure.gravatar.com/avatar/09d676315600f8ecb3fd074b45c964506807c4702b834c1d2b94861e47f47c17?s=24&d=mm&r=g",
+            "48": "https://secure.gravatar.com/avatar/09d676315600f8ecb3fd074b45c964506807c4702b834c1d2b94861e47f47c17?s=48&d=mm&r=g",
+            "96": "https://secure.gravatar.com/avatar/09d676315600f8ecb3fd074b45c964506807c4702b834c1d2b94861e47f47c17?s=96&d=mm&r=g"
+          },
+          "acf": [],
+          "_links": {
+            "self": [
+              {
+                "href": "https://content.local/wp-json/wp/v2/users/1",
+                "targetHints": {
+                  "allow": [
+                    "GET"
+                  ]
+                }
+              }
+            ],
+            "collection": [
+              {
+                "href": "https://content.local/wp-json/wp/v2/users"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 149,
+    "date": "2026-02-18T20:13:56",
+    "date_gmt": "2026-02-18T20:13:56",
+    "guid": {
+      "rendered": "https://content.local/?page_id=149"
+    },
+    "modified": "2026-02-18T22:31:10",
+    "modified_gmt": "2026-02-18T22:31:10",
+    "slug": "biography",
+    "status": "publish",
+    "type": "page",
+    "link": "https://content.local/biography/",
+    "title": {
+      "rendered": "Biography"
+    },
+    "content": {
+      "rendered": "",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "",
+      "protected": false
+    },
+    "author": 1,
+    "featured_media": 0,
+    "parent": 0,
+    "menu_order": 0,
+    "comment_status": "closed",
+    "ping_status": "closed",
+    "template": "",
+    "meta": {
+      "_acf_changed": false,
+      "footnotes": ""
+    },
+    "class_list": [
+      "post-149",
+      "page",
+      "type-page",
+      "status-publish",
+      "hentry"
+    ],
+    "acf": {
+      "excerpt": "",
+      "content": "",
+      "metatitle": "",
+      "meatdescription": ""
+    },
+    "has_blocks": false,
+    "block_data": [],
+    "blocks": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://content.local/wp-json/wp/v2/pages/149",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://content.local/wp-json/wp/v2/pages"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://content.local/wp-json/wp/v2/types/page"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://content.local/wp-json/wp/v2/users/1"
+        }
+      ],
+      "replies": [
+        {
+          "embeddable": true,
+          "href": "https://content.local/wp-json/wp/v2/comments?post=149"
+        }
+      ],
+      "version-history": [
+        {
+          "count": 5,
+          "href": "https://content.local/wp-json/wp/v2/pages/149/revisions"
+        }
+      ],
+      "predecessor-version": [
+        {
+          "id": 167,
+          "href": "https://content.local/wp-json/wp/v2/pages/149/revisions/167"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://content.local/wp-json/wp/v2/media?parent=149"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    },
+    "_embedded": {
+      "author": [
+        {
+          "id": 1,
+          "name": "admin",
+          "url": "/images/",
+          "description": "",
+          "link": "https://content.local/author/admin/",
+          "slug": "admin",
+          "avatar_urls": {
+            "24": "https://secure.gravatar.com/avatar/09d676315600f8ecb3fd074b45c964506807c4702b834c1d2b94861e47f47c17?s=24&d=mm&r=g",
+            "48": "https://secure.gravatar.com/avatar/09d676315600f8ecb3fd074b45c964506807c4702b834c1d2b94861e47f47c17?s=48&d=mm&r=g",
+            "96": "https://secure.gravatar.com/avatar/09d676315600f8ecb3fd074b45c964506807c4702b834c1d2b94861e47f47c17?s=96&d=mm&r=g"
+          },
+          "acf": [],
+          "_links": {
+            "self": [
+              {
+                "href": "https://content.local/wp-json/wp/v2/users/1",
+                "targetHints": {
+                  "allow": [
+                    "GET"
+                  ]
+                }
+              }
+            ],
+            "collection": [
+              {
+                "href": "https://content.local/wp-json/wp/v2/users"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 127,
+    "date": "2026-02-18T12:27:32",
+    "date_gmt": "2026-02-18T12:27:32",
+    "guid": {
+      "rendered": "https://content.local/?page_id=127"
+    },
+    "modified": "2026-02-22T21:17:38",
+    "modified_gmt": "2026-02-22T21:17:38",
+    "slug": "collected-works",
+    "status": "publish",
+    "type": "page",
+    "link": "https://content.local/collected-works/",
+    "title": {
+      "rendered": "Collected works"
+    },
+    "content": {
+      "rendered": "",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "",
+      "protected": false
+    },
+    "author": 1,
+    "featured_media": 0,
+    "parent": 0,
+    "menu_order": 0,
+    "comment_status": "closed",
+    "ping_status": "closed",
+    "template": "",
+    "meta": {
+      "_acf_changed": false,
+      "footnotes": ""
+    },
+    "class_list": [
+      "post-127",
+      "page",
+      "type-page",
+      "status-publish",
+      "hentry"
+    ],
+    "acf": {
+      "excerpt": "",
+      "content": "",
+      "metatitle": "Collected Works",
+      "meatdescription": "Experience the art of bespoke tailoring. Explore 3 years of custom suits, elegant alterations, and timeless style. See our collected works."
+    },
+    "has_blocks": false,
+    "block_data": [],
+    "blocks": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://content.local/wp-json/wp/v2/pages/127",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://content.local/wp-json/wp/v2/pages"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://content.local/wp-json/wp/v2/types/page"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://content.local/wp-json/wp/v2/users/1"
+        }
+      ],
+      "replies": [
+        {
+          "embeddable": true,
+          "href": "https://content.local/wp-json/wp/v2/comments?post=127"
+        }
+      ],
+      "version-history": [
+        {
+          "count": 4,
+          "href": "https://content.local/wp-json/wp/v2/pages/127/revisions"
+        }
+      ],
+      "predecessor-version": [
+        {
+          "id": 188,
+          "href": "https://content.local/wp-json/wp/v2/pages/127/revisions/188"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://content.local/wp-json/wp/v2/media?parent=127"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    },
+    "_embedded": {
+      "author": [
+        {
+          "id": 1,
+          "name": "admin",
+          "url": "/images/",
+          "description": "",
+          "link": "https://content.local/author/admin/",
+          "slug": "admin",
+          "avatar_urls": {
+            "24": "https://secure.gravatar.com/avatar/09d676315600f8ecb3fd074b45c964506807c4702b834c1d2b94861e47f47c17?s=24&d=mm&r=g",
+            "48": "https://secure.gravatar.com/avatar/09d676315600f8ecb3fd074b45c964506807c4702b834c1d2b94861e47f47c17?s=48&d=mm&r=g",
+            "96": "https://secure.gravatar.com/avatar/09d676315600f8ecb3fd074b45c964506807c4702b834c1d2b94861e47f47c17?s=96&d=mm&r=g"
+          },
+          "acf": [],
+          "_links": {
+            "self": [
+              {
+                "href": "https://content.local/wp-json/wp/v2/users/1",
+                "targetHints": {
+                  "allow": [
+                    "GET"
+                  ]
+                }
+              }
+            ],
+            "collection": [
+              {
+                "href": "https://content.local/wp-json/wp/v2/users"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]
