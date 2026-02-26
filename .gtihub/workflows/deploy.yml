@@ -30,9 +30,6 @@ jobs:
       - name: Install dependencies
         run: bun install
 
-      - name: Build data
-        run: bun run build:data
-
       - name: Build with production baseURL
         run: bun run generate
         env:
