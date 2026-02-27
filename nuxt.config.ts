@@ -70,9 +70,6 @@ declare module "nuxt/schema" {
 				[key: string]: unknown
 			}
 		}
-		build?: {
-			extractCSS: boolean
-		}
 	}
 
 	interface NuxtOptions {
@@ -81,22 +78,17 @@ declare module "nuxt/schema" {
 }
 
 export default defineNuxtConfig({
-	dir: {
-		app: 'app',
-    pages: 'app/pages',
-    layouts: 'app/layouts',
-    assets: 'app/assets',
-	},
+	srcDir: 'app/',
 	app: {
 		baseURL: '/portfolio/',
 		buildAssetsDir: '/_nuxt/',
 		pageTransition: { name: "page", mode: "out-in" },
 		head: {
 			link: [
-				{ rel: "icon", type: "image/png", href: "favicon-96x96.png", sizes: "96x96" },
-				{ rel: "icon", type: "image/svg+xml", href: "favicon.svg" },
-				{ rel: "shortcut icon", href: "favicon.ico" },
-				{ rel: "apple-touch-icon", sizes: "180x180", href: "apple-touch-icon.png" }
+				{ rel: "icon", type: "image/png", href: "/portfolio/favicon-96x96.png", sizes: "96x96" },
+				{ rel: "icon", type: "image/svg+xml", href: "/portfolio/favicon.svg" },
+				{ rel: "shortcut icon", href: "/portfolio/favicon.ico" },
+				{ rel: "apple-touch-icon", sizes: "180x180", href: "/portfolio/apple-touch-icon.png" }
 			],
 			meta: [{ name: "apple-mobile-web-app-title", content: "Portfolio" }]
 		}
@@ -161,7 +153,7 @@ export default defineNuxtConfig({
 	nitro: {
 		preset: "static",
 		externals: {
-			inline: ["ipx", "ofetch"]
+			inline: ["ipx"]
 		},
 		devProxy: {
 			"/api/wp": {
@@ -175,8 +167,5 @@ export default defineNuxtConfig({
       routes: routes,
       crawlLinks: false
     }
-	},
-	build: {
-    extractCSS: true
-  }
+	}
 })
