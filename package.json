@@ -5,13 +5,13 @@
 	"scripts": {
 		"build": "nuxi build",
 		"build:data": "node scripts/scrape-page-types.js && node scripts/download-images.js && node scripts/rewrite-image-urls.js && node scripts/generate-menu.js",
-		"build:full": "npm run build:data && nuxi build",
+		"build:full": "bun run build:data && nuxi build",
 		"dev": "nuxt dev",
 		"dev:build:data": "NODE_TLS_REJECT_UNAUTHORIZED=0 node scripts/scrape-page-types.js && NODE_TLS_REJECT_UNAUTHORIZED=0 node scripts/download-images.js && NODE_TLS_REJECT_UNAUTHORIZED=0 node scripts/rewrite-image-urls.js && NODE_TLS_REJECT_UNAUTHORIZED=0 node scripts/generate-menu.js",
 		"download:images": "NODE_TLS_REJECT_UNAUTHORIZED=0 node scripts/download-images.js",
 		"format": "prettier --write **/*.{vue,ts,css,md}",
 		"generate": "nuxt generate",
-		"generate:full": "npm run build:data && nuxt generate",
+		"generate:full": "bun run build:data && nuxt generate",
 		"generate:menu": "NODE_TLS_REJECT_UNAUTHORIZED=0 node scripts/generate-menu.js",
 		"generate:pages": "NODE_TLS_REJECT_UNAUTHORIZED=0 node scripts/scrape-page-types.js",
 		"postinstall": "nuxt prepare",
@@ -48,10 +48,5 @@
 		"vite": "^4.4.9",
 		"@types/node": "^24.1.0",
 		"@vitejs/plugin-vue": "^4.4.0"
-	},
-	"pnpm": {
-		"overrides": {
-			"esbuild": "^0.18.20"
-		}
 	}
 }
