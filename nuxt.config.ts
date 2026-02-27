@@ -80,7 +80,7 @@ declare module "nuxt/schema" {
 export default defineNuxtConfig({
 	srcDir: 'app/',
 	app: {
-		baseURL: '/',
+		baseURL: process.env.NODE_ENV === 'production' ? '/portfolio/' : '/',
 		buildAssetsDir: '/_nuxt/',
 		pageTransition: { name: "page", mode: "out-in" },
 		head: {

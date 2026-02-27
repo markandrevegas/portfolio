@@ -37,6 +37,8 @@ jobs:
       
       - name: Generate static site
         run: bun run generate
+        env:
+          NODE_ENV: production
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
