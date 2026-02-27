@@ -22,12 +22,10 @@ onBeforeUnmount(() => {
 </script>
 <template>
 	<div ref="scrollContainer" class="relative flex h-screen flex-col overflow-auto">
-		<ClientOnly>
-			<MainMenuSidebar :is-scrolled="isScrolled" />
-		</ClientOnly>
+		<MainMenuSidebar :is-scrolled="isScrolled" />
 		<!-- Main scroll area -->
 		<main class="flex flex-1 flex-col pt-[70px]">
-			<NuxtPage />
+			<slot></slot>
 		</main>
 	</div>
 </template>
