@@ -88,7 +88,7 @@ export default defineNuxtConfig({
     assets: 'app/assets',
 	},
 	app: {
-		baseURL: '/',
+		baseURL: '/portfolio/',
 		buildAssetsDir: '/_nuxt/',
 		pageTransition: { name: "page", mode: "out-in" },
 		head: {
