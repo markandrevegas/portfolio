@@ -17,6 +17,9 @@ try {
 
 declare module "nuxt/schema" {
 	interface NuxtConfig {
+		experimental?: {
+			inlineSSRStyles: boolean
+		}
 		content?: {
 			[key: string]: unknown
 		}
@@ -67,6 +70,9 @@ declare module "nuxt/schema" {
 				[key: string]: unknown
 			}
 		}
+		build?: {
+			extractCSS: boolean
+		}
 	}
 
 	interface NuxtOptions {
@@ -93,6 +99,10 @@ export default defineNuxtConfig({
 			],
 			meta: [{ name: "apple-mobile-web-app-title", content: "Portfolio" }]
 		}
+	},
+	future: {
+    compatibilityVersion: 4
+  },
 	compatibilityDate: "2025-07-15",
 	devtools: { enabled: true },
 	css: ["~/assets/css/tailwind.css"],
