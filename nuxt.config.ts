@@ -80,7 +80,7 @@ declare module "nuxt/schema" {
 export default defineNuxtConfig({
 	srcDir: 'app/',
 	app: {
-		baseURL: '/portfolio/',
+		baseURL: '/',
 		buildAssetsDir: '/_nuxt/',
 		pageTransition: { name: "page", mode: "out-in" },
 		head: {
@@ -153,7 +153,7 @@ export default defineNuxtConfig({
 	nitro: {
 		preset: "static",
 		externals: {
-			inline: ["ipx"]
+			inline: ["ipx", "ofetch"]
 		},
 		devProxy: {
 			"/api/wp": {
