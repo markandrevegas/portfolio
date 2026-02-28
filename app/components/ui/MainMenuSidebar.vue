@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import { ref } from "vue"
 
+const { data: menuItems } = await useFetch<MenuItem[]>('/data/menu.json', {
+  server: false,
+  lazy: true
+})
+
 interface MenuItem {
 	title: string
 	url: string
@@ -18,7 +23,6 @@ const props = withDefaults(
 		loading: false
 	}
 )
-const { data: menuItems } = await useFetch<MenuItem[]>('/data/menu.json')
 
 const isOpen = ref(false)
 const iconWidth = "2rem"
