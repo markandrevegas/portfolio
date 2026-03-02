@@ -140,6 +140,9 @@ export default defineNuxtConfig({
 		quality: 80
 	},
 	runtimeConfig: {
+		ipx: {
+      baseURL: '/portfolio' || '/_ipx'
+    },
 		public: {
 			wpBase: process.env.WP_BASE_URL || "https://content.local",
 			baseURL: isDev ? '/' : '/portfolio/',
