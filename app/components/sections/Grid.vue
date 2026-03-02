@@ -105,8 +105,9 @@ function closeModal() {
 							</div>
 						</div>
 					</div>
-					<div class="overflow-scroll no-scrollbar">
-						<NuxtImg :src="selectedImage.src" :alt="selectedImage.alt || ''" class="w-full h-full object-cover" />
+					<div class="overflow-scroll no-scrollbar relative">
+						<div class="absolute inset-0 z-20 bg-black/40"></div>
+						<NuxtImg :src="selectedImage.src" :alt="selectedImage.alt || ''" class="relative w-full h-full object-cover" />
 					</div>
 				</div>
 			</div>
