@@ -84,7 +84,7 @@ function closeModal() {
 		</div>
 		<Teleport to="body">
 			<div v-if="isModalOpen && selectedImage" class="fixed inset-0 z-50 bg-palladian min-h-screen">
-				<div class="w-full max-w-6xl mx-auto grid grid-col-1 md:grid-cols-2 p-8">
+				<div class="h-full w-full grid grid-col-1 md:grid-cols-2 p-8">
 					<div>
 						<button class="text-abyssal text-sm flex justify-start items-center" @click="closeModal">
 							<ArrowLeftIcon />
@@ -105,7 +105,9 @@ function closeModal() {
 							</div>
 						</div>
 					</div>
-					<NuxtImg :src="selectedImage.src" :alt="selectedImage.alt || ''" class="w-full h-auto object-contain" />
+					<div class="overflow-scroll no-scrollbar">
+						<NuxtImg :src="selectedImage.src" :alt="selectedImage.alt || ''" class="w-full h-full object-cover" />
+					</div>
 				</div>
 			</div>
 		</Teleport>
