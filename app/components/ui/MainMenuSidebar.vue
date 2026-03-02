@@ -94,7 +94,7 @@ const filteredMenuItems = computed(() => {
 			<nav class="hidden md:flex items-center gap-8">
 				<ul class="flex items-center gap-8">
 					<li v-for="item in filteredMenuItems" :key="item.url">
-						<NuxtLink :to="item.url" class="transition-opacity hover:opacity-70">
+						<NuxtLink :to="item.url">
 							<span class="slide-link">
 								<span class="slide-wrap font-semibold">
 									<span class="slide-text">{{ item.title }}</span>

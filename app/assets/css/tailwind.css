@@ -70,20 +70,21 @@
 		display: inline-block;
 		position: relative;
 		overflow: hidden;
-		height: 1em;
+		height: 1.5em;
+		line-height: 1.5em;
 	}
 	.slide-text {
 		display: block;
-		line-height: 1em;
+		line-height: 1.5em;
 		transition: transform 0.4s ease;
 	}
 	.slide-text--clone {
 		position: absolute;
 		left: 0;
-		top: 100%;
+		top: 1.5em;
 	}
 	.slide-link:hover .slide-text {
-		transform: translateY(-100%);
+		transform: translateY(-1.5em);
 	}
 	.prose {
 		@apply flex max-w-none flex-col leading-6 text-sm;
