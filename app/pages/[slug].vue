@@ -80,9 +80,9 @@ useSeoMeta({
 			<article class="flex flex-col md:flex-row md:items-start">
 				<div>
 					<h1 class="my-8 text-5xl tracking-tighter" v-html="page?.title.rendered"></h1>
-					<p class="leading-6">{{ page?.acf.excerpt }}</p>
+					<p class="leading-6 max-w-96">{{ page?.acf.excerpt }}</p>
 				</div>
-				<div class="md:h-screen md:overflow-scroll md:px-16 md:pb-32">
+				<div class="md:h-screen md:overflow-scroll no-scrollbar md:px-16 md:pb-32">
 					<div v-html="content" class="prose"></div>
 				</div>
 			</article>
