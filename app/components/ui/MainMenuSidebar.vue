@@ -87,7 +87,7 @@ const closeMenu = () => {
 			<NuxtLink to="/" class="block" @click="closeMenu">
 				<h1 class="text-xl font-bold">Stitched</h1>
 			</NuxtLink>
-
+			<ColorModeToggle />
 			<MenuIcon :is-open="isOpen" @click="toggleMenu" />
 		</header>
 		<!-- Drawer overlay -->
