@@ -11,7 +11,7 @@ interface MenuItem {
 	url: string
 }
 
-interface LatestPage {
+interface FirstPage {
   id: number
   slug: string
   date: string
@@ -27,25 +27,25 @@ interface LatestPage {
   }
 }
 
-const { data: latestPage } = await useAsyncData('latest-page', async () => {
+const { data: firstPage } = await useAsyncData('latest-page', async () => {
   if (import.meta.server) {
     const { readFileSync } = await import('fs')
     const { join } = await import('path')
     
-    const latestPath = join(process.cwd(), 'public/data/latest-page.json')
-    return JSON.parse(readFileSync(latestPath, 'utf-8'))
+    const firstPath = join(process.cwd(), 'public/data/latest-page.json')
+    return JSON.parse(readFileSync(firstPath, 'utf-8'))
   } else {
-    return await $fetch<LatestPage>('/data/latest-page.json')
+    return await $fetch<FirstPage>('/data/latest-page.json')
   }
 })
 
 const imageSrcset = computed(() => {
-  if (!latestPage.value?.acf?.image?.sizes) return undefined
-  return generateSrcset(latestPage.value.acf.image.sizes)
+  if (!firstPage.value?.acf?.image?.sizes) return undefined
+  return generateSrcset(firstPage.value.acf.image.sizes)
 })
 
 const mainSrc = computed(() => {
-  const img = latestPage.value?.acf?.image
+  const img = firstPage.value?.acf?.image
   if (img?.sizes) {
     return img.sizes['large'] || img.sizes['medium_large'] || img.url
   }
@@ -110,11 +110,11 @@ const closeMenu = () => {
 							</ul>
 							<div class="relative my-8" :style="{ '--i': 3 }">
 								<div class="relative h-48 overflow-hidden rounded-lg">
-									<img v-if="latestPage.acf.image" :src="mainSrc" :srcset="imageSrcset" sizes="(max-width: 640px) 100vw, 400px" :alt="latestPage.acf.image.alt || latestPage.acf.title" class="relative z-10 h-full w-full object-cover" />
-									<NuxtImg provider="ipx" :src="getAssetPath('/images/color.jpeg')" alt="Menu Image" class="relative z-10 h-full w-full object-cover" />
+									<img v-if="firstPage.acf.image" :src="mainSrc" :srcset="imageSrcset" sizes="(max-width: 640px) 100vw, 400px" :alt="firstPage.acf.image.alt || firstPage.acf.title" class="relative z-10 h-full w-full object-cover" />
+									<NuxtImg v-else :src="getAssetPath('/images/color.jpeg')" alt="Menu Image" class="relative z-10 h-full w-full object-cover" />
 									<div class="absolute inset-0 z-20 flex flex-col justify-end bg-gradient-to-t from-black/80 to-transparent p-4 text-white">
-										<p class="font-semibold drop-shadow-md">{{ latestPage.acf.title }}</p>
-										<p class="text-xs drop-shadow-md">{{ latestPage.acf.teaser }}</p>
+										<p class="font-semibold drop-shadow-md">{{ firstPage.acf.title }}</p>
+										<p class="text-xs drop-shadow-md">{{ firstPage.acf.teaser }}</p>
 									</div>
 								</div>
 							</div>
