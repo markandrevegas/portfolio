@@ -69,7 +69,7 @@ const closeMenu = () => {
 							</ul>
 							<div class="relative my-8" :style="{ '--i': 3 }">
 								<div class="relative h-48 overflow-hidden rounded-lg">
-									<NuxtImg :src="getAssetPath('/images/color.jpeg')" alt="Menu Image" class="relative z-10 h-full w-full object-cover" />
+									<img :src="getAssetPath('/images/color.jpeg')" alt="Menu Image" class="relative z-10 h-full w-full object-cover" />
 									<div class="absolute inset-0 z-20 flex flex-col justify-end bg-gradient-to-t from-black/80 to-transparent p-4 text-white">
 										<p class="font-semibold drop-shadow-md">Featured Image</p>
 										<p class="text-xs drop-shadow-md">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex distinctio illum sit aliquam alias pariatur.</p>
