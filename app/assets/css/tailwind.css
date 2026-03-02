@@ -4,8 +4,8 @@
 
 @layer base {
 	:root {
-		--abyssal: #1b2632;
-		--palladian: #eee9df;
+		--abyssal: oklch(0.264 0.0274 251.05);
+		--palladian: oklch(0.9352 0.0144 84.58);
 	}
 	body {
 		@apply bg-palladian font-sans text-abyssal dark:bg-abyssal dark:text-palladian;

@@ -13,8 +13,8 @@ const config: Config = {
 				widest: ".25em"
 			},
 			colors: {
-				palladian: "#EEE9DF",
-				abyssal: "#1B2632"
+				palladian: "oklch(0.9352 0.0144 84.58)",
+				abyssal: "oklch(0.264 0.0274 251.05)"
 			}
 		}
 	},
