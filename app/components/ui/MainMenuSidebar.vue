@@ -11,6 +11,47 @@ interface MenuItem {
 	url: string
 }
 
+interface LatestPage {
+  id: number
+  slug: string
+  date: string
+  title: string
+  acf: {
+    title: string
+    teaser: string
+    image: {
+      url: string
+      alt?: string
+      sizes?: WpImageSizes
+    } | null
+  }
+}
+
+const { data: latestPage } = await useAsyncData('latest-page', async () => {
+  if (import.meta.server) {
+    const { readFileSync } = await import('fs')
+    const { join } = await import('path')
+    
+    const latestPath = join(process.cwd(), 'public/data/latest-page.json')
+    return JSON.parse(readFileSync(latestPath, 'utf-8'))
+  } else {
+    return await $fetch<LatestPage>('/data/latest-page.json')
+  }
+})
+
+const imageSrcset = computed(() => {
+  if (!latestPage.value?.acf?.image?.sizes) return undefined
+  return generateSrcset(latestPage.value.acf.image.sizes)
+})
+
+const mainSrc = computed(() => {
+  const img = latestPage.value?.acf?.image
+  if (img?.sizes) {
+    return img.sizes['large'] || img.sizes['medium_large'] || img.url
+  }
+  return img?.url || '/images/color.jpeg'
+})
+
 const props = withDefaults(
 	defineProps<{
 		error?: boolean
@@ -69,10 +110,11 @@ const closeMenu = () => {
 							</ul>
 							<div class="relative my-8" :style="{ '--i': 3 }">
 								<div class="relative h-48 overflow-hidden rounded-lg">
+									<img v-if="latestPage.acf.image" :src="mainSrc" :srcset="imageSrcset" sizes="(max-width: 640px) 100vw, 400px" :alt="latestPage.acf.image.alt || latestPage.acf.title" class="relative z-10 h-full w-full object-cover" />
 									<NuxtImg provider="ipx" :src="getAssetPath('/images/color.jpeg')" alt="Menu Image" class="relative z-10 h-full w-full object-cover" />
 									<div class="absolute inset-0 z-20 flex flex-col justify-end bg-gradient-to-t from-black/80 to-transparent p-4 text-white">
-										<p class="font-semibold drop-shadow-md">Featured Image</p>
-										<p class="text-xs drop-shadow-md">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex distinctio illum sit aliquam alias pariatur.</p>
+										<p class="font-semibold drop-shadow-md">{{ latestPage.acf.title }}</p>
+										<p class="text-xs drop-shadow-md">{{ latestPage.acf.teaser }}</p>
 									</div>
 								</div>
 							</div>
