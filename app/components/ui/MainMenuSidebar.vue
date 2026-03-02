@@ -83,7 +83,7 @@ const closeMenu = () => {
 
 <template>
 	<div>
-		<header :class="props.isScrolled ? 'bg-abyssal/20 text-white backdrop-blur-lg' : 'text-abyssal backdrop-blur'" class="fixed left-0 top-0 z-40 flex h-[70px] w-full items-center justify-between px-6 transition-colors duration-300">
+		<header :class="props.isScrolled ? 'bg-abyssal/20 text-white backdrop-blur-lg' : 'text-abyssal dark:text-palladian backdrop-blur'" class="fixed left-0 top-0 z-40 flex h-[70px] w-full items-center justify-between px-6 transition-colors duration-300">
 			<NuxtLink to="/" class="block" @click="closeMenu">
 				<h1 class="text-xl font-bold">Stitched</h1>
 			</NuxtLink>
