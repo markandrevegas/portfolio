@@ -1,13 +1,12 @@
 <script setup lang="ts">
+	const { data: menuItems } = await useFetch<MenuItem[]>('/data/menu.json',  {
+		server: false,
+		lazy: false
+	})
+
 	interface MenuItem {
 		title: string
 		url: string
-	}
-	const menu = useState<MenuItem[]>("global-menu")
-	const config = useRuntimeConfig()
-	const formatPath = (url: string) => {
-		if (!url) return "/"
-		return url.replace("https://content.local", "").replace(config.public.wpBase, "") || "/"
 	}
 	const props = defineProps<{
 		data: any
@@ -20,11 +19,11 @@
 <template>
 	<footer>
 		<div class="wrapper-grid-3 mt-16">
-			<h2 class="text-lg font-semibold">Jeremias Stephens</h2>
+			<h2 class="text-lg font-semibold">Tailor</h2>
 			<div>
 				<ul>
-					<li v-for="item in menu" :key="item.url">
-						<NuxtLink :to="formatPath(item.url)" class="slide-link">
+					<li v-for="item in menuItems" :key="item.url">
+						<NuxtLink :to="item.url" class="slide-link">
 							<span class="slide-wrap text-lg font-semibold">
 								<span class="slide-text">{{ item.title }}</span>
 								<span class="slide-text slide-text--clone">{{ item.title }}</span>
@@ -63,7 +62,7 @@
 			</div>
 		</div>
 		<div class="wrapper-grid mt-16 text-xm">
-			<div><p>Copyright © 2026 Jeremias Stephens</p></div>
+			<div><p>Copyright © 2026 Tailor</p></div>
 			<div>
 				<NuxtLink to="/privacy-policy" class="block">
 					<p>Privacy policy</p>

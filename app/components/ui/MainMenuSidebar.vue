@@ -79,6 +79,10 @@ const closeMenu = () => {
 		isOpen.value = false
 	}
 }
+const filteredMenuItems = computed(() => {
+  if (!menuItems.value) return []
+  return menuItems.value.filter(item => !item.url.includes('privacy-policy'))
+})
 </script>
 
 <template>
@@ -89,9 +93,14 @@ const closeMenu = () => {
 			</NuxtLink>
 			<nav class="hidden md:flex items-center gap-8">
 				<ul class="flex items-center gap-8">
-					<li v-for="item in menuItems" :key="item.url">
+					<li v-for="item in filteredMenuItems" :key="item.url">
 						<NuxtLink :to="item.url" class="transition-opacity hover:opacity-70">
-							{{ item.title }}
+							<span class="slide-link">
+								<span class="slide-wrap font-semibold">
+									<span class="slide-text">{{ item.title }}</span>
+									<span class="slide-text slide-text--clone">{{ item.title }}</span>
+								</span>
+							</span>
 						</NuxtLink>
 					</li>
 				</ul>
@@ -140,72 +149,5 @@ const closeMenu = () => {
 	</div>
 </template>
 <style scoped>
-/* 1. MAIN DRAWER PANEL (The last to leave) */
-.slide-enter-active,
-.slide-leave-active {
-	/* Smooth easing from the video */
-	transition:
-		transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-		opacity 0.6s ease;
-}
 
-.slide-leave-active {
-	/* Action 3: Panel waits for Image (0.2s) + Items (0.2s) = 0.4s total delay */
-	transition-delay: 0.4s;
-}
-
-.slide-enter-from,
-.slide-leave-to {
-	transform: translateX(100%);
-	opacity: 0;
-}
-
-/* 2. STAGGERED ITEMS (The "ul li" and "NuxtImg") */
-.stagger-item {
-	opacity: 1;
-	transform: translateX(0);
-	transition:
-		transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-		opacity 0.5s ease;
-}
-
-/* Enter Animation (The "Open" sequence) */
-.slide-enter-from .stagger-item {
-	opacity: 0;
-	transform: translateX(30px);
-}
-
-.slide-enter-active .stagger-item {
-	/* Items slide in after the panel starts */
-	transition-delay: calc(var(--i) * 0.1s + 0.3s);
-}
-
-/* Leave Animation (The "Close" sequence) */
-.slide-leave-active .stagger-item {
-	opacity: 0;
-	transform: translateX(20px);
-	transition-duration: 0.3s;
-}
-
-/* Specific Staggering for the Exit Sequence */
-/* Action 1: The Image (index 3) fades out immediately */
-.slide-leave-active .stagger-item[style*="--i: 3"] {
-	transition-delay: 0s;
-}
-
-/* Action 2: Menu items (indices 0, 1, 2) wait 200ms for the image to fade */
-.slide-leave-active .stagger-item:not([style*="--i: 3"]) {
-	/* Reverse stagger starting at 200ms */
-	transition-delay: calc(0.2s + (2 - var(--i)) * 0.05s);
-}
-
-/* 3. OVERLAY FADE */
-.fade-enter-active,
-.fade-leave-active {
-	transition: opacity 0.4s ease;
-}
-.fade-enter-from,
-.fade-leave-to {
-	opacity: 0;
-}
 </style>
