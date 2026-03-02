@@ -142,7 +142,7 @@ export default defineNuxtConfig({
 	runtimeConfig: {
 		public: {
 			wpBase: process.env.WP_BASE_URL || "https://content.local",
-			baseURL: isDev ? '/' : '/',
+			baseURL: isDev ? '/' : '/portfolio/',
 			fonts: {
 				selfHosted: false
 			}
