@@ -1,4 +1,5 @@
 export function getAssetPath(path: string) {
-  const base = process.env.NODE_ENV === 'production' ? '/portfolio' : ''
+  const config = useRuntimeConfig()
+  const base = config.public.baseURL.replace(/\/$/, '')
   return `${base}${path}`
 }
