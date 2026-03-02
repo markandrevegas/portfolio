@@ -6,13 +6,24 @@ const props = defineProps<{
 	hasError: boolean
 }>()
 
-const imageSizes = "100vw"
+// const imageSizes = "100vw"
 // const loadingIconWidth = "2.5rem"
 // const loadingIconHeight = "2.5rem"
-
+const responsiveSizes = '(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 1536px'
 const header = computed(() => props.data?.acf?.title ?? "Default Header")
 const teaser = computed(() => props.data?.acf?.description ?? "Default teaser text.")
 const aboutImage = computed(() => props.data?.acf?.image ?? null)
+
+const imageSrcset = computed(() => {
+  if (!aboutImage.value?.sizes) return undefined
+  return generateSrcset(aboutImage.value.sizes)
+})
+const mainSrc = computed(() => {
+  if (aboutImage.value.sizes) {
+    return aboutImage.value.sizes['2048x2048'] || aboutImage.value.sizes['1536x1536']
+  }
+  return aboutImage.value.url
+})
 </script>
 <template>
 	<div class="wrapper">
@@ -23,7 +34,7 @@ const aboutImage = computed(() => props.data?.acf?.image ?? null)
 			<h2 class="mb-8 font-bold">{{ header }}</h2>
 			<div>
 				<div class="relative z-10 aspect-[16/9] w-full flex-1 overflow-hidden">
-					<NuxtImg v-if="aboutImage" :src="aboutImage.url" :sizes="imageSizes" class="h-full w-full object-cover" :width="aboutImage.width || 1080" :height="aboutImage.height || 1618" :alt="aboutImage.alt || ''" />
+					<NuxtImg v-if="aboutImage" :src="aboutImage.url" :sizes="responsiveSizes" class="h-full w-full object-cover" :width="aboutImage.width || 1080" :height="aboutImage.height || 1618" :alt="aboutImage.alt || ''" />
 					<div class="absolute inset-0 z-20 bg-black/20"></div>
 				</div>
 			</div>
