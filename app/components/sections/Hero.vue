@@ -25,7 +25,6 @@ const mainSrc = computed(() => {
   }
   return heroImage.value.url
 })
-console.log(heroImage.value)
 </script>
 
 <template>
