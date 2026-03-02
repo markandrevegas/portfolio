@@ -291,8 +291,8 @@
     "guid": {
       "rendered": "https://content.local/?page_id=127"
     },
-    "modified": "2026-03-02T14:27:41",
-    "modified_gmt": "2026-03-02T14:27:41",
+    "modified": "2026-03-02T14:51:14",
+    "modified_gmt": "2026-03-02T14:51:14",
     "slug": "collected-works",
     "status": "publish",
     "type": "page",
@@ -327,7 +327,7 @@
       "hentry"
     ],
     "acf": {
-      "excerpt": "Petals of silk and woven dreams bloom into silhouettes, where every stitch whispers a story of grace and timeless elegance.",
+      "excerpt": "Woven from the ethereal threads of imagination, gossamer silks and structured velvets dance in a symphony of light and shadow. Each hand-pressed seam breathes life into visionary silhouettes, crafting a luminous tapestry of couture that celebrates the soul's beauty.",
       "content": "",
       "metatitle": "Collected Works",
       "meatdescription": "Experience the art of bespoke tailoring. Explore 3 years of custom suits, elegant alterations, and timeless style. See our collected works.",
@@ -503,14 +503,14 @@
       ],
       "version-history": [
         {
-          "count": 6,
+          "count": 7,
           "href": "https://content.local/wp-json/wp/v2/pages/127/revisions"
         }
       ],
       "predecessor-version": [
         {
-          "id": 195,
-          "href": "https://content.local/wp-json/wp/v2/pages/127/revisions/195"
+          "id": 197,
+          "href": "https://content.local/wp-json/wp/v2/pages/127/revisions/197"
         }
       ],
       "wp:attachment": [

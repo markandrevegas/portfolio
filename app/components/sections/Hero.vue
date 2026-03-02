@@ -12,7 +12,6 @@ const props = defineProps<Props>()
 const responsiveSizes = '(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 1536px'
 
 const header = computed(() => props.data?.acf?.title ?? "Default Header")
-const teaser = computed(() => props.data?.acf?.teaser ?? "Default teaser text.")
 const heroImage = computed(() => props.data?.acf?.image ?? null)
 
 const imageSrcset = computed(() => {
@@ -28,20 +27,16 @@ const mainSrc = computed(() => {
 </script>
 
 <template>
-	<div class="relative flex h-[calc(100vh-70px)] flex-col lg:h-[60vh] lg:flex-row lg:items-center">
-		<!--<div v-if="isLoading" class="absolute bottom-0 left-0 right-0 top-0 z-50 flex flex-col items-center justify-center bg-white">
-			<Loading :width="loadingIconWidth" :height="loadingIconHeight" />
-		</div>-->
+	<div class="relative flex h-[calc(100vh-70px)] flex-col">
 		<div v-if="hasError" class="absolute inset-0 z-40 flex items-center justify-center bg-red-50/50 p-6 text-center text-red-600">
 			<p>Failed to load content. Please check back later.</p>
 		</div>
-		<div class="z-30 flex h-48 flex-1 flex-col justify-end p-6 md:max-h-64">
-			<h1 class="mb-4 text-4xl font-bold tracking-tighter">{{ header }}</h1>
-			<p class="text-sm max-w-96">{{ teaser }}</p>
+		<div class="z-30 flex h-96 sm:h-[50vh] lg:h-[35vh] flex-col justify-end p-6">
+			<h1 class="mb-4 text-5xl md:text-6xl tracking-tighter">{{ header }}</h1>
 		</div>
-		<div class="relative z-10 w-full flex-1 overflow-hidden lg:h-full">
+		<div class="relative z-10 w-full flex-1">
 			<img v-if="heroImage" :src="mainSrc" :srcset="imageSrcset" :sizes="responsiveSizes"
-				class="md:object-fit md:aspect-4/3 absolute inset-0 h-full w-full object-cover object-center md:object-top"
+				class="absolute inset-0 h-full w-full object-cover object-center"
 				:width="heroImage.sizes?.['2048x2048-width'] || heroImage.width || 1080"
 				:height="heroImage.sizes?.['2048x2048-height'] || heroImage.height || 1618"
 				:alt="heroImage.alt || ''"

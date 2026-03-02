@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const { data: homeData } = await useAsyncData('home-data', async () => {
-  if (process.server) {
+  if (import.meta.server) {
     const { readFileSync } = await import('fs')
     const { join } = await import('path')
     
