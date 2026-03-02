@@ -1,18 +1,31 @@
 <script setup lang="ts">
 import { computed } from "vue"
+import { generateSrcset, type WpImageSizes } from '~/utils/image'
 
-const props = defineProps<{
+
+interface Props {
 	data: any
 	hasError: boolean
-}>()
+}
 
-const heroSizes = "100vw"
-const loadingIconWidth = "2.5rem"
-const loadingIconHeight = "2.5rem"
+const props = defineProps<Props>()
+const responsiveSizes = '(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 1536px'
 
 const header = computed(() => props.data?.acf?.title ?? "Default Header")
 const teaser = computed(() => props.data?.acf?.teaser ?? "Default teaser text.")
 const heroImage = computed(() => props.data?.acf?.image ?? null)
+
+const imageSrcset = computed(() => {
+  if (!heroImage.value?.sizes) return undefined
+  return generateSrcset(heroImage.value.sizes)
+})
+const mainSrc = computed(() => {
+  if (heroImage.value.sizes) {
+    return heroImage.value.sizes['2048x2048'] || heroImage.value.sizes['1536x1536']
+  }
+  return heroImage.value.url
+})
+console.log(heroImage.value)
 </script>
 
 <template>
@@ -28,7 +41,13 @@ const heroImage = computed(() => props.data?.acf?.image ?? null)
 			<p class="text-sm max-w-96">{{ teaser }}</p>
 		</div>
 		<div class="relative z-10 w-full flex-1 overflow-hidden lg:h-full">
-			<NuxtImg v-if="heroImage" :src="heroImage.url" :sizes="heroSizes" class="md:object-fit md:aspect-4/3 absolute inset-0 h-full w-full object-cover object-center md:object-top" :width="heroImage.width || 1080" :height="heroImage.height || 1618" :alt="heroImage.alt || ''" loading="eager" />
+			<img v-if="heroImage" :src="mainSrc" :srcset="imageSrcset" :sizes="responsiveSizes"
+				class="md:object-fit md:aspect-4/3 absolute inset-0 h-full w-full object-cover object-center md:object-top"
+				:width="heroImage.sizes?.['2048x2048-width'] || heroImage.width || 1080"
+				:height="heroImage.sizes?.['2048x2048-height'] || heroImage.height || 1618"
+				:alt="heroImage.alt || ''"
+				loading="eager"
+			/>
 			<div class="absolute inset-0 z-20 bg-black/30"></div>
 		</div>
 	</div>
