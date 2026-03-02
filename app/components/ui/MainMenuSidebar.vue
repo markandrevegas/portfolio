@@ -105,7 +105,7 @@ const filteredMenuItems = computed(() => {
 					</li>
 				</ul>
 			</nav>
-			<ColorModeToggle />
+			<ClientOnly><ColorModeToggle /></ClientOnly>
 			<div class="md:hidden">
 				<MenuIcon :is-open="isOpen" @click="toggleMenu" />
 			</div>
