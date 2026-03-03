@@ -35,7 +35,7 @@ const mainSrc = computed(() => {
 		<div class="z-30 flex h-96 sm:h-[50vh] lg:h-[35vh] flex-col justify-end p-6">
 			<h1 class="mb-4 text-5xl md:text-6xl tracking-tighter">{{ header }}</h1>
 		</div>
-		<div class="relative z-10 w-full flex-1">
+		<div class="relative z-10 w-full flex-1 overflow-hidden">
 			<NuxtImg v-if="heroImage" :src="heroImage.url" :sizes="responsiveSizes" class="h-full w-full object-cover" :width="heroImage.width || 1080" :height="heroImage.height || 1618" :alt="heroImage.alt || ''" />
 			<div class="absolute inset-0 z-20 bg-black/30"></div>
 		</div>
