@@ -2,6 +2,7 @@
 import { ref, onMounted, onBeforeUnmount } from "vue"
 
 const isScrolled = ref(false)
+let page
 const scrollContainer = ref<HTMLElement | null>(null)
 
 const isClient = ref(false)
@@ -27,10 +28,11 @@ onBeforeUnmount(() => {
 })
 </script>
 <template>
-	<div ref="scrollContainer" class="relative flex h-screen flex-col">
+	<div ref="scrollContainer" class="relative flex flex-col min-h-screen">
 		<MainMenuSidebar :is-scrolled="isScrolled" />
-		<main class="flex flex-1 flex-col pt-[70px] overflow-auto no-scrollbar">
+		<main class="flex flex-1 flex-col pt-[70px] no-scrollbar">
 			<slot></slot>
 		</main>
+		<PageFooter :data="page" />
 	</div>
 </template>

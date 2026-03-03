@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const route = useRoute()
-const slug = route.params.slug as string
+const slug = computed(() => route.params.slug as string)
 
 interface WpPage {
   title: { rendered: string }
@@ -12,32 +12,34 @@ interface WpPage {
   }
 }
 
-const { data: page } = await useAsyncData(`page-${slug}`, async () => {
-  let pages: WpPage[]
-  
-  if (import.meta.server) {
-    const { readFileSync } = await import('fs')
-    const { join } = await import('path')
-    
-    const pagesPath = join(process.cwd(), 'public/data/pages.json')
-    pages = JSON.parse(readFileSync(pagesPath, 'utf-8'))
-  } else {
-    // Client-side: fetch from public directory
-    pages = await $fetch('/data/pages.json')
+const { data: page } = await useAsyncData(
+  () => `page-${slug.value}`,
+  async () => {
+    let pages: WpPage[]
+    if (import.meta.server) {
+      const { readFileSync } = await import('fs')
+      const { join } = await import('path')
+      const pagesPath = join(process.cwd(), 'public/data/pages.json')
+      pages = JSON.parse(readFileSync(pagesPath, 'utf-8'))
+    } else {
+      pages = await $fetch('/data/pages.json')
+    }
+
+    const result = pages.find(p => p.slug === slug.value)
+    if (!result) {
+      throw createError({
+        statusCode: 404,
+        statusMessage: 'Page Not Found',
+        fatal: true
+      })
+    }
+
+    return result
+  },
+  {
+    watch: [slug]
   }
-  
-  const result = pages.find(p => p.slug === slug)
-  
-  if (!result) {
-    throw createError({ 
-      statusCode: 404, 
-      statusMessage: 'Page Not Found',
-      fatal: true
-    })
-  }
-  
-  return result
-})
+)
 
 const imageSizes = "100vw"
 const galleryImages = computed(() => {
@@ -76,10 +78,7 @@ useSeoMeta({
 })
 </script>
 <template>
-	<div class="px-4 relative">
-		<!--<div v-if="pending" class="absolute bottom-0 left-0 right-0 top-0 z-50 flex flex-col items-center justify-center">
-			<Loading :height="loadingIconHeight" :width="loadingIconWidth" />
-		</div>-->
+	<div class="px-4">
 		<div v-if="page" class="flex flex-col pb-16">
 			<BackButton>
 				<ArrowLeftIcon />
@@ -129,7 +128,6 @@ useSeoMeta({
 					</div>
 				</div>
 			</article>
-			<PageFooter :data="page" />
 		</div>
 		<div v-else class="flex flex-col pb-16">
 			<BackButton>

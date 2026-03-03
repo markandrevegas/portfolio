@@ -17,7 +17,7 @@
 
 </script>
 <template>
-	<footer>
+	<footer class="px-4">
 		<div class="wrapper-grid-3 mt-16">
 			<h2 class="text-lg font-semibold">Tailor</h2>
 			<div>
