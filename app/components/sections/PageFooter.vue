@@ -61,13 +61,5 @@
 				</ul>
 			</div>
 		</div>
-		<div class="wrapper-grid mt-16 text-xm">
-			<div><p>Copyright © 2026 Tailor</p></div>
-			<div>
-				<NuxtLink to="/privacy-policy" class="block">
-					<p>Privacy policy</p>
-				</NuxtLink>
-			</div>
-		</div>
 	</footer>
 </template>
