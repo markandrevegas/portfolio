@@ -77,14 +77,13 @@ declare module "nuxt/schema" {
 	}
 }
 
-const isDev = process.env.NODE_ENV !== 'production'
+const isDev = process.env.NODE_ENV === 'development'
 
 export default defineNuxtConfig({
 	srcDir: 'app/',
 	app: {
 		baseURL: isDev ? '/' : '/portfolio/',
 		buildAssetsDir: '/_nuxt/',
-		cdnURL: isDev ? undefined : '/portfolio/',
 		pageTransition: {
       name: 'page',
       mode: 'out-in'
