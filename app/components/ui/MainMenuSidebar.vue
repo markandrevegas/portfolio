@@ -115,7 +115,7 @@ const filteredMenuItems = computed(() => {
 			<div v-if="isOpen" class="fixed inset-0 top-[70px] z-40 bg-black/50" @click="toggleMenu"></div>
 		</Transition>
 		<Transition name="slide">
-			<nav v-if="isOpen" class="fixed right-0 top-[70px] z-50 h-full w-3/4 sm:w-2/3 md:w-1/3 bg-palladian text-abyssal transition-transform duration-300">
+			<nav v-if="isOpen" class="fixed right-0 top-[70px] z-50 h-full w-3/4 sm:w-2/3 md:w-1/3 bg-palladian text-abyssal">
 				<div class="flex h-full flex-col px-4 pt-16">
 					<div class="flex-1 overflow-y-scroll">
 						<div v-if="error">Error</div>
@@ -123,7 +123,7 @@ const filteredMenuItems = computed(() => {
 							<Loading :width="loadingIconWidth" :height="loadingIconHeight" />
 						</div>
 						<ul class="menu">
-							<li v-for="(item, index) in menuItems" :key="item.url" :style="{ '--i': index }" class="stagger-item">
+							<li v-for="(item, index) in menuItems" :key="item.url" :style="{ '--i': index }" class="stagger-item text-inherit">
 								<NuxtLink :to="item.url" @click="toggleMenu" class="block">{{ item.title }}</NuxtLink>
 							</li>
 						</ul>
@@ -149,5 +149,36 @@ const filteredMenuItems = computed(() => {
 	</div>
 </template>
 <style scoped>
-
+	.slide-enter-active,
+	.slide-leave-active {
+		transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+		will-change: transform;
+	}
+	.slide-enter-from,
+	.slide-leave-to {
+		transform: translateX(100%);
+	}
+	.slide-enter-to,
+	.slide-leave-from {
+		transform: translateX(0);
+	}
+	.stagger-item {
+		opacity: 1;
+		transform: translateX(0);
+		transition:
+			opacity 0.4s ease,
+			transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+	}
+	.slide-enter-from .stagger-item {
+		opacity: 0;
+		transform: translateX(20px);
+	}
+	.slide-enter-active .stagger-item {
+		transition-delay: calc(var(--i) * 0.08s + 0.15s);
+	}
+	.slide-leave-active .stagger-item {
+		opacity: 0;
+		transform: translateX(10px);
+		transition-delay: calc((5 - var(--i)) * 0.05s);
+	}
 </style>
