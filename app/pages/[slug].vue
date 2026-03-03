@@ -62,7 +62,7 @@ const galleryImages = computed(() => {
     })
     .filter(Boolean) // remove nulls
 })
-console.log(galleryImages.value)
+// console.log(galleryImages.value)
 
 const content = computed(() => page.value?.acf?.content ?? "")
 

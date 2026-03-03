@@ -27,13 +27,10 @@ onBeforeUnmount(() => {
 })
 </script>
 <template>
-	<div ref="scrollContainer" class="relative flex h-screen flex-col overflow-auto no-scrollbar">
+	<div ref="scrollContainer" class="relative flex h-screen flex-col">
 		<MainMenuSidebar :is-scrolled="isScrolled" />
-		<Transition name="page" mode="out-in">
-      <!--<NuxtPage :key="$route.fullPath" />-->
-			<main :key="$route.fullPath" class="flex flex-1 flex-col pt-[70px]">
+		<main class="flex flex-1 flex-col pt-[70px] overflow-auto no-scrollbar">
 			<slot></slot>
 		</main>
-    </Transition>
 	</div>
 </template>

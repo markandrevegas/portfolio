@@ -85,7 +85,10 @@ export default defineNuxtConfig({
 		baseURL: isDev ? '/' : '/portfolio/',
 		buildAssetsDir: '/_nuxt/',
 		cdnURL: isDev ? undefined : '/portfolio/',
-		pageTransition: { name: "page", mode: "out-in" },
+		pageTransition: {
+      name: 'page',
+      mode: 'out-in'
+    },
 		head: {
 			link: [
 				{ rel: "icon", type: "image/png", href: "/portfolio/favicon-96x96.png", sizes: "96x96" },
