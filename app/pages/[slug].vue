@@ -139,13 +139,6 @@ useSeoMeta({
 					</span>
 				</span>
 			</BackButton>
-			<!--<div class="error-container">
-				<article class="md:w-1/2">
-					<h1 class="my-8 text-5xl tracking-tighter">{{ error?.statusMessage }}</h1>
-					<p class="leading-6 max-w-96">Like a photo that was never developed, this page might have faded into the dark. Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur odio, excepturi a at sint maxime eveniet assumenda delectus adipisci dolore quae explicabo quidem expedita voluptates aperiam incidunt ipsam consequatur nobis?</p>
-				</article>
-				<div></div>
-			</div>-->
 		</div>
 	</div>
 </template>
