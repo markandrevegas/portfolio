@@ -51,15 +51,20 @@ useSeoMeta({
 })
 </script>
 <template>
-	<div class="flex h-screen flex-1 flex-col overflow-auto">
+	<div class="flex min-h-dvh flex-1 flex-col overflow-auto">
     <div v-if="isPending" class="flex flex-1 items-center justify-center">
       <Loading :width="loadingIconWidth" :height="loadingIconHeight" />
     </div>
     <div v-else-if="hasError" class="flex flex-1 items-center justify-center">
       <div class="text-center flex flex-col gap-4">
         <h2 class="text-4xl tracking-tighter animate-slide-up" style="animation-delay:0ms;">404 - This page doesn’t exist.</h2>
-        <p class="text-gray-600 mb-4 animate-slide-up" style="animation-delay: 150ms;">{{ error?.message || 'Like a photo that was never developed, this page might have faded into the dark.' }}</p>
-        <button @click="() => refresh()" class="flex-none max-w-32 mx-auto px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition animate-slide-up" style="animation-delay: 300ms;">Retry</button>
+        <p class="mb-4 animate-slide-up" style="animation-delay: 150ms;">{{ error?.message || 'Like a photo that was never developed, this page might have faded into the dark.' }}</p>
+        <p class="flex justify-start items-center gap-2 min-w-32 mx-auto min-w-content animate-slide-up">
+          <span class="inline-flex gap-2 font-semibold">Go <BackButton></BackButton></span>
+          or
+          <span class="font-semibold"><NuxtLink @click="() => refresh()">try again</NuxtLink></span>
+        </p>
+        <button @click="() => refresh()" class="hidden flex-none max-w-32 mx-auto px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition animate-slide-up" style="animation-delay: 300ms;">Retry</button>
       </div>
     </div>
     <template v-else-if="homeData">
@@ -74,24 +79,23 @@ useSeoMeta({
 	</div>
 </template>
 <style scoped>
-@keyframes slide-up {
-  from {
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      filter: blur(16px);
+      transform: translate3d(0, 24px, 0);
+    }
+    to {
+      opacity: 1;
+      filter: blur(0);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  .animate-slide-up {
+    backface-visibility: hidden;
+    contain: layout paint;
     opacity: 0;
-    filter: blur(16px);
-    transform: translate3d(0, 24px, 0);
+    animation: slide-up 750ms cubic-bezier(0.25, 0.8, 0.25, 1) forwards;  will-change: transform, opacity;
+    transform: translateZ(0);
   }
-  to {
-    opacity: 1;
-    filter: blur(0);
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-.animate-slide-up {
-  backface-visibility: hidden;
-  contain: layout paint;
-  opacity: 0;
-  animation: slide-up 750ms cubic-bezier(0.25, 0.8, 0.25, 1) forwards;  will-change: transform, opacity;
-  transform: translateZ(0);
-}
 </style>
