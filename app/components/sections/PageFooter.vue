@@ -19,12 +19,12 @@
 <template>
 	<footer class="px-4">
 		<div class="wrapper-grid-3 mt-16">
-			<h2 class="text-lg font-semibold">Tailor</h2>
+			<h2>Tailor</h2>
 			<div>
 				<ul>
 					<li v-for="item in menuItems" :key="item.url">
 						<NuxtLink :to="item.url" class="slide-link">
-							<span class="slide-wrap text-lg font-semibold">
+							<span class="slide-wrap font-semibold">
 								<span class="slide-text">{{ item.title }}</span>
 								<span class="slide-text slide-text--clone">{{ item.title }}</span>
 							</span>
@@ -36,7 +36,7 @@
 				<ul>
 					<li>
 						<a :href="instagramURL" target="_blank" class="slide-link">
-							<span class="slide-wrap text-lg font-semibold">
+							<span class="slide-wrap font-semibold">
 								<span class="slide-text">Instagram</span>
 								<span class="slide-text slide-text--clone">Instagram</span>
 							</span>
@@ -44,7 +44,7 @@
 					</li>
 					<li>
 						<a :href="twitterURL" target="_blank" class="slide-link">
-							<span class="slide-wrap text-lg font-semibold">
+							<span class="slide-wrap font-semibold">
 								<span class="slide-text">Twitter</span>
 								<span class="slide-text slide-text--clone">Twitter</span>
 							</span>
@@ -52,7 +52,7 @@
 					</li>
 					<li>
 						<a :href="pinterestURL" target="_blank" class="slide-link">
-							<span class="slide-wrap text-lg font-semibold">
+							<span class="slide-wrap font-semibold">
 								<span class="slide-text">Pinterest</span>
 								<span class="slide-text slide-text--clone">Pinterest</span>
 							</span>

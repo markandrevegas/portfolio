@@ -12,6 +12,15 @@
 	body {
 		@apply bg-palladian font-sans text-abyssal dark:bg-abyssal dark:text-palladian;
 	}
+	footer {
+		@apply text-base;
+		h2 {
+			@apply text-base;
+		}
+		ul li {
+			@apply text-base;
+		}
+	}
 }
 
 @layer components {
