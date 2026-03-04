@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
 const isTestingPending = ref(false)
-const isTestingError = ref(true)
+const isTestingError = ref(false)
 
 const loadingIconWidth = "2.5rem"
 const loadingIconHeight = "2.5rem"
