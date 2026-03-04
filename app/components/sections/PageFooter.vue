@@ -18,13 +18,13 @@
 </script>
 <template>
 	<footer class="px-4">
-		<div class="wrapper-grid-3 mt-16">
+		<div class="wrapper-grid-3">
 			<h2>Tailor</h2>
 			<div>
 				<ul>
 					<li v-for="item in menuItems" :key="item.url">
 						<NuxtLink :to="item.url" class="slide-link">
-							<span class="slide-wrap font-semibold">
+							<span class="slide-wrap">
 								<span class="slide-text">{{ item.title }}</span>
 								<span class="slide-text slide-text--clone">{{ item.title }}</span>
 							</span>

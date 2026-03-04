@@ -78,7 +78,7 @@ useSeoMeta({
 })
 </script>
 <template>
-	<div class="px-4 md:h-[60vh] md:overflow-hidden">
+	<div class="px-4 sm:h-[60vh] md:h-[70vh] sm:overflow-hidden">
 		<div v-if="page" class="flex flex-col pb-16 md:h-full">
 			<BackButton class="md:hidden">
 				<ArrowLeftIcon />
@@ -94,7 +94,7 @@ useSeoMeta({
 					<h1 class="my-8 text-5xl tracking-tighter" v-html="page?.title.rendered"></h1>
 					<p class="leading-6 max-w-96">{{ page?.acf.excerpt }}</p>
 				</div>
-				<div class="md:px-16 md:pb-32 flex flex-col flex-1 gap-8 md:overflow-y-auto md:h-full no-scrollbar">
+				<div class="md:px-16 flex flex-col flex-1 gap-8 md:overflow-y-auto md:h-full no-scrollbar">
 					<div class="max-w-prose">
 						<div v-html="content" class="prose"></div>
 						<div v-html="content" class="prose"></div>
@@ -119,10 +119,10 @@ useSeoMeta({
 							</picture>
 							<div class="absolute inset-0 z-20 bg-black/40"></div>
 							<figcaption
-								class="absolute bottom-0 left-0 right-0 z-30 block bg-gradient-to-t from-black/40 p-4 pt-24 text-xs text-white lg:p-8 lg:text-sm"
+								class="absolute bottom-0 left-0 right-0 z-30 block bg-gradient-to-t from-black/40 p-4 pt-24 text-white"
 							>
 								<span class="font-semibold">{{ img.alt }}</span
-								><br /><span class="opacity-70">{{ truncateText(img.caption, 72) }}</span>
+								><br /><span>{{ truncateText(img.caption, 72) }}</span>
 							</figcaption>
 						</figure>
 					</div>

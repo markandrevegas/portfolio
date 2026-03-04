@@ -13,17 +13,20 @@
 		@apply bg-palladian font-sans text-abyssal dark:bg-abyssal dark:text-palladian;
 	}
 	footer {
-		@apply text-base;
+		@apply text-base leading-6;
 		h2 {
-			@apply text-base;
+			@apply text-sm;
 		}
 		ul li {
-			@apply text-base;
+			@apply text-sm h-8;
 		}
 	}
 }
 
 @layer components {
+	footer .slide-text {
+		@apply text-sm font-light
+	}
 	.error-container {
 		@apply flex-1 flex flex-col md:flex-row md:items-start
 	}
@@ -39,7 +42,7 @@
 	.wrapper {
 		@apply flex flex-col gap-16 py-24;
 		&-grid {
-			@apply grid w-full grid-cols-1 gap-4 text-sm sm:grid-cols-2 lg:text-lg xl:grid-cols-3;
+			@apply grid w-full grid-cols-1 gap-4 text-xs sm:grid-cols-2 xl:grid-cols-3;
 		}
 		&-grid-3 {
 			@apply grid w-full grid-cols-1 gap-4 text-sm sm:grid-cols-3 lg:text-lg;
@@ -69,9 +72,9 @@
 	.slide-link {
 		@apply hover:cursor-pointer;
 		display: inline-block;
-		text-decoration: none;
 		overflow: hidden;
 	}
+
 	.slide-wrap {
 		display: inline-block;
 		position: relative;
@@ -79,18 +82,25 @@
 		height: 1.5em;
 		line-height: 1.5em;
 	}
+
 	.slide-text {
 		display: block;
+		padding: 0 .5em;
 		line-height: 1.5em;
 		transition: transform 0.4s ease;
+		will-change: transform;
 	}
+
 	.slide-text--clone {
 		position: absolute;
 		left: 0;
 		top: 1.5em;
+		background-color: var(--abyssal);
+		color: var(--palladian);
 	}
+
 	.slide-link:hover .slide-text {
-		transform: translateY(-1.5em);
+		transform: translate3d(0, -1.5em, 0);
 	}
 	.no-scrollbar::-webkit-scrollbar {
     display: none;

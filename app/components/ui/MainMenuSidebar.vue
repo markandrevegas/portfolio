@@ -95,8 +95,8 @@ const filteredMenuItems = computed(() => {
 				<ul class="flex items-center gap-8">
 					<li v-for="item in filteredMenuItems" :key="item.url">
 						<NuxtLink :to="item.url">
-							<span class="slide-link">
-								<span class="slide-wrap font-semibold">
+							<span class="slide-link text-sm">
+								<span class="slide-wrap">
 									<span class="slide-text">{{ item.title }}</span>
 									<span class="slide-text slide-text--clone">{{ item.title }}</span>
 								</span>
