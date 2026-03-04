@@ -91,7 +91,7 @@ const filteredMenuItems = computed(() => {
 			<NuxtLink to="/" class="block" @click="closeMenu">
 				<h1 class="text-xl font-bold">Stitched</h1>
 			</NuxtLink>
-			<nav class="hidden md:flex items-center gap-8">
+			<nav class="hidden md:flex items-center gap-8 relative top-[.5em]">
 				<ul class="flex items-center gap-8">
 					<li v-for="item in filteredMenuItems" :key="item.url">
 						<NuxtLink :to="item.url">
