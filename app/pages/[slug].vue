@@ -78,9 +78,9 @@ useSeoMeta({
 })
 </script>
 <template>
-	<div class="px-4">
-		<div v-if="page" class="flex flex-col pb-16">
-			<BackButton>
+	<div class="px-4 md:h-[60vh] md:overflow-hidden">
+		<div v-if="page" class="flex flex-col pb-16 md:h-full">
+			<BackButton class="md:hidden">
 				<ArrowLeftIcon />
 				<span class="slide-link">
 					<span class="slide-wrap font-semibold">
@@ -89,13 +89,13 @@ useSeoMeta({
 					</span>
 				</span>
 			</BackButton>
-			<article class="flex flex-col md:flex-row md:items-start w-full">
-				<div class="min-w-96">
+			<article class="flex flex-1 flex-col md:flex-row md:items-start w-full md:h-full md:overflow-hidden">
+				<div class="min-w-96 md:sticky md:top-0 md:self-start">
 					<h1 class="my-8 text-5xl tracking-tighter" v-html="page?.title.rendered"></h1>
 					<p class="leading-6 max-w-96">{{ page?.acf.excerpt }}</p>
 				</div>
-				<div class="md:px-16 md:pb-32 flex flex-col flex-1 gap-8">
-					<div class="max-w-prose md:h-96 md:overflow-scroll no-scrollbar">
+				<div class="md:px-16 md:pb-32 flex flex-col flex-1 gap-8 md:overflow-y-auto md:h-full no-scrollbar">
+					<div class="max-w-prose">
 						<div v-html="content" class="prose"></div>
 						<div v-html="content" class="prose"></div>
 					</div>

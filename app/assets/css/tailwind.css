@@ -12,9 +12,6 @@
 	body {
 		@apply bg-palladian font-sans text-abyssal dark:bg-abyssal dark:text-palladian;
 	}
-	p {
-		@apply text-sm;
-	}
 }
 
 @layer components {
