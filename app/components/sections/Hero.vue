@@ -33,13 +33,53 @@ const mainSrc = computed(() => {
 			<p>Failed to load content. Please check back later.</p>
 		</div>
 		<div class="z-30 flex h-96 sm:h-[50vh] lg:h-[35vh] flex-col justify-end p-6">
-			<h1 class="mb-4 text-5xl md:text-6xl tracking-tighter">{{ header }}</h1>
+			<h1 class="mb-4 text-5xl md:text-6xl tracking-tighter opacity-0 animate-fade-blur-in">{{ header }}</h1>
 		</div>
-		<div class="relative z-10 w-full flex-1 overflow-hidden">
+		<div class="relative z-10 w-full flex-1 overflow-hidden opacity-0 animate-slide-up-fade">
 			<NuxtImg v-if="heroImage" :src="heroImage.url" :sizes="responsiveSizes" class="h-full w-full object-cover" :width="heroImage.width || 1080" :height="heroImage.height || 1618" :alt="heroImage.alt || ''" />
 			<div class="absolute inset-0 z-20 bg-black/30"></div>
 		</div>
 	</div>
 </template>
 
-<style></style>
+<style>
+	@keyframes fadeIn {
+		to {
+			opacity: 1;
+		}
+	}
+	@keyframes slideUpFade {
+		from {
+			opacity: 0;
+			transform: translate3d(0, 40px, 0);
+		}
+		to {
+			opacity: 1;
+			transform: translate3d(0, 0, 0);
+		}
+	}
+	@keyframes fadeBlurIn {
+		from {
+			opacity: 0;
+			filter: blur(12px);
+			transform: translate3d(0, 12px, 0);
+		}
+		to {
+			opacity: 1;
+			filter: blur(0);
+			transform: translate3d(0, 0, 0);
+		}
+	}
+
+	.animate-fade-blur-in {
+		animation: fadeBlurIn 1.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+	}
+
+	.animate-fade-in {
+		animation: fadeIn 0.6s ease forwards;
+	}
+
+	.animate-slide-up-fade {
+		animation: slideUpFade 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards;
+	}
+</style>

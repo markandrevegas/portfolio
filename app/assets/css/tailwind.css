@@ -70,38 +70,37 @@
 
 @layer utilities {
 	.slide-link {
-		@apply hover:cursor-pointer;
-		display: inline-block;
-		overflow: hidden;
-	}
+  @apply hover:cursor-pointer;
+  display: inline-block;
+  overflow: hidden;
+}
 
-	.slide-wrap {
-		display: inline-block;
-		position: relative;
-		overflow: hidden;
-		height: 1.5em;
-		line-height: 1.5em;
-	}
+.slide-wrap {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  height: 1.5em;
+  line-height: 1.5em;
+}
 
-	.slide-text {
-		display: block;
-		padding: 0 .5em;
-		line-height: 1.5em;
-		transition: transform 0.4s ease;
-		will-change: transform;
-	}
+.slide-text {
+  display: block;
+  line-height: 1.5em;
+  transition: transform 0.4s ease;
+  will-change: transform;
+}
 
-	.slide-text--clone {
-		position: absolute;
-		left: 0;
-		top: 1.5em;
-		background-color: var(--abyssal);
-		color: var(--palladian);
-	}
+.slide-text--clone {
+  position: absolute;
+  left: 0;
+  top: 1.5em;
+  background-color: var(--abyssal);
+  color: var(--palladian);
+}
 
-	.slide-link:hover .slide-text {
-		transform: translate3d(0, -1.5em, 0);
-	}
+.slide-link:hover .slide-text {
+  transform: translate3d(0, -1.5em, 0);
+}
 	.no-scrollbar::-webkit-scrollbar {
     display: none;
   }

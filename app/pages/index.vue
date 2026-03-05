@@ -68,6 +68,7 @@ useSeoMeta({
       </div>
     </div>
     <template v-else-if="homeData">
+      <!--<SplashScreen />-->
       <Hero v-if="homeData?.hero" :data="homeData.hero" :hasError="false" />
       <Grid v-if="homeData?.feature" :data="homeData.feature" :hasError="false" class="px-4" />
       <About v-if="homeData?.bio" :data="homeData.bio" :hasError="false" class="px-4" />
